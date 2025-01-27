@@ -1,66 +1,50 @@
-/*import React from "react";
-import { Link } from "react-router-dom"; // Import du Link pour la navigation
-
-class MenuLecon extends React.Component {
-  render() {
-    const { lessons, onSelectLesson } = this.props;
-
-    return (
-      <div>
-        <h2>Menu des Leçons</h2>
-        <ul>
-          {lessons.map((lesson, index) => (
-            <li key={lesson.id}>
-              {/* Utilisation du Link pour créer des liens */
-              /*<Link
-                to={`/suivi/${lesson.id}`} // Lien vers la page de suivi de la leçon
-                onClick={() => onSelectLesson(lesson)} // Appel de la fonction onSelectLesson
-                style={{
-                  display: "inline-block", // Pour s'assurer que le texte est sur une seule ligne
-                  cursor:
-                    index !== 0 && !lessons[index - 1].validated
-                      ? "not-allowed"
-                      : "pointer", // Empêcher le clic si la leçon précédente n'est pas validée
-                  textDecoration:
-                    index !== 0 && !lessons[index - 1].validated
-                      ? "line-through"
-                      : "none", // L'apparence de la leçon si non validée
-                  color:
-                    index !== 0 && !lessons[index - 1].validated
-                      ? "grey"
-                      : "black", // Couleur grise si non validée
-                }}
-              >
-                {lesson.name} -{" "}
-                {lesson.validated ? "✅ Validée" : "❌ Non validée"}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </div>
-    );
-  }
-}
-
-export default MenuLecon;*/
-
-// src/pages/MenuLecons.js
+// src/pages/Lecons.js
 import React from "react";
+import { useParams, Link } from "react-router-dom";
 import BarreNavig from "../components/BarreNavig/BarreNavig";
-import { Link } from "react-router-dom";
+import lecons from "../services/lecons"; // Vos données des leçons
 
-const MenuLecon = () => {
+const Lecons = () => {
+  const { id } = useParams(); // Récupérer l'ID de la leçon (si présent)
+
+  // Si un ID est présent, trouver la leçon correspondante
+  const lecon = id ? lecons.find((lecon) => lecon.id === parseInt(id)) : null;
+
   return (
     <div>
-      <BarreNavig title="Menu des Leçons" backLink="/evaluer-les-distances" homeLink="/" />
-      <h1>Menu des Leçons</h1>
-      <Link to="/lecon/1">
-        <button>Leçon 1 : Introduction</button>
-      </Link>
-      {/* Ajouter d'autres leçons si nécessaire */}
+      <BarreNavig
+        title={id ? `Leçon ${id}` : "Menu des Leçons"}
+        backLink={id ? "/menu-lecons" : "/evaluer-les-distances"}
+        homeLink="/"
+      />
+
+      {id && lecon ? (
+        // Affichage des détails de la leçon
+        <div>
+          <h1>{lecon.titre}</h1>
+          <p>{lecon.description}</p>
+          <p>
+            <strong>Objectif :</strong> {lecon.objectif}
+          </p>
+          <Link to={`/faire-lecon/${id}`}>
+            <button>C'est parti</button>
+          </Link>
+        </div>
+      ) : (
+        // Affichage de la liste des leçons
+        <div>
+          <h1>Menu des Leçons</h1>
+          <ul>
+            {lecons.map((lecon) => (
+              <li key={lecon.id}>
+                <Link to={`/menu-lecons/${lecon.id}`}>{lecon.titre}</Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </div>
   );
 };
 
-export default MenuLecon;
-
+export default Lecons;

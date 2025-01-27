@@ -5,10 +5,12 @@ const useTracking = (startCoords, setStartCoords, setMessage) => {
   const [estimation, setEstimation] = useState("");
   const [distanceCovered, setDistanceCovered] = useState(0);
   const [isTracking, setIsTracking] = useState(false);
+  const [isFinished, setIsFinished] = useState(false); // Nouvel état
 
   const toggleTracking = () => {
     if (!isTracking) {
       setMessage("Suivi démarré...");
+      setIsFinished(false); // Réinitialiser si on redémarre
       navigator.geolocation.getCurrentPosition(
         (position) => {
           const { latitude, longitude } = position.coords;
@@ -37,6 +39,8 @@ const useTracking = (startCoords, setStartCoords, setMessage) => {
             longitude
           );
           setDistanceCovered(distance);
+          setIsFinished(true); // Indique que le suivi est terminé
+          setMessage(""); // Effacer le message après le calcul
         },
         (error) => {
           setMessage(`Erreur : ${error.message}`);
@@ -47,7 +51,14 @@ const useTracking = (startCoords, setStartCoords, setMessage) => {
     setIsTracking(!isTracking);
   };
 
-  return { estimation, setEstimation, distanceCovered, toggleTracking, isTracking };
+  return {
+    estimation,
+    setEstimation,
+    distanceCovered,
+    toggleTracking,
+    isTracking,
+    isFinished, // Retourner cet état
+  };
 };
 
 export default useTracking;

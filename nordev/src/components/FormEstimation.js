@@ -1,11 +1,11 @@
-// Composant pour le formulaire d'estimation
 import React from "react";
 import SaisieEstimation from "./SaisieEstimation";
 import BoutonAction from "./BoutonAction";
 
 class FormEstimation extends React.Component {
   render() {
-    const { estimation, setEstimation, isTracking, toggleTracking } = this.props;
+    const { estimation, setEstimation, isTracking, onValidate } = this.props;
+
     return (
       <div>
         <SaisieEstimation
@@ -15,8 +15,8 @@ class FormEstimation extends React.Component {
           disabled={isTracking}
         />
         <BoutonAction
-          onClick={toggleTracking}
-          texte={isTracking ? "Terminer" : "Démarrer"}
+          texte="Valider"
+          onClick={onValidate} // Appel de la fonction pour valider l'estimation
         />
       </div>
     );

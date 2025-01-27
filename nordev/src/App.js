@@ -30,8 +30,7 @@ import Accueil from "./pages/Accueil";
 import Competence from "./pages/Competence";
 import Distance from "./pages/Distance";
 import MenuLecon from "./pages/MenuLecon";
-import Lecon from "./pages/Lecon";
-import FaireLecon from "./components/FaireLecon";
+import FaireLecon from "./pages/FaireLecon";
 
 function App() {
   return (
@@ -41,7 +40,7 @@ function App() {
         <Route path="/mes-competences" element={<Competence />} />
         <Route path="/evaluer-les-distances" element={<Distance />} />
         <Route path="/menu-lecons" element={<MenuLecon />} /> {/* Route vers MenuLecon */}
-        <Route path="/lecon/:id" element={<Lecon />} />
+        <Route path="/menu-lecons/:id" element={<MenuLecon />} />
         <Route path="/faire-lecon/:id" element={<FaireLecon />} /> {/* Route vers FaireLecon */}
       </Routes>
     </Router>

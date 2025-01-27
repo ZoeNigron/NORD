@@ -15,7 +15,7 @@ function AnalyseEstimation({ distance, estimation }) {
   return (
     <div style={{ fontWeight: "bold", marginTop: "10px" }}>
       <p>
-        <strong>Distance réelle :</strong> {roundedDistance} mètres
+        <strong>Distance parcourue :</strong> {roundedDistance} mètres
       </p>
       <p style={{ color: message.includes("Bravo") ? "green" : "red" }}>{message}</p>
     </div>
