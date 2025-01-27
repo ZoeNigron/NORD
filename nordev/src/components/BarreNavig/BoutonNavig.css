@@ -1,0 +1,18 @@
+.button {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #f0f0f0;
+  color: black;
+  font-weight: bold;
+}
+
+.icon {
+  margin-right: 8px;
+}
+
+.text {
+  font-size: 16px;
+}

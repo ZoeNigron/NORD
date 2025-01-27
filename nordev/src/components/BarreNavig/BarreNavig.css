@@ -1,0 +1,14 @@
+/* BarreNavig.css */
+.barreNavig {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #282c34;
+  color: white;
+}
+
+.navLinks {
+  display: flex;
+  gap: 20px;
+}
