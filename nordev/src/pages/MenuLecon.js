@@ -3,6 +3,8 @@ import React from "react";
 import { useParams, Link } from "react-router-dom";
 import BarreNavig from "../components/BarreNavig/BarreNavig";
 import lecons from "../services/lecons"; // Vos données des leçons
+import BoutonAction from "../components/BoutonAction";
+import Entete from "../components/Entete";
 
 const Lecons = () => {
   const { id } = useParams(); // Récupérer l'ID de la leçon (si présent)
@@ -12,6 +14,7 @@ const Lecons = () => {
 
   return (
     <div>
+      <Entete />
       <BarreNavig
         title={id ? `Leçon ${id}` : "Menu des Leçons"}
         backLink={id ? "/menu-lecons" : "/evaluer-les-distances"}
@@ -27,7 +30,7 @@ const Lecons = () => {
             <strong>Objectif :</strong> {lecon.objectif}
           </p>
           <Link to={`/faire-lecon/${id}`}>
-            <button>C'est parti</button>
+          <BoutonAction texte="Commencer la leçon" onClick={() => console.log("Navigation vers la leçon")} />
           </Link>
         </div>
       ) : (

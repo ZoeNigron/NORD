@@ -1,10 +1,14 @@
-// Composant pour les boutons d'action
 import React from "react";
+import "./BoutonAction.css";
 
 class BoutonAction extends React.Component {
   render() {
     const { onClick, texte } = this.props;
-    return <button onClick={onClick}>{texte}</button>;
+    return (
+      <button className="bouton-action" onClick={onClick}>
+        {texte}
+      </button>
+    );
   }
 }
 

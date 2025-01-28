@@ -31,6 +31,7 @@ import Competence from "./pages/Competence";
 import Distance from "./pages/Distance";
 import MenuLecon from "./pages/MenuLecon";
 import FaireLecon from "./pages/FaireLecon";
+import "./App.css";
 
 function App() {
   return (

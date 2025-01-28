@@ -1,33 +1,35 @@
 import React from "react";
 import { MapContainer, TileLayer } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
-import blueIcon from "./Icone"; // Import de l'icône personnalisée
-import Marqueur from "./Marqueur"; // Import du composant Marqueur
+import blueIcon from "./Icone"; // Icône personnalisée
+import Marqueur from "./Marqueur"; // Composant Marqueur
+import "./Carte.css"; // Import des styles CSS
 
-function Carte({ startCoords }) {
-  // Ne pas rendre la carte tant que startCoords n'est pas défini
+function Carte({ startCoords, fullscreen = false }) {
+  // Vérification si les coordonnées sont disponibles
   if (!startCoords) {
-    return <p>Chargement de la carte...</p>;
+    return <p className="carte-loading">Chargement de la carte...</p>;
   }
 
   return (
-    <MapContainer
-      center={{ lat: startCoords.latitude, lng: startCoords.longitude }}
-      zoom={13}
-      style={{ height: "400px", width: "100%" }}
-    >
-      <TileLayer
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        attribution="&copy; OpenStreetMap contributors"
-      />
-
-      {/* Afficher le marqueur uniquement si les coordonnées existent */}
-      <Marqueur
-        position={[startCoords.latitude, startCoords.longitude]}
-        texte="Position actuelle"
-        icon={blueIcon}
-      />
-    </MapContainer>
+    <div className={`carte-container ${fullscreen ? "fullscreen" : ""}`}>
+      <MapContainer
+        center={[startCoords.latitude, startCoords.longitude]}
+        zoom={13}
+        style={{ height: "100%", width: "100%" }} // S'assure que la carte occupe tout le conteneur
+      >
+        <TileLayer
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          attribution="&copy; OpenStreetMap contributors"
+        />
+        {/* Marqueur pour la position actuelle */}
+        <Marqueur
+          position={[startCoords.latitude, startCoords.longitude]}
+          texte="Position actuelle"
+          icon={blueIcon}
+        />
+      </MapContainer>
+    </div>
   );
 }
 

@@ -1,15 +1,30 @@
-import React from 'react';
-import BoutonNavig from './BoutonNavig'; // Import du composant BoutonNavig
-import { FaHome, FaUserAlt } from 'react-icons/fa'; // Icônes Font Awesome
-import './BarreNavig.css'; // Import du fichier CSS
+import React from "react";
+import { useLocation, useNavigate } from "react-router-dom"; // React Router
+import { FaArrowLeft, FaUserCircle } from "react-icons/fa"; // Icônes
+import "./BarreNavig.css"; // Fichier CSS
 
-const BarreNavig = () => {
+const BarreNavig = ({ title }) => {
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const handleRetour = () => {
+    navigate(-1); // Navigue vers la page précédente
+  };
+
   return (
     <nav className="barreNavig">
-      <div className="navLinks">
-        <BoutonNavig to="/" icon={<FaHome />} text="Accueil" />
-        <BoutonNavig to="/login" icon={<FaUserAlt />} text="Connexion" />
-      </div>
+      {/* Flèche de retour */}
+      <button className="boutonRetour" onClick={handleRetour}>
+        <FaArrowLeft />
+      </button>
+
+      {/* Titre dans le rectangle bordeaux */}
+      <div className="titrePage">{title || location.pathname.slice(1) || "Accueil"}</div>
+
+      {/* Icône de profil */}
+      <button className="profilButton">
+        <FaUserCircle />
+      </button>
     </nav>
   );
 };

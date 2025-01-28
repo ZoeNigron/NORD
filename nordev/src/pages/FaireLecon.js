@@ -8,6 +8,7 @@ import utiliserGeolocalisation from "../services/utiliserGeolocalisation";
 import utiliserTracking from "../services/utiliserTracking";
 import BarreNavig from "../components/BarreNavig/BarreNavig";
 import BoutonAction from "../components/BoutonAction";
+import Entete from "../components/Entete";
 
 const FaireLecon = () => {
   const { id } = useParams();
@@ -45,6 +46,7 @@ const FaireLecon = () => {
 
   return (
     <div>
+      <Entete />
       <BarreNavig
         title="Mes compétences"
         backLink="/accueil"

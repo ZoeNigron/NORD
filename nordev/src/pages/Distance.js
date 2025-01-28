@@ -2,14 +2,16 @@
 import React from "react";
 import BarreNavig from "../components/BarreNavig/BarreNavig";
 import { Link } from "react-router-dom";
+import BoutonAction from "../components/BoutonAction";
+import Entete from "../components/Entete";
 
 const Distance = () => {
   return (
     <div>
+      <Entete />
       <BarreNavig title="Évaluer les distances" backLink="/mes-competences" homeLink="/" />
-      <h1>Évaluer les distances</h1>
       <Link to="/menu-lecons">
-        <button>Accéder à mes leçons</button>
+      <BoutonAction texte="Mes leçons" onClick={() => console.log("Navigation vers Menu Leçons")} />
       </Link>
     </div>
   );

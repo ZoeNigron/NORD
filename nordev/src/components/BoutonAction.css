@@ -1,0 +1,31 @@
+.bouton-action {
+    background-color: #ffeb99; /* Jaune clair */
+    color: #333; /* Couleur de texte lisible */
+    border: 2px solid #ffd700; /* Bordure jaune légèrement plus foncée */
+    border-radius: 12px; /* Coins arrondis */
+    padding: 10px 20px; /* Espacement intérieur */
+    font-size: 16px; /* Taille de la police */
+    font-weight: bold; /* Texte en gras */
+    cursor: pointer; /* Curseur pointeur au survol */
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2); /* Ombre douce */
+    transition: all 0.3s ease; /* Transition pour les effets */
+    position: fixed; /* Position fixe pour rester en bas */
+    bottom: 20px; /* Distance par rapport au bas de l'écran */
+    left: 50%; /* Centre horizontalement */
+    transform: translateX(-50%); /* Ajuste pour centrer précisément */
+    z-index: 10; /* Au-dessus du contenu de la page */
+  }
+  
+  /* État hover (desktop uniquement) */
+  .bouton-action:hover {
+    background-color: #ffd700; /* Jaune plus vif au survol */
+    box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.3); /* Accentuation de l'ombre */
+    transform: translateX(-50%) scale(1.05); /* Mise en avant au survol */
+  }
+  
+  /* État active (clic ou touche tactile) */
+  .bouton-action:active {
+    transform: translateX(-50%) scale(0.95); /* Réduction au clic */
+    box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.2); /* Ombre réduite */
+  }
+  

@@ -1,14 +1,57 @@
-/* BarreNavig.css */
+/* Barre de navigation principale */
 .barreNavig {
   display: flex;
-  justify-content: flex-end;
   align-items: center;
-  padding: 10px 20px;
-  background-color: #282c34;
-  color: white;
+  justify-content: space-between;
+  padding: 10px;
+  background-color: white; /* Fond blanc */
+  height: 60px; /* Ajusté pour écran mobile */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Ombre discrète */
 }
 
-.navLinks {
-  display: flex;
-  gap: 20px;
+/* Bouton retour (flèche) */
+.boutonRetour {
+  background: none;
+  border: none;
+  color: #333; /* Couleur sombre pour contraste */
+  font-size: 20px;
+  cursor: pointer;
+  padding: 5px;
+  transition: transform 0.2s ease;
+}
+
+.boutonRetour:hover {
+  transform: scale(1.1); /* Légère mise en avant */
+}
+
+/* Rectangle bordeaux pour le titre */
+.titrePage {
+  background-color: #800000; /* Bordeaux */
+  color: white; /* Texte blanc */
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  padding: 5px 15px;
+  border-radius: 12px; /* Coins arrondis */
+  flex-grow: 1; /* Occupe l'espace disponible */
+  margin: 0 10px; /* Espacement entre le titre et les icônes */
+  max-width: 200px; /* Largeur maximale pour mobile */
+  white-space: nowrap; /* Empêche le texte de se casser */
+  overflow: hidden; /* Cache le texte trop long */
+  text-overflow: ellipsis; /* Ajoute des points de suspension si le texte dépasse */
+}
+
+/* Bouton profil */
+.profilButton {
+  background: none;
+  border: none;
+  color: #333; /* Couleur sombre */
+  font-size: 24px; /* Taille plus grande pour l'icône */
+  cursor: pointer;
+  padding: 5px;
+  transition: transform 0.2s ease;
+}
+
+.profilButton:hover {
+  transform: scale(1.1); /* Légère mise en avant */
 }
