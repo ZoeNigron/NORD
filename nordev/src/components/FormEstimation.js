@@ -1,26 +1,31 @@
-import React from "react";
-import SaisieEstimation from "./SaisieEstimation";
+import React, { useState } from "react";
 import BoutonAction from "./BoutonAction";
 
-class FormEstimation extends React.Component {
-  render() {
-    const { estimation, setEstimation, isTracking, onValidate } = this.props;
+const FormEstimation = ({ estimation, setEstimation, onValidate }) => {
+  const [erreur, setErreur] = useState("");
 
-    return (
-      <div>
-        <SaisieEstimation
-          value={estimation}
-          onChange={(e) => setEstimation(Number(e.target.value))}
-          placeholder="Estimez la distance en mètres"
-          disabled={isTracking}
-        />
-        <BoutonAction
-          texte="Valider"
-          onClick={onValidate} // Appel de la fonction pour valider l'estimation
-        />
-      </div>
-    );
-  }
-}
+  const handleChange = (e) => {
+    const valeur = e.target.value;
+    if (/^\d*$/.test(valeur)) {
+      setEstimation(Number(valeur));
+      setErreur("");
+    } else {
+      setErreur("Veuillez entrer un nombre valide.");
+    }
+  };
+
+  return (
+    <div className="form-estimation">
+      <input
+        type="text"
+        value={estimation}
+        onChange={handleChange}
+        placeholder="Estimez la distance en mètres"
+      />
+      {erreur && <p style={{ color: "red" }}>{erreur}</p>}
+      <BoutonAction texte="Valider" onClick={onValidate} />
+    </div>
+  );
+};
 
 export default FormEstimation;

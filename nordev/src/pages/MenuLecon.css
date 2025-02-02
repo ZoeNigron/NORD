@@ -1,0 +1,94 @@
+/* Styles généraux */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+    margin: 0;
+    padding: 0;
+  }
+  
+  h1 {
+    text-align: center;
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  /* Liste des leçons */
+  ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  ul li {
+    background-color: #ffeb99;
+    margin: 10px 0;
+    padding: 15px;
+    border-radius: 12px;
+    text-align: center;
+    font-weight: bold;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+  }
+  
+  ul li:hover {
+    background-color: #ffd700;
+    box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.3);
+    transform: scale(1.05);
+  }
+  
+  /* Lien de chaque leçon */
+  ul li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 18px;
+  }
+  
+  /* Détails de la leçon */
+  .lecon-detail {
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+  }
+  
+  .lecon-detail h2 {
+    font-size: 22px;
+    color: #333;
+  }
+  
+  .lecon-detail p {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #555;
+  }
+  
+  .bouton-action {
+    background-color: #ffeb99;
+    color: #333;
+    border: 2px solid #ffd700;
+    border-radius: 12px;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    display: block;
+    margin: 20px auto;
+    width: 200px; /* Largeur fixe pour le bouton */
+  }
+  
+  .bouton-action:hover {
+    background-color: #ffd700;
+    box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.3);
+    transform: scale(1.05);
+  }
+  
+  .bouton-action:active {
+    transform: scale(0.95);
+    box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.2);
+  }
+  

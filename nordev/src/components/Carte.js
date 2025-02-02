@@ -1,36 +1,23 @@
-import React from "react";
 import { MapContainer, TileLayer } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
-import blueIcon from "./Icone"; // Icône personnalisée
-import Marqueur from "./Marqueur"; // Composant Marqueur
-import "./Carte.css"; // Import des styles CSS
+import './Carte.css'; // Assurez-vous d'importer le fichier CSS
 
-function Carte({ startCoords, fullscreen = false }) {
-  // Vérification si les coordonnées sont disponibles
-  if (!startCoords) {
-    return <p className="carte-loading">Chargement de la carte...</p>;
-  }
-
+const Carte = ({ children }) => {
   return (
-    <div className={`carte-container ${fullscreen ? "fullscreen" : ""}`}>
+    <div className="carte-container">
       <MapContainer
-        center={[startCoords.latitude, startCoords.longitude]}
+        center={[48.8566, 2.3522]} // Coordonnées par défaut (Paris)
         zoom={13}
-        style={{ height: "100%", width: "100%" }} // S'assure que la carte occupe tout le conteneur
+        style={{ height: "100%", width: "100%" }}
       >
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          attribution="&copy; OpenStreetMap contributors"
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         />
-        {/* Marqueur pour la position actuelle */}
-        <Marqueur
-          position={[startCoords.latitude, startCoords.longitude]}
-          texte="Position actuelle"
-          icon={blueIcon}
-        />
+        {children}
       </MapContainer>
     </div>
   );
-}
+};
 
 export default Carte;

@@ -1,4 +1,5 @@
 .bouton-action {
+  position: absolute;
     background-color: #ffeb99; /* Jaune clair */
     color: #333; /* Couleur de texte lisible */
     border: 2px solid #ffd700; /* Bordure jaune légèrement plus foncée */

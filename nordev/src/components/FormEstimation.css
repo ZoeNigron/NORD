@@ -1,0 +1,63 @@
+/* Formulaire global */
+form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+    max-width: 400px; /* Limite la largeur du formulaire */
+    margin-left: auto; /* Centre le formulaire horizontalement */
+    margin-right: auto;
+  }
+  
+  /* Saisie de l'estimation */
+  .saisie-estimation {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: 2px solid #ffd700; /* Bordure jaune clair */
+    border-radius: 12px;
+    margin-bottom: 20px;
+    background-color: #f8f9fa;
+    color: #333;
+    transition: border-color 0.3s ease;
+  }
+  
+  .saisie-estimation:focus {
+    border-color: #ffeb99; /* Jaune plus clair lors du focus */
+    outline: none; /* Supprimer l'effet de surbrillance par défaut du navigateur */
+  }
+  
+  .saisie-estimation:disabled {
+    background-color: #e9ecef;
+    color: #6c757d;
+  }
+  
+  /* Bouton de validation */
+  .bouton-action {
+    background-color: #ffeb99; /* Jaune clair */
+    color: #333;
+    border: 2px solid #ffd700;
+    border-radius: 12px;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    display: block;
+    margin: 0 auto;
+    width: 200px; /* Largeur fixe pour le bouton */
+  }
+  
+  .bouton-action:hover {
+    background-color: #ffd700;
+    box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.3);
+    transform: scale(1.05);
+  }
+  
+  .bouton-action:active {
+    transform: scale(0.95);
+    box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.2);
+  }
+  
