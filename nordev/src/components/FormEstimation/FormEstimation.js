@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import BoutonAction from "./BoutonAction";
+import BoutonAction from "../BoutonAction/BoutonAction";
+import "./FormEstimation.css";
 
 const FormEstimation = ({ estimation, setEstimation, onValidate }) => {
   const [erreur, setErreur] = useState("");
@@ -21,9 +22,10 @@ const FormEstimation = ({ estimation, setEstimation, onValidate }) => {
         value={estimation}
         onChange={handleChange}
         placeholder="Estimez la distance en mètres"
+        className="estimation-input"
       />
-      {erreur && <p style={{ color: "red" }}>{erreur}</p>}
-      <BoutonAction texte="Valider" onClick={onValidate} />
+      {erreur && <p className="erreur-message">{erreur}</p>}
+      <BoutonAction texte="Valider" onClick={onValidate} className="valider-button" />
     </div>
   );
 };

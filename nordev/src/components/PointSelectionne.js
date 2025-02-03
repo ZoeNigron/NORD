@@ -1,25 +1,24 @@
-// PointSelectionne.js
-
 import React, { useState } from "react";
 import { Marker, Popup, useMapEvents } from "react-leaflet";
 import IconePosition from "./IconePosition";
 
-const PointSelectionne = ({ onPositionFound }) => {
-  const [coords, setCoords] = useState(null);
+const PointSelectionne = ({ positionTrouvee }) => {
+  const [coordonnees, setCoordonnees] = useState(null);
 
-  // Utilisation de useMapEvents pour capturer l'événement de clic sur la carte
   useMapEvents({
+    // pour capturer l'événement de clic sur la carte
     click(e) {
-      const { lat, lng } = e.latlng; // Extraire les coordonnées du clic
-      setCoords([lat, lng]); // Mettre à jour l'état avec les coordonnées cliquées
-      onPositionFound([lat, lng]); // Passer la position sélectionnée au parent
-    }
+      const { lat, lng } = e.latlng; // on extrait les coordonnées du clic
+      console.log("Position sélectionnée :", [lat, lng]);
+      setCoordonnees([lat, lng]);
+      positionTrouvee([lat, lng]); // on passe la position sélectionnée au parent
+    },
   });
 
-  return coords ? (
-    <Marker position={coords} icon={IconePosition}>
+  return coordonnees ? (
+    <Marker position={coordonnees} icon={IconePosition}>
       <Popup>
-        Coordonnées sélectionnées: {coords[0]}, {coords[1]}
+        Coordonnées sélectionnées: {coordonnees[0]}, {coordonnees[1]}
       </Popup>
     </Marker>
   ) : (

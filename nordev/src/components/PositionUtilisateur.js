@@ -3,28 +3,32 @@ import { Marker, Popup, useMap } from "react-leaflet";
 import obtenirPositionActuelle from "../services/obtenirPositionActuelle";
 import IconePosition from "./IconePosition";
 
-const PositionUtilisateur = ({ onPositionFound }) => {
+function PositionUtilisateur({ positionTrouvee }) {
+  // prop qui permet à un composant parent de recevoir la position de l'utilisateur
   const [position, setPosition] = useState(null);
-  const [error, setError] = useState(null); // Gérer l'erreur
+  const [error, setError] = useState(null);
   const map = useMap();
 
   useEffect(() => {
     obtenirPositionActuelle()
-      .then((coords) => {
-        setPosition(coords);
-        map.setView(coords, 13); // Centre la carte sur la position
-        if (onPositionFound) {
-          onPositionFound(coords); // Partage la position avec le parent
+      .then((coordonnees) => {
+        console.log("Position récupérée :", coordonnees); 
+        setPosition(coordonnees);
+        map.setView(coordonnees, 13); // pour centrer la carte sur les coordonnées
+        if (positionTrouvee) {
+          positionTrouvee(coordonnees);
         }
       })
       .catch((err) => {
-        setError("Impossible de récupérer la position de l'utilisateur. Veuillez vérifier les paramètres de géolocalisation.");
+        setError(
+          "Impossible de récupérer la position de l'utilisateur. Veuillez vérifier les paramètres de géolocalisation."
+        );
         console.error(err);
       });
-  }, [map, onPositionFound]);
+  }, [map, positionTrouvee]); // récupération de la position sera tentée si map ou positionTrouvee change
 
   if (error) {
-    return <p>{error}</p>; // Affiche le message d'erreur
+    return <p>{error}</p>;
   }
 
   return position ? (
@@ -32,6 +36,6 @@ const PositionUtilisateur = ({ onPositionFound }) => {
       <Popup>Vous êtes ici ! 📍</Popup>
     </Marker>
   ) : null;
-};
+}
 
 export default PositionUtilisateur;

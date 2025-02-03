@@ -1,56 +1,96 @@
 import React, { useState } from "react";
-import Carte from "./Carte"; // Affichage de la carte
-import PositionUtilisateur from "./PositionUtilisateur"; // Récupérer la position actuelle de l'utilisateur
-import CalculDistance from "./CalculDistance"; // Composant pour calculer la distance entre deux points
-import BoutonAction from "./BoutonAction"; // Bouton pour démarrer et terminer
+import Carte from "./Carte/Carte";
+import PositionUtilisateur from "./PositionUtilisateur";
+import CalculDistance from "./CalculDistance/CalculDistance";
+import BoutonAction from "./BoutonAction/BoutonAction";
+import AnalyseEstimation from "./AnalyseEstimation/AnalyseEstimation";
+
+const exercices = [
+  { id: 1, nom: "Exercice 20m", distanceCible: 20 },
+  { id: 2, nom: "Exercice 50m", distanceCible: 50 },
+  { id: 3, nom: "Exercice 100m", distanceCible: 100 }
+];
 
 const DistanceLecon1 = () => {
-  const [positionDepart, setPositionDepart] = useState(null); // Position de départ
-  const [positionArrivee, setPositionArrivee] = useState(null); // Position d'arrivée
-  const [phase, setPhase] = useState("start"); // Phase pour savoir si on est en train de commencer ou de finir
+  const [exerciceActif, setExerciceActif] = useState(null);
+  const [positionDepart, setPositionDepart] = useState(null);
+  const [positionArrivee, setPositionArrivee] = useState(null);
+  const [phase, setPhase] = useState("selection");
+  const [distanceParcourue, setDistanceParcourue] = useState(null);
 
-  // Fonction qui gère la position de départ au démarrage
-  const handleStart = (coords) => {
-    setPositionDepart(coords); // Enregistrer la position de départ
-    console.log("Position de départ:", coords);
-    setPhase("end"); // Passer à la phase de fin
+  const handleLeconSelect = (lecon) => {
+    setExerciceActif(lecon);
+    setPhase("start");
   };
 
-  // Fonction qui gère la position d'arrivée à la fin
-  const handleEnd = (coords) => {
-    setPositionArrivee(coords); // Enregistrer la position d'arrivée
-    console.log("Position d'arrivée:", coords);
-    setPhase("done"); // Passer à la phase de fin (distance calculée)
+  const handlePositionTrouvee = (coordonnees) => {
+    if (phase === "start") {
+      setPositionDepart(coordonnees);
+      console.log("Position de départ:", coordonnees);
+      setPhase("end");
+    } else if (phase === "end") {
+      setPositionArrivee(coordonnees);
+      console.log("Position d'arrivée:", coordonnees);
+      setPhase("done");
+    }
   };
 
   return (
     <div>
-      <h1>Leçon : Calculer la distance</h1>
-
-      <Carte>
-        {/* Affichage du bouton Démarrer / Terminer */}
-        <BoutonAction
-          texte={phase === "start" ? "Démarrer" : "Terminer"}
-          onClick={() =>
-            phase === "start"
-              ? handleStart() // Démarrer et enregistrer la position de départ
-              : handleEnd() // Terminer et enregistrer la position d'arrivée
-          }
-        />
-        {/* Position de l'utilisateur */}
-        <PositionUtilisateur onPositionFound={phase === "start" ? handleStart : handleEnd} />
-      </Carte>
-
-      {/* Si les deux positions sont définies, calculer la distance */}
-      {positionDepart && positionArrivee && (
-        <CalculDistance
-          point1={[positionDepart[0], positionDepart[1]]} // Position de départ
-          point2={[positionArrivee[0], positionArrivee[1]]} // Position d'arrivée
-        />
+      {phase === "selection" && (
+        <div>
+          <h2>Choisissez un exercice :</h2>
+          {exercices.map((lecon) => (
+            <button key={lecon.id} onClick={() => handleLeconSelect(lecon)}>
+              {lecon.nom}
+            </button>
+          ))}
+        </div>
       )}
 
-      {phase === "done" && (
-        <p>Distance calculée entre la position de départ et d'arrivée !</p>
+      {exerciceActif && (
+        <div>
+          <h3>{exerciceActif.nom}</h3>
+          <Carte>
+            <BoutonAction
+              texte={phase === "start" ? "Démarrer" : "Terminer"}
+              onClick={() => {
+                setPhase(phase === "start" ? "end" : "done");
+              }}
+            />
+
+            {(phase === "start" || phase === "end") && (
+              <PositionUtilisateur positionTrouvee={handlePositionTrouvee} />
+            )}
+          </Carte>
+
+          {positionDepart && positionArrivee && (
+            <CalculDistance
+              point1={positionDepart}
+              point2={positionArrivee}
+              onDistanceCalculee={(distance) => setDistanceParcourue(distance)}
+            />
+          )}
+
+          {phase === "done" && distanceParcourue !== null && (
+            <AnalyseEstimation
+              distance={distanceParcourue}
+              estimation={exerciceActif.distanceCible}
+            />
+          )}
+
+          {phase === "done" && (
+            <button onClick={() => {
+              setExerciceActif(null);
+              setPositionDepart(null);
+              setPositionArrivee(null);
+              setDistanceParcourue(null);
+              setPhase("selection");
+            }}>
+              Revenir au menu
+            </button>
+          )}
+        </div>
       )}
     </div>
   );

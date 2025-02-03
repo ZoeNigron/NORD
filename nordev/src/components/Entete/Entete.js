@@ -1,6 +1,6 @@
 import React from "react";
 import "./Entete.css";
-import logo from "../services/logo.png"; // Assurez-vous d'avoir un logo ici
+import logo from "../../services/images/logo.png";
 
 const Entete = () => {
   return (

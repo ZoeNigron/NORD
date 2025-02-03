@@ -18,4 +18,6 @@ const obtenirPositionActuelle = () => {
   };
   
   export default obtenirPositionActuelle;
+
+  
   

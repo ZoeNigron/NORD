@@ -1,10 +1,9 @@
-// src/components/Footer.js
 import React from 'react';
 
-const PiedPage = () => {
+function PiedPage () {
   return (
     <footer>
-      <p>&copy; 2025 Mon Application</p>
+      <p>&copy; NORDev par Zoé</p>
     </footer>
   );
 };

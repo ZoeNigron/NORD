@@ -1,29 +1,20 @@
-// MenuLecons.js
-
 import React from "react";
 import { useParams, Link } from "react-router-dom";
-import BarreNavig from "../components/BarreNavig/BarreNavig";
-import lecons from "../services/lecons"; // Vos données des leçons
-//import BoutonAction from "../components/BoutonAction";
-import Entete from "../components/Entete";
-import Lecon1 from "./Lecon1";
-import Lecon2 from "./Lecon2";
-import "./MenuLecon.css"; // Assurez-vous d'importer le CSS
+import BarreNavig from "../components/Navigation/BarreNavig";
+import lecons from "../services/lecons";
+import Entete from "../components/Entete/Entete";
+import DistanceLecon1 from "../components/DistanceLecon1"; // Import correct pour la Leçon 1
+import Lecon2 from "./Lecon2"; // Assurez-vous que Lecon2 est bien exporté par défaut
+import "./MenuLecon.css";
 
 const MenuLecons = () => {
   const { id } = useParams(); // Récupérer l'ID de la leçon (si présent)
-
   const lecon = id ? lecons.find((lecon) => lecon.id === parseInt(id)) : null;
 
   const renderLecon = () => {
-    switch (id) {
-      case "1":
-        return <Lecon1 />;
-      case "2":
-        return <Lecon2 />;
-      default:
-        return <p>Leçon non trouvée.</p>;
-    }
+    if (id === "1") return <DistanceLecon1 />;
+    if (id === "2") return <Lecon2 />;
+    return <p>Leçon non trouvée.</p>;
   };
 
   return (
@@ -46,6 +37,7 @@ const MenuLecons = () => {
         </div>
       ) : (
         <div>
+          <h2>Choisissez une leçon :</h2>
           <ul>
             {lecons.map((lecon) => (
               <li key={lecon.id}>

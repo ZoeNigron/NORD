@@ -2,7 +2,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import BoutonAction from "../components/BoutonAction";
-import Entete from "../components/Entete";
+import Entete from "../components/Entete/Entete";
 
 const Connexion = () => {
   return (

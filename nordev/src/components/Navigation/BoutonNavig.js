@@ -1,9 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-//import { FaHome, FaUserAlt } from 'react-icons/fa'; // Icônes Font Awesome
-import './BoutonNavig.css'; // Import du fichier CSS
+import './BoutonNavig.css';
 
-const BoutonNavig = ({ to, icon, text }) => {
+function BoutonNavig ({ to, icon, text }) {
   return (
     <Link to={to} className="button">
       <div className="icon">{icon}</div>

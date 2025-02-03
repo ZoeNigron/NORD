@@ -1,16 +1,16 @@
 import React, { useState } from "react";
 import DistanceLecon2 from "../components/DistanceLecon2";
-import FormEstimation from "../components/FormEstimation";
-import AnalyseEstimation from "../components/AnalyseEstimation";
+import FormEstimation from "../components/FormEstimation/FormEstimation";
+import AnalyseEstimation from "../components/AnalyseEstimation/AnalyseEstimation";
 
 const Lecon2 = () => {
   const [distance, setDistance] = useState(null);
   const [estimation, setEstimation] = useState("");
   const [resultat, setResultat] = useState(null);
 
-  const handleDistanceCalculated = (newDistance) => {
-    console.log("Distance calculée :", newDistance); // Débogage
-    setDistance(newDistance); // Met à jour la distance
+  const handleDistanceCalculee = (nouvelleDistance) => {
+    console.log("Distance calculée :", nouvelleDistance);
+    setDistance(nouvelleDistance);
   };
 
   const handleValidation = () => {
@@ -30,12 +30,8 @@ const Lecon2 = () => {
 
   return (
     <div className="lecon2-container">
-      <h1>Leçon 2 : Calcul de la distance et estimation</h1>
+      <DistanceLecon2 distanceCalculee={handleDistanceCalculee} />
 
-      {/* Étape 1 : Carte */}
-      <DistanceLecon2 onDistanceCalculated={handleDistanceCalculated} />
-
-      {/* Étape 2 : Formulaire d'estimation */}
       {distance !== null && (
         <FormEstimation
           estimation={estimation}
@@ -44,7 +40,6 @@ const Lecon2 = () => {
         />
       )}
 
-      {/* Étape 3 : Résultat */}
       {resultat && <div className="resultat">{resultat}</div>}
     </div>
   );
