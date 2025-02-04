@@ -1,21 +1,21 @@
 import React from "react";
 import "./AnalyseEstimation.css";
 
-function AnalyseEstimation({ distance, estimation }) {
-  const distanceArrondie = Math.floor(distance / 5) * 5; // estimation à 5 mètres près
+function AnalyseEstimation1({ distance, estimation }) {
+  const distanceArrondie = Math.round(distance); // estimation au mètre près
   const difference = Math.abs(distanceArrondie - estimation);
 
   let message = "";
   let messageClass = "";
 
-  if (difference <= 10) {
-    message = "🎯 Bravo ! Vous avez estimé la distance correctement (à 5 mètres près).";
+  if (difference <= 5) {
+    message = "🎯 Bravo ! Vous avez parcouru la bonne distance (à 5 mètres près).";
     messageClass = "message-correct";
   } else if (distanceArrondie > estimation) {
-    message = "⬇️ Votre estimation est trop courte !";
+    message = "⬇️ Vous n'êtes pas allé assez loin !";
     messageClass = "message-incorrect";
   } else {
-    message = "⬆️ Votre estimation est trop longue !";
+    message = "⬆️ Vous êtes allé trop loin !";
     messageClass = "message-incorrect";
   }
 
@@ -31,4 +31,4 @@ function AnalyseEstimation({ distance, estimation }) {
   );
 }
 
-export default AnalyseEstimation;
+export default AnalyseEstimation1;

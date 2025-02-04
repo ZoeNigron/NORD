@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams, Link } from "react-router-dom";
 import BarreNavig from "../components/Navigation/BarreNavig";
-import lecons from "../services/lecons";
+import lecons from "../services/donnees/lecons";
 import Entete from "../components/Entete/Entete";
 import Lecon1 from "./Lecon1";
 import Lecon2 from "./Lecon2";

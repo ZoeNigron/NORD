@@ -1,6 +1,3 @@
-/* CalculDistance.css */
-
-/* Style pour le div contenant la distance */
 .calcul-distance-container {
     position: absolute;
     top: 20px;
@@ -11,6 +8,6 @@
     border-radius: 5px;
     font-size: 16px;
     font-weight: bold;
-    z-index: 1000; /* Assurer que l'overlay est au-dessus de la carte */
+    z-index: 1000; 
   }
   

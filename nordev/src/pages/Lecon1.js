@@ -1,25 +1,24 @@
 import React, { useState } from "react";
 import SelectionExercice from "../components/SelectionExercice/SelectionExercice";
 import DistanceLecon1 from "../components/DistanceLecon1";
-import AnalyseEstimation from "../components/AnalyseEstimation/AnalyseEstimation";
-import exercices from "../services/exercices";
+import AnalyseEstimation1 from "../components/AnalyseEstimation/AnalyseEstimation1";
+import exercices from "../services/donnees/exercices";
 
 function Lecon1() {
-  const [exerciceActif, setExerciceActif] = useState(null); // Aucun exercice actif au départ
+  const [exerciceActif, setExerciceActif] = useState(null);
   const [distanceParcourue, setDistanceParcourue] = useState(null);
 
   const handleRetour = () => {
-    setExerciceActif(null);          // On revient à la sélection des exercices
-    setDistanceParcourue(null);      // On réinitialise la distance parcourue
+    setExerciceActif(null);        
+    setDistanceParcourue(null);
   };
 
   return (
     <div>
-      {/* Affiche la sélection des exercices si aucun exercice n'est actif */}
       {!exerciceActif ? (
         <SelectionExercice
           exercices={exercices}
-          onSelect={setExerciceActif}  // Lors de la sélection, on définit l'exercice actif
+          onSelect={setExerciceActif}
         />
       ) : (
         <div>
@@ -30,7 +29,7 @@ function Lecon1() {
           />
 
           {distanceParcourue !== null && (
-            <AnalyseEstimation
+            <AnalyseEstimation1
               distance={distanceParcourue}
               estimation={exerciceActif.distanceCible}
             />

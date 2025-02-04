@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import BoutonAction from "../BoutonAction/BoutonAction";
+//import BoutonAction from "../BoutonAction/BoutonAction";
 import "./FormEstimation.css";
 
 const FormEstimation = ({ estimation, setEstimation, onValidate }) => {
@@ -25,7 +25,7 @@ const FormEstimation = ({ estimation, setEstimation, onValidate }) => {
         className="estimation-input"
       />
       {erreur && <p className="erreur-message">{erreur}</p>}
-      <BoutonAction texte="Valider" onClick={onValidate} className="valider-button" />
+      <button onClick={onValidate} className="valider-button">Valider</button>
     </div>
   );
 };

@@ -1,12 +1,25 @@
-.distance-lecon-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-  }
-  
-  .bouton-action-container {
-    margin-top: 15px;  /* ✅ Décale le bouton vers le bas */
-    display: flex;
-    justify-content: center;
-  }
+.bouton-container {
+  background-color: #ffeb3b;
+  color: #333;
+  border: none;
+  border-radius: 25px;
+  padding: 14px 28px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.3s ease;
+  width: 90%;
+  max-width: 400px;
+}
+
+.bouton-container:hover {
+  background-color: #ffc107;
+  transform: scale(1.05);
+  box-shadow: 6px 6px 16px rgba(0, 0, 0, 0.4);
+}
+
+.bouton-container:active {
+  transform: scale(0.95);
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+}

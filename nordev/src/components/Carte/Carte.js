@@ -16,6 +16,7 @@ function Carte ({ children }) {
         />
         {children}
       </MapContainer>
+      
     </div>
   );
 };

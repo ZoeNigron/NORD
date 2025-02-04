@@ -1,24 +1,23 @@
 import React, { useState } from "react";
-import { Marker, Popup } from "react-leaflet"; // ✅ Import des composants Leaflet
+import { Marker, Popup } from "react-leaflet";
 import Carte from "./Carte/Carte";
 import PositionUtilisateur from "./PositionUtilisateur";
-import BoutonAction from "./BoutonAction/BoutonAction";
 import CalculDistance from "./CalculDistance/CalculDistance";
-import IconePosition from "./IconePosition"; // ✅ Icône personnalisée
+import IconePosition from "./IconePosition";
 import "./DistanceLecon1.css";
 
 const DistanceLecon1 = ({ exercice, onRetour, onDistanceCalculee }) => {
   const [positionDepart, setPositionDepart] = useState(null);
   const [positionArrivee, setPositionArrivee] = useState(null);
-  const [phase, setPhase] = useState("ready");
+  const [phase, setPhase] = useState(0);
 
   const handlePositionCapture = (coordonnees) => {
-    if (phase === "start") {
+    if (phase === 1) {
       setPositionDepart(coordonnees);
-      setPhase("move");
-    } else if (phase === "end") {
+      setPhase(2);
+    } else if (phase === 3) {
       setPositionArrivee(coordonnees);
-      setPhase("done");
+      setPhase(4);
     }
   };
 
@@ -38,31 +37,28 @@ const DistanceLecon1 = ({ exercice, onRetour, onDistanceCalculee }) => {
   return (
     <div className="distance-lecon-container">
       <h3>{exercice.nom}</h3>
+      
+      {phase === 0 && (
+        <div >
+          <button className="bouton-container" onClick={() => setPhase(1)}>Démarrer</button>
+        </div>
+      )}
+
+      {phase === 2 && (
+        <div>
+          <button className="bouton-container" onClick={() => setPhase(3)}>Terminer</button>
+        </div>
+      )}
+
       <Carte>
-        {phase === "ready" && (
-          <div className="bouton-action-container">
-            <BoutonAction texte="Démarrer" onClick={() => setPhase("start")} />
-          </div>
-        )}
-
-        {phase === "start" && (
+        {phase === 1 && (
           <PositionUtilisateur positionTrouvee={handlePositionCapture} />
         )}
 
-        {phase === "move" && (
-          <>
-            <p>Déplacez-vous puis cliquez sur "Terminer".</p>
-            <div className="bouton-action-container">
-              <BoutonAction texte="Terminer" onClick={() => setPhase("end")} />
-            </div>
-          </>
-        )}
-
-        {phase === "end" && (
+        {phase === 3 && (
           <PositionUtilisateur positionTrouvee={handlePositionCapture} />
         )}
 
-        {/* ✅ Affichage des marqueurs */}
         {positionDepart && (
           <Marker position={positionDepart} icon={IconePosition}>
             <Popup>Position de départ 📍</Popup>
@@ -84,8 +80,10 @@ const DistanceLecon1 = ({ exercice, onRetour, onDistanceCalculee }) => {
         />
       )}
 
-      {phase === "done" && (
-        <button onClick={onRetour}>Revenir au menu</button>
+      {phase === 4 && (
+        <div>
+          <button className="bouton-container" onClick={onRetour}>Revenir au menu</button>
+        </div>
       )}
     </div>
   );

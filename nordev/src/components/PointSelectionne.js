@@ -18,7 +18,7 @@ const PointSelectionne = ({ positionTrouvee }) => {
   return coordonnees ? (
     <Marker position={coordonnees} icon={IconePosition}>
       <Popup>
-        Coordonnées sélectionnées: {coordonnees[0]}, {coordonnees[1]}
+        Point selectionné
       </Popup>
     </Marker>
   ) : (

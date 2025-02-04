@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import DistanceLecon2 from "../components/DistanceLecon2";
 import FormEstimation from "../components/FormEstimation/FormEstimation";
-import AnalyseEstimation from "../components/AnalyseEstimation/AnalyseEstimation";
+import AnalyseEstimation2 from "../components/AnalyseEstimation/AnalyseEstimation2";
 
 const Lecon2 = () => {
   const [distance, setDistance] = useState(null);
@@ -16,7 +16,7 @@ const Lecon2 = () => {
   const handleValidation = () => {
     if (distance !== null && estimation !== "") {
       setResultat(
-        <AnalyseEstimation
+        <AnalyseEstimation2
           distance={distance}
           estimation={parseFloat(estimation)}
         />
@@ -32,7 +32,7 @@ const Lecon2 = () => {
     <div className="lecon2-container">
       <DistanceLecon2 distanceCalculee={handleDistanceCalculee} />
 
-      {distance !== null && (
+      {distance !== null && !resultat && (
         <FormEstimation
           estimation={estimation}
           setEstimation={setEstimation}
