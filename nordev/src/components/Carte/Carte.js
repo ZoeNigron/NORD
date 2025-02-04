@@ -7,7 +7,7 @@ function Carte ({ children }) {
     <div className="carte-container">
       <MapContainer
         center={[48.8566, 2.3522]} // coordonnées par défaut : Paris
-        zoom={13}
+        zoom={30}
         style={{ height: "100%", width: "100%" }}
       >
         <TileLayer

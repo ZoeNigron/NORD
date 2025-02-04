@@ -3,8 +3,6 @@ import Accueil from "./pages/Accueil";
 import Competence from "./pages/Competence";
 import Distance from "./pages/Distance";
 import MenuLecon from "./pages/MenuLecon";
-import Lecon2 from "./pages/Lecon2";
-//import Lecon1 from "./pages/Lecon1";
 import "./App.css";
 
 function App() {
@@ -16,11 +14,9 @@ function App() {
         <Route path="/evaluer-les-distances" element={<Distance />} />
         <Route path="/menu-lecons" element={<MenuLecon />} />
         <Route path="/menu-lecons/:id" element={<MenuLecon />} />
-        <Route path="/faire-lecon/:id" element={<Lecon2 />} />
       </Routes>
     </Router>
   );
 }
-
 
 export default App;

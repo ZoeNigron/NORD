@@ -3,16 +3,16 @@ import { useParams, Link } from "react-router-dom";
 import BarreNavig from "../components/Navigation/BarreNavig";
 import lecons from "../services/lecons";
 import Entete from "../components/Entete/Entete";
-import DistanceLecon1 from "../components/DistanceLecon1"; // Import correct pour la Leçon 1
-import Lecon2 from "./Lecon2"; // Assurez-vous que Lecon2 est bien exporté par défaut
+import Lecon1 from "./Lecon1";
+import Lecon2 from "./Lecon2";
 import "./MenuLecon.css";
 
-const MenuLecons = () => {
-  const { id } = useParams(); // Récupérer l'ID de la leçon (si présent)
+function MenuLecons () {
+  const { id } = useParams();
   const lecon = id ? lecons.find((lecon) => lecon.id === parseInt(id)) : null;
 
   const renderLecon = () => {
-    if (id === "1") return <DistanceLecon1 />;
+    if (id === "1") return <Lecon1 />;
     if (id === "2") return <Lecon2 />;
     return <p>Leçon non trouvée.</p>;
   };

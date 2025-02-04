@@ -14,7 +14,7 @@ function PositionUtilisateur({ positionTrouvee }) {
       .then((coordonnees) => {
         console.log("Position récupérée :", coordonnees); 
         setPosition(coordonnees);
-        map.setView(coordonnees, 13); // pour centrer la carte sur les coordonnées
+        map.setView(coordonnees, 30); // pour centrer la carte sur les coordonnées
         if (positionTrouvee) {
           positionTrouvee(coordonnees);
         }
@@ -39,3 +39,5 @@ function PositionUtilisateur({ positionTrouvee }) {
 }
 
 export default PositionUtilisateur;
+
+// faire un composant affichagedumarqueur

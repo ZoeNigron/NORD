@@ -1,96 +1,91 @@
 import React, { useState } from "react";
+import { Marker, Popup } from "react-leaflet"; // ✅ Import des composants Leaflet
 import Carte from "./Carte/Carte";
 import PositionUtilisateur from "./PositionUtilisateur";
-import CalculDistance from "./CalculDistance/CalculDistance";
 import BoutonAction from "./BoutonAction/BoutonAction";
-import AnalyseEstimation from "./AnalyseEstimation/AnalyseEstimation";
+import CalculDistance from "./CalculDistance/CalculDistance";
+import IconePosition from "./IconePosition"; // ✅ Icône personnalisée
+import "./DistanceLecon1.css";
 
-const exercices = [
-  { id: 1, nom: "Exercice 20m", distanceCible: 20 },
-  { id: 2, nom: "Exercice 50m", distanceCible: 50 },
-  { id: 3, nom: "Exercice 100m", distanceCible: 100 }
-];
-
-const DistanceLecon1 = () => {
-  const [exerciceActif, setExerciceActif] = useState(null);
+const DistanceLecon1 = ({ exercice, onRetour, onDistanceCalculee }) => {
   const [positionDepart, setPositionDepart] = useState(null);
   const [positionArrivee, setPositionArrivee] = useState(null);
-  const [phase, setPhase] = useState("selection");
-  const [distanceParcourue, setDistanceParcourue] = useState(null);
+  const [phase, setPhase] = useState("ready");
 
-  const handleLeconSelect = (lecon) => {
-    setExerciceActif(lecon);
-    setPhase("start");
-  };
-
-  const handlePositionTrouvee = (coordonnees) => {
+  const handlePositionCapture = (coordonnees) => {
     if (phase === "start") {
       setPositionDepart(coordonnees);
-      console.log("Position de départ:", coordonnees);
-      setPhase("end");
+      setPhase("move");
     } else if (phase === "end") {
       setPositionArrivee(coordonnees);
-      console.log("Position d'arrivée:", coordonnees);
       setPhase("done");
     }
   };
 
+  const handleDistanceCalculee = (distance) => {
+    onDistanceCalculee(distance);
+  };
+
+  if (!exercice) {
+    return (
+      <div>
+        <h3>Aucun exercice sélectionné.</h3>
+        <button onClick={onRetour}>Revenir au menu</button>
+      </div>
+    );
+  }
+
   return (
-    <div>
-      {phase === "selection" && (
-        <div>
-          <h2>Choisissez un exercice :</h2>
-          {exercices.map((lecon) => (
-            <button key={lecon.id} onClick={() => handleLeconSelect(lecon)}>
-              {lecon.nom}
-            </button>
-          ))}
-        </div>
+    <div className="distance-lecon-container">
+      <h3>{exercice.nom}</h3>
+      <Carte>
+        {phase === "ready" && (
+          <div className="bouton-action-container">
+            <BoutonAction texte="Démarrer" onClick={() => setPhase("start")} />
+          </div>
+        )}
+
+        {phase === "start" && (
+          <PositionUtilisateur positionTrouvee={handlePositionCapture} />
+        )}
+
+        {phase === "move" && (
+          <>
+            <p>Déplacez-vous puis cliquez sur "Terminer".</p>
+            <div className="bouton-action-container">
+              <BoutonAction texte="Terminer" onClick={() => setPhase("end")} />
+            </div>
+          </>
+        )}
+
+        {phase === "end" && (
+          <PositionUtilisateur positionTrouvee={handlePositionCapture} />
+        )}
+
+        {/* ✅ Affichage des marqueurs */}
+        {positionDepart && (
+          <Marker position={positionDepart} icon={IconePosition}>
+            <Popup>Position de départ 📍</Popup>
+          </Marker>
+        )}
+
+        {positionArrivee && (
+          <Marker position={positionArrivee} icon={IconePosition}>
+            <Popup>Position d'arrivée 🏁</Popup>
+          </Marker>
+        )}
+      </Carte>
+
+      {positionDepart && positionArrivee && (
+        <CalculDistance
+          point1={positionDepart}
+          point2={positionArrivee}
+          setDistance={handleDistanceCalculee}
+        />
       )}
 
-      {exerciceActif && (
-        <div>
-          <h3>{exerciceActif.nom}</h3>
-          <Carte>
-            <BoutonAction
-              texte={phase === "start" ? "Démarrer" : "Terminer"}
-              onClick={() => {
-                setPhase(phase === "start" ? "end" : "done");
-              }}
-            />
-
-            {(phase === "start" || phase === "end") && (
-              <PositionUtilisateur positionTrouvee={handlePositionTrouvee} />
-            )}
-          </Carte>
-
-          {positionDepart && positionArrivee && (
-            <CalculDistance
-              point1={positionDepart}
-              point2={positionArrivee}
-              onDistanceCalculee={(distance) => setDistanceParcourue(distance)}
-            />
-          )}
-
-          {phase === "done" && distanceParcourue !== null && (
-            <AnalyseEstimation
-              distance={distanceParcourue}
-              estimation={exerciceActif.distanceCible}
-            />
-          )}
-
-          {phase === "done" && (
-            <button onClick={() => {
-              setExerciceActif(null);
-              setPositionDepart(null);
-              setPositionArrivee(null);
-              setDistanceParcourue(null);
-              setPhase("selection");
-            }}>
-              Revenir au menu
-            </button>
-          )}
-        </div>
+      {phase === "done" && (
+        <button onClick={onRetour}>Revenir au menu</button>
       )}
     </div>
   );

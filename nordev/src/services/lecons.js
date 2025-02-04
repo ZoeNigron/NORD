@@ -1,4 +1,3 @@
-// leconsData.js
 const lecons = [
     {
       id: 1,
@@ -12,7 +11,6 @@ const lecons = [
       description: "Développez vos compétences pour des distances moyennes.",
       objectif: "Estimez une distance en regardant devant soi.",
     },
-    // Ajoutez d'autres leçons si nécessaire
   ];
   
   export default lecons;
