@@ -21,7 +21,7 @@ function MenuLecons () {
     <div>
       <Entete />
       <BarreNavig
-        title={id ? `Leçon ${id}` : "Menu des Leçons"}
+        title={id ? `Leçon ${id}` : "Menu des leçons"}
         backLink={id ? "/menu-lecons" : "/evaluer-les-distances"}
         homeLink="/"
       />

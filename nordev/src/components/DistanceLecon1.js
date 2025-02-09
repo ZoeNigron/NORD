@@ -6,7 +6,7 @@ import CalculDistance from "./CalculDistance/CalculDistance";
 import IconePosition from "./IconePosition";
 import "./DistanceLecon1.css";
 
-const DistanceLecon1 = ({ exercice, onRetour, onDistanceCalculee }) => {
+const DistanceLecon1 = ({ exercice, onDistanceCalculee }) => {
   const [positionDepart, setPositionDepart] = useState(null);
   const [positionArrivee, setPositionArrivee] = useState(null);
   const [phase, setPhase] = useState(0);
@@ -26,20 +26,15 @@ const DistanceLecon1 = ({ exercice, onRetour, onDistanceCalculee }) => {
   };
 
   if (!exercice) {
-    return (
-      <div>
-        <h3>Aucun exercice sélectionné.</h3>
-        <button onClick={onRetour}>Revenir au menu</button>
-      </div>
-    );
+    return <h3>Aucun exercice sélectionné.</h3>;
   }
 
   return (
     <div className="distance-lecon-container">
       <h3>{exercice.nom}</h3>
-      
+
       {phase === 0 && (
-        <div >
+        <div>
           <button className="bouton-container" onClick={() => setPhase(1)}>Démarrer</button>
         </div>
       )}
@@ -78,12 +73,6 @@ const DistanceLecon1 = ({ exercice, onRetour, onDistanceCalculee }) => {
           point2={positionArrivee}
           setDistance={handleDistanceCalculee}
         />
-      )}
-
-      {phase === 4 && (
-        <div>
-          <button className="bouton-container" onClick={onRetour}>Revenir au menu</button>
-        </div>
       )}
     </div>
   );

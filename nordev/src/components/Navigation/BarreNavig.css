@@ -24,21 +24,14 @@
   transform: scale(1.1); /* Légère mise en avant */
 }
 
-/* Rectangle bordeaux pour le titre */
 .titrePage {
-  background-color: #800000; /* Bordeaux */
-  color: white; /* Texte blanc */
+  color: #800000;
   font-size: 16px;
   font-weight: bold;
   text-align: center;
   padding: 5px 15px;
-  border-radius: 12px; /* Coins arrondis */
-  flex-grow: 1; /* Occupe l'espace disponible */
   margin: 0 10px; /* Espacement entre le titre et les icônes */
   max-width: 200px; /* Largeur maximale pour mobile */
-  white-space: nowrap; /* Empêche le texte de se casser */
-  overflow: hidden; /* Cache le texte trop long */
-  text-overflow: ellipsis; /* Ajoute des points de suspension si le texte dépasse */
 }
 
 /* Bouton profil */

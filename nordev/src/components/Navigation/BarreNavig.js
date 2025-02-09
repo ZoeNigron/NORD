@@ -17,7 +17,6 @@ function BarreNavig ({ title }) {
         <FaArrowLeft />
       </button>
 
-      {/* Titre dans le rectangle bordeaux */}
       <div className="titrePage">{title|| location.pathname.slice(1) || "Accueil"}</div>
 
       <button className="profilButton">

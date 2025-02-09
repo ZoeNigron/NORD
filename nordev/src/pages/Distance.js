@@ -16,7 +16,7 @@ const Distance = () => {
       />
       <Link to="/menu-lecons">
         <BoutonAction
-          texte="Mes leçons"
+          texte="Accéder à mes leçons"
           onClick={() => console.log("Navigation vers Menu Leçons")}
         />
       </Link>

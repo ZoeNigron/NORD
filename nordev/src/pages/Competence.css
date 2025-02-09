@@ -1,0 +1,86 @@
+/* Conteneur des compétences */
+.competence-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 100%; /* Assurer qu'il occupe toute la largeur */
+    overflow-y: auto; /* Permet le scroll vertical */
+    padding: 10px;
+    margin-top: 20px;
+    box-sizing: border-box;
+  }
+  
+  /* Cases de compétences */
+  .competence-box {
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin: 10px 15px; /* Marge gauche et droite plus petite pour rendre les cases plus fines */
+    padding: 20px;
+    width: calc(100% - 30px); /* Ajuste la largeur des cases en fonction de la marge */
+    max-width: 350px; /* Optionnel si tu veux un maximum de largeur */
+    text-align: center;
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 300px; /* Hauteur fixe pour chaque case */
+    box-sizing: border-box;
+  }
+  
+  /* Effet de survol sur les cases */
+  .competence-box:hover {
+    transform: scale(1.05); /* Effet de survol */
+  }
+  
+  /* Titre de la compétence */
+  .competence-title {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #800000;
+    margin-bottom: 10px;
+  }
+  
+  /* Description de la compétence */
+  .competence-description {
+    font-size: 1rem;
+    color: #333;
+    margin-bottom: 15px;
+  }
+  
+  /* Icône de la compétence */
+  .competence-icon {
+    font-size: 2rem; /* Taille de l'icône */
+    margin-bottom: 20px;
+  }
+  
+  /* Bouton dans chaque case de compétence */
+  .bouton {
+    background-color: #ffeb3b;
+    color: #333;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+    box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    border: none;
+    margin-top: auto; /* Pousse le bouton au bas de la case */
+    width: 100%; /* Le bouton prend toute la largeur de la case */
+  }
+  
+  /* Effet de survol sur le bouton */
+  .bouton:hover {
+    background-color: #ffc107;
+    box-shadow: 6px 6px 16px rgba(0, 0, 0, 0.4);
+    transform: scale(1.05);
+  }
+  
+  /* Effet de clic sur le bouton */
+  .bouton:active {
+    transform: scale(0.95);
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+  }
+  
