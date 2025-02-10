@@ -1,50 +1,51 @@
-/* Barre de navigation principale */
 .barreNavig {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 10px;
-  background-color: white; /* Fond blanc */
-  height: 60px; /* Ajusté pour écran mobile */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Ombre discrète */
+  background-color: white;
+  height: 60px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  position: relative;
 }
 
-/* Bouton retour (flèche) */
 .boutonRetour {
   background: none;
   border: none;
-  color: #333; /* Couleur sombre pour contraste */
+  color: #333;
   font-size: 20px;
   cursor: pointer;
   padding: 5px;
   transition: transform 0.2s ease;
-}
-
-.boutonRetour:hover {
-  transform: scale(1.1); /* Légère mise en avant */
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .titrePage {
-  color: #800000;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
   font-size: 16px;
   font-weight: bold;
+  color: #800000;
   text-align: center;
-  padding: 5px 15px;
-  margin: 0 10px; /* Espacement entre le titre et les icônes */
-  max-width: 200px; /* Largeur maximale pour mobile */
 }
 
-/* Bouton profil */
 .profilButton {
   background: none;
   border: none;
-  color: #333; /* Couleur sombre */
-  font-size: 24px; /* Taille plus grande pour l'icône */
+  color: #333;
+  font-size: 24px;
   cursor: pointer;
   padding: 5px;
   transition: transform 0.2s ease;
-}
-
-.profilButton:hover {
-  transform: scale(1.1); /* Légère mise en avant */
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
 }

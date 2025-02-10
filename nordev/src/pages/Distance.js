@@ -1,4 +1,3 @@
-// src/pages/EvaluerLesDistances.js
 import React from "react";
 import BarreNavig from "../components/Navigation/BarreNavig";
 import { Link } from "react-router-dom";

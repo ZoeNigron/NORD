@@ -3,27 +3,27 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { FaArrowLeft, FaUserCircle } from "react-icons/fa";
 import "./BarreNavig.css";
 
-function BarreNavig ({ title }) {
+function BarreNavig({ title }) {
   const location = useLocation();
   const navigate = useNavigate();
-
-  const handleRetour = () => {
-    navigate(-1); // pour naviguer vers la page précédente
-  };
+  
+  const isAccueil = location.pathname === "/";
 
   return (
     <nav className="barreNavig">
-      <button className="boutonRetour" onClick={handleRetour}>
-        <FaArrowLeft />
-      </button>
+      {!isAccueil && (
+        <button className="boutonRetour" onClick={() => navigate(-1)}>
+          <FaArrowLeft />
+        </button>
+      )}
 
-      <div className="titrePage">{title|| location.pathname.slice(1) || "Accueil"}</div>
+      <div className="titrePage">{title || "Accueil"}</div>
 
       <button className="profilButton">
         <FaUserCircle />
       </button>
     </nav>
   );
-};
+}
 
 export default BarreNavig;

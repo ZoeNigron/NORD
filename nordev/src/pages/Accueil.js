@@ -7,8 +7,8 @@ import Entete from "../components/Entete/Entete";
 import Astuce from "../components/Astuce/Astuce";
 import "./Accueil.css";
 
-import BoutonAudio from "../components/BoutonAudio";
-import modeAudio from "../services/modeAudio";  // Importer la fonction de lecture audio
+import BoutonAudio from "../components/BoutonAudio/BoutonAudio";
+import modeAudio from "../services/modeAudio";
 
 const Accueil = () => {
   useEffect(() => {

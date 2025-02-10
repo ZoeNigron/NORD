@@ -14,17 +14,16 @@
   cursor: pointer;
   
   box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.3);
-  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.3s ease;
+  transition: box-shadow 0.2s ease, background-color 0.3s ease;
   z-index: 100;
 }
 
 .bouton-action:hover {
   background-color: #ffc107;
   box-shadow: 6px 6px 16px rgba(0, 0, 0, 0.4);
-  transform: translateX(-50%) scale(1.1);
 }
 
 .bouton-action:active {
-  transform: translateX(-50%) scale(0.95);
+  background-color: #fdd835; /* Légère variation de couleur au clic */
   box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
 }
