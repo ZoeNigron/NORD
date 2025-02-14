@@ -1,21 +1,57 @@
 .astuce-container {
-    width: 80%;
-    max-width: 500px;
-    height: 250px;
-    background: #fcf6b2;
-    border-radius: 20px;
-    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 20px 20px 20px 20px;
-    padding: 15px;
-  }
-  
-  .astuce-text {
-    font-size: 1.2rem;
-    color: #333;
-    text-align: center;
-    font-weight: bold;
-  }
-  
+  width: 80%;
+  max-width: 500px;
+  height: auto;
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 60px auto;
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+  border: 2px solid #800000;
+}
+
+.astuce-header {
+  width: 100%;
+  background-color: #800000;
+  padding: 10px 0;
+  color: #fff;
+  font-size: 1.2rem;
+  text-align: center;
+  font-weight: bold;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 20px 20px 0 0;
+}
+
+.astuce-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 40px;
+  width: 100%;
+}
+
+.astuce-icon {
+  font-size: 2rem;
+  margin-right: 10px;
+  color: #fcbf49;
+}
+
+.astuce-text {
+  font-size: 1.2rem;
+  color: #333;
+  text-align: center;
+  font-weight: normal;
+  margin-top: 10px;
+ 
+  border-radius: 10px;
+  padding: 10px;
+  width: 80%;
+}

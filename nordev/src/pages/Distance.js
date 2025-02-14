@@ -1,10 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import BarreNavig from "../components/Navigation/BarreNavig";
 import { Link } from "react-router-dom";
 import BoutonAction from "../components/BoutonAction/BoutonAction";
 import Entete from "../components/Entete/Entete";
+import Quiz from "../components/Quiz/Quiz";
 
 const Distance = () => {
+  const [quizComplet, setQuizComplet] = useState(false);
+
+  const handleQuizComplete = () => {
+    setQuizComplet(true); // Fin du quiz
+  };
+
   return (
     <div>
       <Entete />
@@ -13,12 +20,16 @@ const Distance = () => {
         backLink="/mes-competences"
         homeLink="/"
       />
-      <Link to="/menu-lecons">
-        <BoutonAction
-          texte="Accéder à mes leçons"
-          onClick={() => console.log("Navigation vers Menu Leçons")}
-        />
-      </Link>
+      <Quiz quiz={handleQuizComplete} />
+
+      {quizComplet && (
+        <Link to="/menu-lecons">
+          <BoutonAction
+            texte="Accéder à mes leçons"
+            onClick={() => console.log("Navigation vers Menu Leçons")}
+          />
+        </Link>
+      )}
     </div>
   );
 };
