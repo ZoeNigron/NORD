@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import "./AnalyseEstimation.css";
 import ChoixErreur from "../ChoixErreur";
+import { CheckCircle, ArrowUpward, ArrowDownward, Cancel } from "@mui/icons-material";
+import "./AnalyseEstimation.css";
 
 function AnalyseEstimation1({ distance, estimation }) {
   const distanceArrondie = Math.round(distance); // estimation au mètre près
@@ -10,48 +11,48 @@ function AnalyseEstimation1({ distance, estimation }) {
   const [isCorrect, setIsCorrect] = useState(null);
 
   let message = "";
-  let messageClass = "";
+  let messageClasse = "";
+  let messageIcone = null;
 
   if (difference <= 5) {
-    message = "🎯 Bravo ! Vous avez parcouru la bonne distance (à 5 mètres près).";
-    messageClass = "message-correct";
+    message = "Bravo ! Vous avez parcouru la bonne distance (à 5 mètres près).";
+    messageClasse = "message-correct";
+    messageIcone = <CheckCircle className="icon-correct" />;
   } else if (distanceArrondie > estimation) {
-    message = "⬆️ Vous êtes allé trop loin !";
-    messageClass = "message-incorrect";
+    message = "Vous êtes allé trop loin !";
+    messageClasse = "message-incorrect";
+    messageIcone = <ArrowUpward className="icon-incorrect" />;
   } else {
-    message = "⬇️ Vous n'êtes pas allé assez loin !";
-    messageClass = "message-incorrect";
+    message = "Vous n'êtes pas allé assez loin !";
+    messageClasse = "message-incorrect";
+    messageIcone = <ArrowDownward className="icon-incorrect" />;
   }
 
-  const handleSelection = (distanceChoisie) => {
+  const gererSelection = (distanceChoisie) => {
     setChoixErrone(distanceChoisie);
-    if (distanceChoisie === distanceArrondie) {
-      setIsCorrect(true); // Si la sélection est correcte
-    } else {
-      setIsCorrect(false);
-    }
+    setIsCorrect(distanceChoisie === distanceArrondie);
   };
 
   return (
     <div className="analyse-estimation">
-      {messageClass === "message-correct" ? (
+      {messageClasse === "message-correct" ? (
         <>
           <p>
             <strong>Distance réelle :</strong> {distanceArrondie} mètres
           </p>
-          <div className={`message ${messageClass}`}>
-            {message}
+          <div className={`message ${messageClasse}`}>
+            {messageIcone} {message}
           </div>
         </>
       ) : (
         <>
-          <div className={`message ${messageClass}`}>
-            {message}
+          <div className={`message ${messageClasse}`}>
+            {messageIcone} {message}
           </div>
           <ChoixErreur
             distance={distanceArrondie}
             estimation={estimation}
-            onSelection={handleSelection}
+            onSelection={gererSelection}
           />
         </>
       )}
@@ -59,11 +60,13 @@ function AnalyseEstimation1({ distance, estimation }) {
       {choixErrone !== null && (
         <div className="choix-resultat">
           <p>Vous avez sélectionné : {choixErrone} mètres</p>
-          {isCorrect === true ? (
-            <p className="message-correct">✅ Bravo ! Vous avez choisi la bonne distance.</p>
+          {isCorrect ? (
+            <p className="message-correct">
+              <CheckCircle className="icon-correct" /> Bravo ! Vous avez choisi la bonne distance.
+            </p>
           ) : (
             <p className="message-incorrect">
-              ❌ Mauvaise réponse. La bonne distance était : {distanceArrondie} mètres.
+              <Cancel className="icon-incorrect" /> Mauvaise réponse. La bonne distance était : {distanceArrondie} mètres.
             </p>
           )}
         </div>

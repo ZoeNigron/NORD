@@ -2,11 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './BoutonNavig.css';
 
-function BoutonNavig ({ to, icon, text }) {
+function BoutonNavig ({ to, icone, texte }) {
   return (
-    <Link to={to} className="button">
-      <div className="icon">{icon}</div>
-      <span className="text">{text}</span>
+    <Link to={to} className="bouton">
+      <div className="icone">{icone}</div>
+      <span className="texte">{texte}</span>
     </Link>
   );
 };

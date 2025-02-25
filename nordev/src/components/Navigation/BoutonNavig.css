@@ -1,38 +1,25 @@
-.barreNavig {
+.bouton {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  height: 60px;
-  padding: 0 16px;
-  background-color: #ffffff;
-  border-bottom: 1px solid #eaeaea;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  position: sticky;
-  top: 0;
-  z-index: 10;
+  justify-content: center;
+  background-color: #007bff;
+  color: #ffffff;
+  text-decoration: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-size: 16px;
 }
 
-.boutonRetour,
-.profilButton {
-  background: none;
-  border: none;
-  font-size: 24px;
-  color: #007aff;
-  display: flex;
-  align-items: center;
-  cursor: pointer;
+.bouton:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
 }
 
-.boutonRetour:hover,
-.profilButton:hover {
-  color: #0056b3;
+.icone {
+  margin-right: 8px;
+  font-size: 20px;
 }
 
-.titrePage {
-  flex: 1;
-  text-align: center;
-  font-size: 18px;
-  font-weight: 500;
-  color: #333;
-  padding: 0 10px;
+.texte {
+  font-weight: 600;
 }

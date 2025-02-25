@@ -1,11 +1,10 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Accueil from "./pages/Accueil";
-import Competence from "./pages/Competence";
+import Accueil from "./pages/Accueil/Accueil";
+import Competence from "./pages/Competence/Competence";
 import Distance from "./pages/Distance";
-import MenuLecon from "./pages/MenuLecon";
+import MenuLecon from "./pages/MenuLecon/MenuLecon";
 import PageNonDeveloppee from "./pages/PageNonDeveloppee";
 import "./App.css";
-//import AudioProvider from './context/AudioContext';
 
 function App() {
   return (

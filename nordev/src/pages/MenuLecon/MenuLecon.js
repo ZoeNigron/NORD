@@ -1,17 +1,17 @@
 import React from "react";
 import { useParams, Link } from "react-router-dom";
-import BarreNavig from "../components/Navigation/BarreNavig";
-import lecons from "../services/donnees/lecons";
-import Entete from "../components/Entete/Entete";
-import Lecon1 from "./Lecon1";
-import Lecon2 from "./Lecon2";
+import BarreNavig from "../../components/Navigation/BarreNavig";
+import lecons from "../../services/donnees/lecons";
+import Entete from "../../components/Entete/Entete";
+import Lecon1 from "../Lecon1/Lecon1";
+import Lecon2 from "../Lecon2";
 import "./MenuLecon.css";
 
-function MenuLecons () {
+function MenuLecons() {
   const { id } = useParams();
   const lecon = id ? lecons.find((lecon) => lecon.id === parseInt(id)) : null;
 
-  const renderLecon = () => {
+  const afficherLecon = () => {
     if (id === "1") return <Lecon1 />;
     if (id === "2") return <Lecon2 />;
     return <p>Leçon non trouvée.</p>;
@@ -33,7 +33,7 @@ function MenuLecons () {
           <p>
             <strong>Objectif :</strong> {lecon.objectif}
           </p>
-          <div>{renderLecon()}</div>
+          <div>{afficherLecon()}</div>
         </div>
       ) : (
         <div>
@@ -49,6 +49,6 @@ function MenuLecons () {
       )}
     </div>
   );
-};
+}
 
 export default MenuLecons;

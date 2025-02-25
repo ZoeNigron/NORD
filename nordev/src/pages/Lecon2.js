@@ -8,12 +8,12 @@ const Lecon2 = () => {
   const [estimation, setEstimation] = useState("");
   const [resultat, setResultat] = useState(null);
 
-  const handleDistanceCalculee = (nouvelleDistance) => {
+  const gererDistanceCalculee = (nouvelleDistance) => {
     console.log("Distance calculée :", nouvelleDistance);
     setDistance(nouvelleDistance);
   };
 
-  const handleValidation = () => {
+  const gererValidation = () => {
     if (distance !== null && estimation !== "") {
       setResultat(
         <AnalyseEstimation2
@@ -30,13 +30,13 @@ const Lecon2 = () => {
 
   return (
     <div className="lecon2-container">
-      <DistanceLecon2 distanceCalculee={handleDistanceCalculee} />
+      <DistanceLecon2 distanceCalculee={gererDistanceCalculee} />
 
       {distance !== null && !resultat && (
         <FormEstimation
           estimation={estimation}
           setEstimation={setEstimation}
-          onValidate={handleValidation}
+          gererValidation={gererValidation}
         />
       )}
 

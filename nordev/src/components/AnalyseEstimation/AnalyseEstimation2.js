@@ -1,4 +1,5 @@
 import React from "react";
+import { CheckCircle, ArrowUpward, ArrowDownward } from "@mui/icons-material";
 import "./AnalyseEstimation.css";
 
 function AnalyseEstimation2({ distance, estimation }) {
@@ -6,17 +7,21 @@ function AnalyseEstimation2({ distance, estimation }) {
   const difference = Math.abs(distanceArrondie - estimation);
 
   let message = "";
-  let messageClass = "";
+  let messageClasse = "";
+  let messageIcone = null;
 
   if (difference <= 5) {
-    message = "🎯 Bravo ! Vous avez estimé la distance correctement (à 5 mètres près).";
-    messageClass = "message-correct";
+    message = "Bravo ! Vous avez estimé la distance correctement (à 5 mètres près).";
+    messageClasse = "message-correct";
+    messageIcone = <CheckCircle className="icon-correct" />;
   } else if (distanceArrondie > estimation) {
-    message = "⬇️ Votre estimation est trop courte !";
-    messageClass = "message-incorrect";
+    message = "Votre estimation est trop courte !";
+    messageClasse = "message-incorrect";
+    messageIcone = <ArrowDownward className="icon-incorrect" />;
   } else {
-    message = "⬆️ Votre estimation est trop longue !";
-    messageClass = "message-incorrect";
+    message = "Votre estimation est trop longue !";
+    messageClasse = "message-incorrect";
+    messageIcone = <ArrowUpward className="icon-incorrect" />;
   }
 
   return (
@@ -24,8 +29,8 @@ function AnalyseEstimation2({ distance, estimation }) {
       <p>
         <strong>Distance réelle :</strong> {distanceArrondie} mètres
       </p>
-      <div className={`message ${messageClass}`}>
-        {message}
+      <div className={`message ${messageClasse}`}>
+        {messageIcone} {message}
       </div>
     </div>
   );

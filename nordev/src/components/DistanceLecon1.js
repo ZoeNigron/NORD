@@ -1,17 +1,17 @@
 import React, { useState } from "react";
 import { Marker, Popup } from "react-leaflet";
+import { LocationOn, Flag } from "@mui/icons-material";
 import Carte from "./Carte/Carte";
 import PositionUtilisateur from "./PositionUtilisateur";
 import CalculDistance from "./CalculDistance/CalculDistance";
 import IconePosition from "./IconePosition";
-import "./DistanceLecon1.css";
 
 const DistanceLecon1 = ({ exercice, onDistanceCalculee }) => {
   const [positionDepart, setPositionDepart] = useState(null);
   const [positionArrivee, setPositionArrivee] = useState(null);
   const [phase, setPhase] = useState(0);
 
-  const handlePositionCapture = (coordonnees) => {
+  const gererPositionCapturee = (coordonnees) => {
     if (phase === 1) {
       setPositionDepart(coordonnees);
       setPhase(2);
@@ -21,7 +21,7 @@ const DistanceLecon1 = ({ exercice, onDistanceCalculee }) => {
     }
   };
 
-  const handleDistanceCalculee = (distance) => {
+  const gererDistanceCalculee = (distance) => {
     onDistanceCalculee(distance);
   };
 
@@ -47,22 +47,26 @@ const DistanceLecon1 = ({ exercice, onDistanceCalculee }) => {
 
       <Carte>
         {phase === 1 && (
-          <PositionUtilisateur positionTrouvee={handlePositionCapture} />
+          <PositionUtilisateur positionTrouvee={gererPositionCapturee} />
         )}
 
         {phase === 3 && (
-          <PositionUtilisateur positionTrouvee={handlePositionCapture} />
+          <PositionUtilisateur positionTrouvee={gererPositionCapturee} />
         )}
 
         {positionDepart && (
           <Marker position={positionDepart} icon={IconePosition}>
-            <Popup>Position de départ 📍</Popup>
+            <Popup>
+              <LocationOn /> Position de départ
+            </Popup>
           </Marker>
         )}
 
         {positionArrivee && (
           <Marker position={positionArrivee} icon={IconePosition}>
-            <Popup>Position d'arrivée 🏁</Popup>
+            <Popup>
+              <Flag /> Position d'arrivée
+            </Popup>
           </Marker>
         )}
       </Carte>
@@ -71,7 +75,7 @@ const DistanceLecon1 = ({ exercice, onDistanceCalculee }) => {
         <CalculDistance
           point1={positionDepart}
           point2={positionArrivee}
-          setDistance={handleDistanceCalculee}
+          setDistance={gererDistanceCalculee}
         />
       )}
     </div>

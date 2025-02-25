@@ -8,7 +8,7 @@ import Quiz from "../components/Quiz/Quiz";
 const Distance = () => {
   const [quizComplet, setQuizComplet] = useState(false);
 
-  const handleQuizComplete = () => {
+  const gererQuizComplet = () => {
     setQuizComplet(true); // Fin du quiz
   };
 
@@ -20,7 +20,7 @@ const Distance = () => {
         backLink="/mes-competences"
         homeLink="/"
       />
-      <Quiz quiz={handleQuizComplete} />
+      <Quiz quiz={gererQuizComplet} />
 
       {quizComplet && (
         <Link to="/menu-lecons">

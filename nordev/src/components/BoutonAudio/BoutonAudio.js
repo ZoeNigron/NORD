@@ -1,26 +1,29 @@
 import React, { useState } from "react";
 import { FaVolumeUp, FaVolumeMute } from "react-icons/fa";
-import modeAudio from "../../services/modeAudio";
+import modeAudio from "../../services/fonctions/modeAudio";
 import "./BoutonAudio.css";
 
 function BoutonAudio({ texte }) {
-  const [isAudioEnabled, setIsAudioEnabled] = useState(false);
+  // prop qui contient le texte à lire
+  const [audioActive, setAudioActive] = useState(false);
 
-  const toggleAudio = () => {
-    setIsAudioEnabled(!isAudioEnabled);
-    if (isAudioEnabled) {
-      window.speechSynthesis.cancel(); // Arrêter la lecture si activée
+  const audio = () => {
+    // bouton audio : on utilise l'API speechSynthesis du navigateur
+    setAudioActive(!audioActive); // Si true, on passe à false (arrêt du son)
+    // Si false, on passe à true (lancement du son)
+    if (audioActive) {
+      window.speechSynthesis.cancel(); // Si audioActive était déjà true, on arrête la lecture
     } else {
-      modeAudio(texte); // Lire le texte
+      modeAudio(texte); // Sinon, on lance la lecture
     }
   };
 
   return (
     <button
-      onClick={toggleAudio}
-      className={`audio-button ${isAudioEnabled ? "active" : ""}`}
+      onClick={audio}
+      className={`audio-button ${audioActive ? "active" : ""}`}
     >
-      {isAudioEnabled ? (
+      {audioActive ? (
         <FaVolumeMute className="audio-on" />
       ) : (
         <FaVolumeUp className="audio-off" />

@@ -1,26 +1,26 @@
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { FaArrowLeft, FaUserCircle } from "react-icons/fa";
+import { ArrowBack, AccountCircle } from "@mui/icons-material";
 import "./BarreNavig.css";
 
-function BarreNavig({ title }) {
+function BarreNavig({ titre }) {
   const location = useLocation();
   const navigate = useNavigate();
   
-  const isAccueil = location.pathname === "/";
+  const estAccueil = location.pathname === "/";
 
   return (
     <nav className="barreNavig">
-      {!isAccueil && (
+      {!estAccueil && (
         <button className="boutonRetour" onClick={() => navigate(-1)}>
-          <FaArrowLeft />
+          <ArrowBack />
         </button>
       )}
 
-      <div className="titrePage">{title || "Accueil"}</div>
+      <div className="titrePage">{titre || "Accueil"}</div>
 
-      <button className="profilButton">
-        <FaUserCircle />
+      <button className="boutonProfil">
+        <AccountCircle />
       </button>
     </nav>
   );

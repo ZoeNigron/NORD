@@ -1,8 +1,8 @@
 import React from "react";
 import "./Astuce.css";
-import { FaLightbulb } from 'react-icons/fa';
+import { LightbulbOutlined } from "@mui/icons-material";
 
-import astuceDuJour from "../../services/astuceDuJour";
+import astuceDuJour from "../../services/fonctions/astuceDuJour";
 
 function Astuce() {
   return (
@@ -11,7 +11,7 @@ function Astuce() {
             L'astuce du jour
           </div>
           <div className="astuce-content">
-            <FaLightbulb className="astuce-icon" />
+            <LightbulbOutlined className="astuce-icon" />
             <p className="astuce-text">{astuceDuJour()}</p>
           </div>
       </div>

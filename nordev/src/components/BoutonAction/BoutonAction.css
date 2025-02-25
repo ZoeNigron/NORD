@@ -24,6 +24,6 @@
 }
 
 .bouton-action:active {
-  background-color: #fdd835; /* Légère variation de couleur au clic */
+  background-color: #fdd835;
   box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
 }

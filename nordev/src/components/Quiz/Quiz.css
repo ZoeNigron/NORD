@@ -141,3 +141,20 @@
   background-color: #f8d7da;
   border: 1px solid #f5c6cb;
 }
+
+.icone-correct {
+  color: #4caf50;
+}
+
+.icone-incorrect {
+  color: #e74c3c;
+}
+
+.icone-suivant {
+  color: #007bff;
+}
+
+.icone:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}

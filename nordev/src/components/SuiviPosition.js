@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+/*import { useState, useEffect } from "react";
 
 const SuiviPosition = ({ setPosition }) => {
   const [positionActuelle, setPositionActuelle] = useState(null);
@@ -21,4 +21,4 @@ const SuiviPosition = ({ setPosition }) => {
   return null;  // Ce composant ne retourne rien de visible mais effectue l'écoute de la position
 };
 
-export default SuiviPosition;
+export default SuiviPosition;*/

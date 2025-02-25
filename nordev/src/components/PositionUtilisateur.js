@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { Marker, Popup, useMap } from "react-leaflet";
-import obtenirPositionActuelle from "../services/obtenirPositionActuelle";
+import obtenirPositionActuelle from "../services/fonctions/obtenirPositionActuelle";
 import IconePosition from "./IconePosition";
+import { LocationOn } from '@mui/icons-material';
 
 function PositionUtilisateur({ positionTrouvee }) {
   // prop qui permet à un composant parent de recevoir la position de l'utilisateur
@@ -33,7 +34,7 @@ function PositionUtilisateur({ positionTrouvee }) {
 
   return position ? (
     <Marker position={position} icon={IconePosition}>
-      <Popup>Vous êtes ici ! 📍</Popup>
+      <Popup>Vous êtes ici ! <LocationOn/></Popup>
     </Marker>
   ) : null;
 }

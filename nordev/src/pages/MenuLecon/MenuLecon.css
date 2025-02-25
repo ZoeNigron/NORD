@@ -1,4 +1,3 @@
-/* Styles généraux */
 body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     background-color: #f8f9fa;
@@ -13,8 +12,7 @@ body {
     color: #333;
     margin-bottom: 20px;
   }
-  
-  /* Liste des leçons */
+
   ul {
     list-style-type: none;
     padding: 0;
@@ -38,14 +36,12 @@ body {
     transform: scale(1.05);
   }
   
-  /* Lien de chaque leçon */
   ul li a {
     text-decoration: none;
     color: #333;
     font-size: 18px;
   }
   
-  /* Détails de la leçon */
   .lecon-detail {
     padding: 20px;
     background-color: #fff;
@@ -78,7 +74,7 @@ body {
     transition: all 0.3s ease;
     display: block;
     margin: 20px auto;
-    width: 200px; /* Largeur fixe pour le bouton */
+    width: 200px;
   }
   
   .bouton-action:hover {

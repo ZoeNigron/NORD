@@ -1,17 +1,18 @@
 import React, { useState } from "react";
-//import BoutonAction from "../BoutonAction/BoutonAction";
 import "./FormEstimation.css";
 
-const FormEstimation = ({ estimation, setEstimation, onValidate }) => {
+const FormEstimation = ({ estimation, setEstimation, gererValidation }) => {
   const [erreur, setErreur] = useState("");
 
-  const handleChange = (e) => {
+  const gererSaisie = (e) => {
     const valeur = e.target.value;
-    if (/^\d*$/.test(valeur)) {
-      setEstimation(Number(valeur));
-      setErreur("");
+
+    // on vérifie si la valeur est un entier positif ou égal à zéro
+    if (valeur === "" || (Number.isInteger(Number(valeur)) && Number(valeur) >= 0)) {
+      setEstimation(Number(valeur)); // on met à jour l'estimation
+      setErreur(""); // on réinitialise l'erreur
     } else {
-      setErreur("Veuillez entrer un nombre valide.");
+      setErreur("Veuillez entrer un nombre entier positif ou zéro.");
     }
   };
 
@@ -20,12 +21,12 @@ const FormEstimation = ({ estimation, setEstimation, onValidate }) => {
       <input
         type="text"
         value={estimation}
-        onChange={handleChange}
+        onChange={gererSaisie}
         placeholder="Estimez la distance en mètres"
         className="estimation-input"
       />
       {erreur && <p className="erreur-message">{erreur}</p>}
-      <button onClick={onValidate} className="valider-button">Valider</button>
+      <button onClick={gererValidation} className="valider-button">Valider</button>
     </div>
   );
 };

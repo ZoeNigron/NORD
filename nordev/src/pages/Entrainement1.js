@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+/*import React, { useState, useEffect } from "react";
 import { Marker, Popup } from "react-leaflet";
 import Carte from "./Carte/Carte";
 import IconePosition from "./IconePosition";
@@ -24,14 +24,12 @@ const Entrainement1 = () => {
       <Carte>
         <PositionUtilisateur positionTrouvee={(pos) => setPositions((prev) => [...prev, pos])} />
         
-        {/* pour afficher le marqueur pour la position actuelle */}
         {positionActuelle && (
           <Marker key="positionActuelle" position={positionActuelle} icon={IconePosition}>
             <Popup>Position actuelle 📍</Popup>
           </Marker>
         )}
         
-        {/* pour afficher les autres points de parcours */}
         {positions.map((pos, index) => (
           <Marker key={index} position={pos} icon={IconePosition}>
             <Popup>{index === 0 ? "Départ 📍" : `Point ${index + 1}`}</Popup>
@@ -44,4 +42,4 @@ const Entrainement1 = () => {
   );
 };
 
-export default Entrainement1;
+export default Entrainement1;*/

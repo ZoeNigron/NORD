@@ -1,14 +1,13 @@
 import React from "react";
-//import "./ChoixErreur.css";
 
-function ChoixErreur({ distance, onSelection }) {
+function ChoixErreur({ distance, gererSelection }) {
   const distanceProportionnelle = distance * 2;
 
   return (
     <div className="choix-erreur">
       <p>Vous vous êtes trompé dans votre estimation ! Que pensez-vous avoir parcouru ?</p>
-      <button onClick={() => onSelection(distance)}>{distance} mètres</button>
-      <button onClick={() => onSelection(distanceProportionnelle)}>{distanceProportionnelle}mètres</button>
+      <button onClick={() => gererSelection(distance)}>{distance} mètres</button>
+      <button onClick={() => gererSelection(distanceProportionnelle)}>{distanceProportionnelle}mètres</button>
     </div>
   );
 }

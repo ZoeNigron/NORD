@@ -1,20 +1,21 @@
 import React, { createContext, useState, useContext } from "react";
 
-const AudioContext = createContext();
+const AudioContext = createContext(); // on crée un contexte pour gérer l'état de l'audio
 
 export const useAudio = () => {
-  return useContext(AudioContext);
+  return useContext(AudioContext); // on utilise le contexte Audio pour fournir l'état et la fonction
 };
 
-export const AudioProvider = ({ children }) => {
-  const [isAudioEnabled, setIsAudioEnabled] = useState(false);
+export const FournisseurAudio = ({ children }) => {
+  const [audioActive, setAudioActive] = useState(false);
 
-  const toggleAudio = () => {
-    setIsAudioEnabled((prev) => !prev);
+  const gererAudio = () => { // pour basculer l'état de l'audio (activé ou désactivé)
+    setAudioActive((prev) => !prev);
   };
 
   return (
-    <AudioContext.Provider value={{ isAudioEnabled, toggleAudio }}>
+    // pour fournir l'état audio et la fonction de gestion de l'audio aux enfants
+    <AudioContext.Provider value={{ audioActive, gererAudio }}>
       {children}
     </AudioContext.Provider>
   );
