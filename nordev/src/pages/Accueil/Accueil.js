@@ -6,9 +6,10 @@ import BoutonAction from "../../components/BoutonAction/BoutonAction";
 import Entete from "../../components/Entete/Entete";
 import Astuce from "../../components/Astuce/Astuce";
 import "./Accueil.css";
-
+import Utilisateur from "../../components/Utilisateur";
 import BoutonAudio from "../../components/BoutonAudio/BoutonAudio";
 import modeAudio from "../../services/fonctions/modeAudio";
+import CreationCompte from "../../components/CreationCompte/CreationCompte";
 
 const Accueil = () => {
   useEffect(() => {
@@ -33,6 +34,8 @@ const Accueil = () => {
           onClick={() => console.log("Navigation vers Mes Compétences")}
         />
       </Link>
+      <CreationCompte />
+      <Utilisateur />
     </div>
   );
 };

@@ -9,6 +9,10 @@ function BarreNavig({ titre }) {
   
   const estAccueil = location.pathname === "/";
 
+  const allerAuProfil = () => {
+    navigate("/profil");
+  };
+
   return (
     <nav className="barreNavig">
       {!estAccueil && (
@@ -19,7 +23,7 @@ function BarreNavig({ titre }) {
 
       <div className="titrePage">{titre || "Accueil"}</div>
 
-      <button className="boutonProfil">
+      <button className="boutonProfil" onClick={allerAuProfil}>
         <AccountCircle />
       </button>
     </nav>
