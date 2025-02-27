@@ -23,7 +23,6 @@ function App() {
           <Route path="/menu-lecons" element={<MenuLecon />} />
           <Route path="/menu-lecons/:id" element={<MenuLecon />} />
 
-          {/* Ajout de la route pour le profil utilisateur */}
           <Route path="/profil" element={<ProfilUtilisateur />} />
         </Route>
       </Routes>

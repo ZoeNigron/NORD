@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { creerUtilisateur } from "../../api";
-import "./CreationCompte.css"; // Import du fichier CSS
+import "./CreationCompte.css";
 
 function CreationCompte() {
   const [nom, setNom] = useState("");

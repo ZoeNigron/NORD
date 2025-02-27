@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { connecterUtilisateur } from "../../api";
-import "./ConnexionCompte.css"; // Import du fichier CSS
+import "./ConnexionCompte.css";
 
 function ConnexionCompte() {
   const [email, setEmail] = useState("");

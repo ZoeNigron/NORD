@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { getUserInfo, updateUserInfo } from "../../api"; // Assure-toi d'avoir ces fonctions dans ton API
+import { getUserInfo, updateUserInfo } from "../../api";
 import { useNavigate } from "react-router-dom";
-import "./ProfilUtilisateur.css"; // Tu peux ajouter un fichier CSS pour la mise en page
+import "./ProfilUtilisateur.css";
 
 function ProfilUtilisateur() {
   const [user, setUser] = useState({
@@ -19,11 +19,10 @@ function ProfilUtilisateur() {
   const [erreur, setErreur] = useState("");
   const navigate = useNavigate();
 
-  // Récupère les informations de l'utilisateur lors du chargement du composant
   useEffect(() => {
     const fetchUserInfo = async () => {
       try {
-        const userInfo = await getUserInfo(); // Appelle une API pour obtenir les informations de l'utilisateur
+        const userInfo = await getUserInfo();
         setUser(userInfo);
         setNom(userInfo.nom);
         setPrenom(userInfo.prenom);
@@ -41,7 +40,6 @@ function ProfilUtilisateur() {
     setMessage("");
     setErreur("");
 
-    // Si le mot de passe est changé, il faut le vérifier
     if (nouveauMotDePasse && nouveauMotDePasse !== motDePasse) {
       setErreur("Les mots de passe ne correspondent pas.");
       return;
@@ -51,11 +49,11 @@ function ProfilUtilisateur() {
       nom,
       prenom,
       email,
-      motDePasse: nouveauMotDePasse || motDePasse, // Utilise le nouveau mot de passe ou l'ancien
+      motDePasse: nouveauMotDePasse || motDePasse,
     };
 
     try {
-      await updateUserInfo(updatedUser); // Appelle l'API pour mettre à jour les informations
+      await updateUserInfo(updatedUser);
       setMessage("Les informations ont été mises à jour avec succès !");
     } catch (err) {
       setErreur("Une erreur est survenue lors de la mise à jour des informations.");
