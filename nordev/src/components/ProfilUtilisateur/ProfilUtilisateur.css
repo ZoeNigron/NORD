@@ -33,7 +33,7 @@
   button {
     padding: 12px;
     font-size: 16px;
-    background-color: #007bff;
+    background-color: #800000;
     color: white;
     border: none;
     border-radius: 8px;
@@ -41,7 +41,7 @@
   }
   
   button:hover {
-    background-color: #0056b3;
+    background-color: #b00000;
   }
   
   .erreur {

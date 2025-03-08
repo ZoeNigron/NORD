@@ -12,18 +12,21 @@ function ConnexionCompte() {
   const gererConnexion = async (e) => {
     e.preventDefault();
     setErreur("");
-
+  
     try {
       const response = await connecterUtilisateur({ email, motDePasse });
-
-      if (response.token) {
+      console.log("Réponse API :", response);
+  
+      if (response.token && response.id) {
         localStorage.setItem("token", response.token);
+        localStorage.setItem("userId", response.id); 
         localStorage.setItem("isAuthenticated", "true");
         navigate("/accueil");
       } else {
         setErreur("Email ou mot de passe incorrect.");
       }
     } catch (error) {
+      console.error("Erreur lors de la connexion :", error);
       if (error.response && error.response.status === 401) {
         setErreur("Email ou mot de passe incorrect.");
       } else {
@@ -31,7 +34,7 @@ function ConnexionCompte() {
       }
     }
   };
-
+  
   return (
     <div className="container">
       <h2>Connexion</h2>

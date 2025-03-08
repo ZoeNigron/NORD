@@ -24,27 +24,44 @@ function CreationCompte() {
     const utilisateur = { nom, prenom, email, motDePasse };
 
     try {
-      const nouvelUtilisateur = await creerUtilisateur(utilisateur);
-      if (nouvelUtilisateur) {
-        setMessage("Compte créé avec succès ! 🎉");
-        console.log("Utilisateur créé :", nouvelUtilisateur);
-
+      const response = await creerUtilisateur(utilisateur);
+      console.log("Réponse du serveur :", response);
+    
+      if (response.status === 201) {
+        setMessage("Compte créé avec succès ! Vous allez être redirigé...");
         setTimeout(() => {
-          window.location.href = "/connexion";
+          window.location.href = "http://localhost:3000/";
         }, 2000);
       }
     } catch (err) {
-      setErreur("Une erreur est survenue lors de la création du compte.");
+      console.error("Erreur complète :", err);
+    
+      if (err.response) {
+        console.error("Statut :", err.response.status);
+        console.error("Données :", err.response.data);
+    
+        if (err.response.status === 400) {
+          setErreur(err.response.data.message || "Cet email est déjà utilisé.");
+        } else {
+          setErreur("Une erreur est survenue lors de la création du compte.");
+        }
+      } else if (err.request) {
+        setErreur("Problème de connexion avec le serveur.");
+        console.error("Requête envoyée mais pas de réponse :", err.request);
+      } else {
+        setErreur("Une erreur inconnue est survenue.");
+        console.error("Erreur inconnue :", err.message);
+      }
     }
-  };
+  };    
 
   return (
     <div className="container">
       <h2>Créer un compte</h2>
       {erreur && <p className="erreur">{erreur}</p>}
-      {message && <p className="message">{message}</p>}
-
-      <form onSubmit={gererSoumission}>
+      {message && <p className="message success">{message}</p>}
+      
+      <form onSubmit={gererSoumission} className="form-creation">
         <input
           type="text"
           value={nom}

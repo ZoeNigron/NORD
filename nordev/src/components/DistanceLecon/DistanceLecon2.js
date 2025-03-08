@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
-import Carte from "./Carte/Carte";
-import PositionUtilisateur from "./PositionUtilisateur";
-import PointSelectionne from "./PointSelectionne";
-import CalculDistance from "./CalculDistance/CalculDistance";
+import Carte from "../Carte/Carte";
+import PositionUtilisateur from "../PositionUtilisateur";
+import PointSelectionne from "../PointSelectionne";
+import CalculDistance from "../CalculDistance/CalculDistance";
 
 function DistanceLecon2({ distanceCalculee }) {
   const [positionActuelle, setPositionActuelle] = useState(null);

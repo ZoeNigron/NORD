@@ -3,29 +3,28 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { ArrowBack, AccountCircle } from "@mui/icons-material";
 import "./BarreNavig.css";
 
-function BarreNavig({ titre }) {
+function BarreNavig({ title }) {
   const location = useLocation();
   const navigate = useNavigate();
-  
-  const estAccueil = location.pathname === "/";
 
-  const allerAuProfil = () => {
-    navigate("/profil");
-  };
+  const estAccueil = location.pathname === "/accueil";
+  const estProfil = location.pathname === "/profil";
 
   return (
     <nav className="barreNavig">
       {!estAccueil && (
-        <button className="boutonRetour" onClick={() => navigate(-1)}>
+        <button className="boutonRetour" onClick={() => window.history.back()}>
           <ArrowBack />
         </button>
       )}
 
-      <div className="titrePage">{titre || "Accueil"}</div>
+      <div className="titrePage">{title || "Accueil"}</div>
 
-      <button className="boutonProfil" onClick={allerAuProfil}>
-        <AccountCircle />
-      </button>
+      {!estProfil && (
+        <button className="boutonProfil" onClick={() => navigate("/profil")}>
+          <AccountCircle />
+        </button>
+      )}
     </nav>
   );
 }

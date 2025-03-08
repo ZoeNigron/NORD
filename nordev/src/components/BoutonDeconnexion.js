@@ -6,7 +6,7 @@ function BoutonDeconnexion() {
   const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("isAuthenticated");
-    navigate("/connexion");
+    navigate("/");
   };
 
   return <button onClick={handleLogout}>Se déconnecter</button>;

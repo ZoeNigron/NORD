@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { Marker, Popup } from "react-leaflet";
 import { LocationOn, Flag } from "@mui/icons-material";
-import Carte from "./Carte/Carte";
-import PositionUtilisateur from "./PositionUtilisateur";
-import CalculDistance from "./CalculDistance/CalculDistance";
-import IconePosition from "./IconePosition";
+import Carte from "../Carte/Carte";
+import PositionUtilisateur from "../PositionUtilisateur";
+import CalculDistance from "../CalculDistance/CalculDistance";
+import IconePosition from "../IconePosition";
+import "./DistanceLecon1.css";
 
 const DistanceLecon1 = ({ exercice, onDistanceCalculee }) => {
   const [positionDepart, setPositionDepart] = useState(null);
@@ -35,13 +36,17 @@ const DistanceLecon1 = ({ exercice, onDistanceCalculee }) => {
 
       {phase === 0 && (
         <div>
-          <button className="bouton-container" onClick={() => setPhase(1)}>Démarrer</button>
+          <button className="bouton" onClick={() => setPhase(1)}>
+            Démarrer
+          </button>
         </div>
       )}
 
       {phase === 2 && (
         <div>
-          <button className="bouton-container" onClick={() => setPhase(3)}>Terminer</button>
+          <button className="bouton" onClick={() => setPhase(3)}>
+            Terminer
+          </button>
         </div>
       )}
 

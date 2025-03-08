@@ -1,73 +1,88 @@
 import React, { useState, useEffect } from "react";
-import { getUserInfo, updateUserInfo } from "../../api";
-import { useNavigate } from "react-router-dom";
+import { obtenirInfosUtilisateur, mettreAJourInfosUtilisateur } from "../../api";
 import "./ProfilUtilisateur.css";
 
 function ProfilUtilisateur() {
-  const [user, setUser] = useState({
+  const [utilisateur, setUtilisateur] = useState({
     nom: "",
     prenom: "",
     email: "",
-    motDePasse: "",
   });
-  const [nom, setNom] = useState(user.nom);
-  const [prenom, setPrenom] = useState(user.prenom);
-  const [email, setEmail] = useState(user.email);
-  const [motDePasse, setMotDePasse] = useState(user.motDePasse);
+  const [nom, setNom] = useState("");
+  const [prenom, setPrenom] = useState("");
+  const [email, setEmail] = useState("");
   const [nouveauMotDePasse, setNouveauMotDePasse] = useState("");
+  const [confirmationMotDePasse, setConfirmationMotDePasse] = useState("");
   const [message, setMessage] = useState("");
   const [erreur, setErreur] = useState("");
-  const navigate = useNavigate();
 
   useEffect(() => {
-    const fetchUserInfo = async () => {
+    const fetchInfosUtilisateur = async () => {
       try {
-        const userInfo = await getUserInfo();
-        setUser(userInfo);
-        setNom(userInfo.nom);
-        setPrenom(userInfo.prenom);
-        setEmail(userInfo.email);
+        const id = localStorage.getItem("utilisateurId");
+        if (!id) throw new Error("ID utilisateur manquant.");
+
+        console.log(`Tentative de récupération des infos utilisateur avec l'ID : ${id}`);
+        
+        const infosUtilisateur = await obtenirInfosUtilisateur(id);
+
+        console.log("Réponse de l'API utilisateur:", infosUtilisateur);
+
+        setUtilisateur(infosUtilisateur);
+        setNom(infosUtilisateur.nom);
+        setPrenom(infosUtilisateur.prenom);
+        setEmail(infosUtilisateur.email);
       } catch (err) {
+        console.error("Erreur lors de la récupération des données utilisateur:", err);
         setErreur("Une erreur est survenue en récupérant les informations.");
       }
     };
 
-    fetchUserInfo();
+    fetchInfosUtilisateur();
   }, []);
 
-  const handleUpdate = async (e) => {
+  const gererMiseAJour = async (e) => {
     e.preventDefault();
     setMessage("");
     setErreur("");
 
-    if (nouveauMotDePasse && nouveauMotDePasse !== motDePasse) {
-      setErreur("Les mots de passe ne correspondent pas.");
+    if (nouveauMotDePasse && nouveauMotDePasse !== confirmationMotDePasse) {
+      setErreur("Les nouveaux mots de passe ne correspondent pas.");
       return;
     }
 
-    const updatedUser = {
+    const id = localStorage.getItem("utilisateurId");
+
+    if (!id) {
+      setErreur("ID utilisateur manquant.");
+      return;
+    }
+
+    const utilisateurMisAJour = {
+      id,
       nom,
       prenom,
       email,
-      motDePasse: nouveauMotDePasse || motDePasse,
+      motDePasse: nouveauMotDePasse || utilisateur.motDePasse,
     };
 
     try {
-      await updateUserInfo(updatedUser);
+      await mettreAJourInfosUtilisateur(id, utilisateurMisAJour);
       setMessage("Les informations ont été mises à jour avec succès !");
     } catch (err) {
+      console.error(err);
       setErreur("Une erreur est survenue lors de la mise à jour des informations.");
     }
   };
 
   return (
     <div className="profil-container">
-      <h2>Profil de l'utilisateur</h2>
+      <h2>Mes informations</h2>
 
       {erreur && <p className="erreur">{erreur}</p>}
       {message && <p className="message">{message}</p>}
 
-      <form onSubmit={handleUpdate}>
+      <form onSubmit={gererMiseAJour}>
         <div>
           <label>Nom:</label>
           <input
@@ -99,17 +114,7 @@ function ProfilUtilisateur() {
           />
         </div>
         <div>
-          <label>Mot de passe actuel:</label>
-          <input
-            type="password"
-            value={motDePasse}
-            onChange={(e) => setMotDePasse(e.target.value)}
-            placeholder="Mot de passe actuel"
-            required
-          />
-        </div>
-        <div>
-          <label>Modifier le mot de passe:</label>
+          <label>Nouveau mot de passe :</label>
           <input
             type="password"
             value={nouveauMotDePasse}
@@ -117,11 +122,18 @@ function ProfilUtilisateur() {
             placeholder="Nouveau mot de passe (facultatif)"
           />
         </div>
+        <div>
+          <label>Confirmer le mot de passe :</label>
+          <input
+            type="password"
+            value={confirmationMotDePasse}
+            onChange={(e) => setConfirmationMotDePasse(e.target.value)}
+            placeholder="Confirmez votre nouveau mot de passe"
+          />
+        </div>
 
         <button type="submit">Mettre à jour</button>
       </form>
-
-      <button onClick={() => navigate("/accueil")}>Retour à l'accueil</button>
     </div>
   );
 }

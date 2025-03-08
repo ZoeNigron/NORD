@@ -50,8 +50,8 @@
   }
   
   .bouton {
-    background-color: #ffeb3b;
-    color: #333;
+    background-color: #800000;
+    color: #ffffff;
     padding: 10px 20px;
     border-radius: 25px;
     font-weight: bold;
@@ -65,7 +65,7 @@
   }
   
   .bouton:hover {
-    background-color: #ffc107;
+    background-color: #bb0000;
     box-shadow: 6px 6px 16px rgba(0, 0, 0, 0.4);
     transform: scale(1.05);
   }

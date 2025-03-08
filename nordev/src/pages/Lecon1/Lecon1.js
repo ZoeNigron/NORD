@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import SelectionExercice from "../../components/SelectionExercice/SelectionExercice";
-import DistanceLecon1 from "../../components/DistanceLecon1";
+import DistanceLecon1 from "../../components/DistanceLecon/DistanceLecon1";
 import AnalyseEstimation1 from "../../components/AnalyseEstimation/AnalyseEstimation1";
 import exercices from "../../services/donnees/exercices";
 import "./Lecon1.css";

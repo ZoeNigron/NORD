@@ -6,6 +6,9 @@ const API_BASE_URL = "http://localhost:5039/api";
 export const connecterUtilisateur = async (identifiants) => {
   try {
     const response = await axios.post(`${API_BASE_URL}/utilisateur/connecter`, identifiants);
+    if (response.data && response.data.id) {
+      localStorage.setItem("utilisateurId", response.data.id);
+    }
     return response.data;
   } catch (error) {
     console.error("Erreur de connexion :", error);
@@ -36,9 +39,11 @@ export const creerUtilisateur = async (data) => {
 };
 
 // Obtenir les informations d'un utilisateur spécifique
-export const getUserInfo = async (id) => {
+export const obtenirInfosUtilisateur = async (id) => {
   try {
+    console.log(`Récupération des infos pour l'ID : ${id}`);
     const response = await axios.get(`${API_BASE_URL}/utilisateur/${id}`);
+    console.log("Réponse de l'API :", response.data);
     return response.data;
   } catch (error) {
     console.error("Erreur lors de la récupération des données utilisateur:", error);
@@ -47,9 +52,9 @@ export const getUserInfo = async (id) => {
 };
 
 // Mettre à jour les informations d'un utilisateur spécifique
-export const updateUserInfo = async (id, updatedUser) => {
+export const mettreAJourInfosUtilisateur = async (id, utilisateurMisAJour) => {
   try {
-    const response = await axios.put(`${API_BASE_URL}/utilisateur/${id}`, updatedUser);
+    const response = await axios.put(`${API_BASE_URL}/utilisateur/${id}`, utilisateurMisAJour);
     return response.data;
   } catch (error) {
     console.error("Erreur lors de la mise à jour des données utilisateur:", error);

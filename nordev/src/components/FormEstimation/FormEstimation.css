@@ -23,7 +23,7 @@
 }
 
 .estimation-input:focus {
-  border-color: #ffd700;
+  border-color: #800000;
   box-shadow: 0 0 8px rgba(255, 215, 0, 0.4);
 }
 
@@ -34,28 +34,20 @@
   text-align: center;
 }
 
-.valider-button {
-  background-color: #ffeb3b;
-  color: #333;
+.valider-bouton {
+  background-color: #800000;
+  color: white;
+  padding: 12px 24px;
+  margin: 20px auto;
   border: none;
-  border-radius: 25px;
-  padding: 14px 28px;
-  font-size: 18px;
-  font-weight: bold;
+  border-radius: 5px;
   cursor: pointer;
-  box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.3);
-  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.3s ease;
-  width: 90%;
-  max-width: 400px;
+  width: auto;
+  text-align: center;
+  display: block;
+  font-size: 16px;
 }
 
-.valider-button:hover {
-  background-color: #ffc107;
-  transform: scale(1.05);
-  box-shadow: 6px 6px 16px rgba(0, 0, 0, 0.4);
-}
-
-.valider-button:active {
-  transform: scale(0.95);
-  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+.valider-bouton:hover {
+  background-color: #660000;
 }

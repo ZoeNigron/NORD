@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import DistanceLecon2 from "../components/DistanceLecon2";
+import DistanceLecon2 from "../components/DistanceLecon/DistanceLecon2";
 import FormEstimation from "../components/FormEstimation/FormEstimation";
 import AnalyseEstimation2 from "../components/AnalyseEstimation/AnalyseEstimation2";
 

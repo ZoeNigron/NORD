@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-import BarreNavig from "../components/Navigation/BarreNavig";
+import BarreNavig from "../../components/Navigation/BarreNavig";
 import { Link } from "react-router-dom";
-import BoutonAction from "../components/BoutonAction/BoutonAction";
-import Entete from "../components/Entete/Entete";
-import Quiz from "../components/Quiz/Quiz";
+import Entete from "../../components/Entete/Entete";
+import Quiz from "../../components/Quiz/Quiz";
 
 const Distance = () => {
   const [quizComplet, setQuizComplet] = useState(false);
@@ -24,10 +23,12 @@ const Distance = () => {
 
       {quizComplet && (
         <Link to="/menu-lecons">
-          <BoutonAction
-            texte="Accéder à mes leçons"
+          <button
+            className="bouton"
             onClick={() => console.log("Navigation vers Menu Leçons")}
-          />
+          >
+            Accéder à mes leçons
+          </button>
         </Link>
       )}
     </div>
