@@ -1,0 +1,36 @@
+.bouton {
+    background-color: #800000;
+    color: white;
+    padding: 12px 24px;
+    margin: 20px auto;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: auto;
+    text-align: center;
+    display: block;
+    font-size: 16px;
+  }
+  
+  .bouton:hover {
+    background-color: #660000;
+  }
+
+  .erreur-position {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 8px;
+    font-weight: bold;
+    text-align: center;
+    font-size: 1.1rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+  }
+  

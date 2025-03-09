@@ -1,6 +1,5 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-//import BarreNavig from "./components/Navigation/BarreNavig";
 import Connexion from "./pages/Connexion";
 import Accueil from "./pages/Accueil/Accueil";
 import Competence from "./pages/Competence/Competence";

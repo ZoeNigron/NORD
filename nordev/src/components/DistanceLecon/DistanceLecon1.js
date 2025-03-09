@@ -1,30 +1,55 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Marker, Popup } from "react-leaflet";
 import { LocationOn, Flag } from "@mui/icons-material";
 import Carte from "../Carte/Carte";
 import PositionUtilisateur from "../PositionUtilisateur";
 import CalculDistance from "../CalculDistance/CalculDistance";
 import IconePosition from "../IconePosition";
-import "./DistanceLecon1.css";
+import "./DistanceLecon.css";
 
-const DistanceLecon1 = ({ exercice, onDistanceCalculee }) => {
+const DistanceLecon1 = ({ exercice, onDistanceCalculee, onErreurPosition }) => {
   const [positionDepart, setPositionDepart] = useState(null);
   const [positionArrivee, setPositionArrivee] = useState(null);
   const [phase, setPhase] = useState(0);
+  const [erreurPosition, setErreurPosition] = useState(null);
 
   const gererPositionCapturee = (coordonnees) => {
     if (phase === 1) {
       setPositionDepart(coordonnees);
       setPhase(2);
+      setErreurPosition(null);
     } else if (phase === 3) {
       setPositionArrivee(coordonnees);
       setPhase(4);
+      setErreurPosition(null);
+    }
+  };
+
+  const gererErreurPosition = (erreur) => {
+    setErreurPosition(
+      "Impossible de récupérer votre position. Veuillez vérifier vos paramètres de localisation."
+    );
+    if (onErreurPosition) {
+      onErreurPosition(erreur);
     }
   };
 
   const gererDistanceCalculee = (distance) => {
     onDistanceCalculee(distance);
   };
+
+  useEffect(() => {
+    let timer;
+    if (phase === 1) {
+      timer = setTimeout(() => {
+        setErreurPosition(
+          "Impossible de récupérer votre position. Veuillez vérifier vos paramètres de localisation."
+        );
+      }, 3000);
+
+      return () => clearTimeout(timer);
+    }
+  }, [phase]);
 
   if (!exercice) {
     return <h3>Aucun exercice sélectionné.</h3>;
@@ -33,6 +58,8 @@ const DistanceLecon1 = ({ exercice, onDistanceCalculee }) => {
   return (
     <div className="distance-lecon-container">
       <h3>{exercice.nom}</h3>
+
+      {erreurPosition && <div className="erreur-position">{erreurPosition}</div>}
 
       {phase === 0 && (
         <div>
@@ -52,11 +79,17 @@ const DistanceLecon1 = ({ exercice, onDistanceCalculee }) => {
 
       <Carte>
         {phase === 1 && (
-          <PositionUtilisateur positionTrouvee={gererPositionCapturee} />
+          <PositionUtilisateur
+            positionTrouvee={gererPositionCapturee}
+            onErreur={gererErreurPosition}
+          />
         )}
 
         {phase === 3 && (
-          <PositionUtilisateur positionTrouvee={gererPositionCapturee} />
+          <PositionUtilisateur
+            positionTrouvee={gererPositionCapturee}
+            onErreur={gererErreurPosition}
+          />
         )}
 
         {positionDepart && (
