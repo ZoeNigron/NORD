@@ -8,6 +8,7 @@ import MenuLecon from "./pages/MenuLecon/MenuLecon";
 import PageNonDeveloppee from "./pages/PageNonDeveloppee";
 import Profil from "./pages/Profil";
 import RoutePrivee from "./components/RoutePrivee";
+import GestionAstuces from "./components/GestionAstuces";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
 
         <Route element={<RoutePrivee />}>
           <Route path="/accueil" element={<Accueil />} />
+          <Route path="/mes-astuces" element={<GestionAstuces />} />
           <Route path="/mes-competences" element={<Competence />} />
           <Route path="/evaluer-les-distances" element={<Distance />} />
           <Route path="/menu-lecons" element={<MenuLecon />} />

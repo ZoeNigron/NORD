@@ -1,0 +1,24 @@
+.gestion-astuces-container {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .ajout-astuce {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .astuce-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 8px;
+  }
+  
