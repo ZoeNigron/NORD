@@ -1,0 +1,28 @@
+.intro-texte {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #000000;
+    text-align: center;
+    margin-top: 200px;
+    margin-bottom: 20px;
+  }
+
+  .bouton {
+    background-color: #800000;
+    color: white;
+    padding: 12px 24px;
+    margin: 20px auto;  /* Centre le bouton */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    max-width: 300px; /* Limite la largeur du bouton */
+    width: 100%; /* Utilise 100% de la largeur disponible, mais ne dépasse pas max-width */
+    text-align: center;
+    display: block;
+    font-size: 16px;
+  }
+  
+  .bouton:hover {
+    background-color: #660000;
+  }
+  

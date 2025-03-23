@@ -15,15 +15,20 @@ function GestionAstuces() {
   const [nouvelleAstuce, setNouvelleAstuce] = useState("");
   const [modificationId, setModificationId] = useState(null);
   const [contenuModification, setContenuModification] = useState("");
+  const userId = localStorage.getItem("utilisateurId"); // Récupération de l'ID de l'utilisateur connecté
 
+  // Charger les astuces de l'utilisateur connecté
   useEffect(() => {
     const chargerAstuces = async () => {
-      const data = await obtenirAstuces();
-      setAstuces(data);
+      if (userId) {
+        const data = await obtenirAstuces(); // Cette fonction va maintenant récupérer uniquement les astuces de l'utilisateur
+        setAstuces(data);
+      }
     };
     chargerAstuces();
-  }, []);
+  }, [userId]);
 
+  // Ajouter une nouvelle astuce
   const gererAjouterAstuce = async () => {
     if (nouvelleAstuce.trim() !== "") {
       const nouvelle = await ajouterAstuce({ contenu: nouvelleAstuce });
@@ -32,11 +37,13 @@ function GestionAstuces() {
     }
   };
 
+  // Supprimer une astuce
   const gererSupprimerAstuce = async (id) => {
     await supprimerAstuce(id);
     setAstuces(astuces.filter((astuce) => astuce.id !== id));
   };
 
+  // Modifier une astuce
   const gererModifierAstuce = async (id) => {
     // on sauvegarde l'état actuel des astuces au cas où la modification échoue
     const ancienneAstuce = [...astuces];
@@ -49,7 +56,7 @@ function GestionAstuces() {
 
     try {
       // on appel l'API pour valider la modification côté serveur
-      await modifierAstuce(id, { contenu: contenuModification });
+      await modifierAstuce(id, contenuModification);
 
       // si l'appel réussit, les données sont déjà à jour
     } catch (error) {

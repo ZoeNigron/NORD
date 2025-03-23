@@ -12,16 +12,15 @@ function ConnexionCompte() {
   const gererConnexion = async (e) => {
     e.preventDefault();
     setErreur("");
-  
+
     try {
       const response = await connecterUtilisateur({ email, motDePasse });
-      console.log("Réponse API :", response);
-  
+
       if (response.token && response.id) {
         localStorage.setItem("token", response.token);
-        localStorage.setItem("userId", response.id); 
+        localStorage.setItem("userId", response.id);
         localStorage.setItem("isAuthenticated", "true");
-        navigate("/accueil");
+        navigate("/accueil");  // Redirection vers l'accueil
       } else {
         setErreur("Email ou mot de passe incorrect.");
       }
@@ -34,13 +33,13 @@ function ConnexionCompte() {
       }
     }
   };
-  
+
   return (
     <div className="container">
       <h2>Connexion</h2>
       <p>
-        Si vous n'utilisez pas le PC de Zoé où l'API, qui n'a pas pu être déployée, est en local,
-        la création de compte ainsi que la connexion ne fonctionneront pas. 
+        Si vous n'utilisez pas le PC de Zoé où l'API est en local,
+        la création de compte ainsi que la connexion ne fonctionneront pas.
         Dans ce cas, nous vous recommandons d'utiliser l'option "Sans Connexion".
       </p>
       {erreur && <p className="erreur">{erreur}</p>}

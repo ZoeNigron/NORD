@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Entete from "../../components/Entete/Entete";
-import BarreNavig from "../../components/Navigation/BarreNavig";
+import Entete from "../components/Entete/Entete";
+import BarreNavig from "../components/Navigation/BarreNavig";
 
 function PageNonDeveloppee() {
   return (

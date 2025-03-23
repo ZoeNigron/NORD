@@ -1,18 +1,15 @@
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { ArrowBack } from "@mui/icons-material";
+import { ArrowBack, AccountCircle } from "@mui/icons-material"; // Icône profil ajoutée
 import "./BarreNavig.css";
 
-function BarreNavig({ title }) {
+function BarreNavig({ title, estConnecte }) {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const estAccueilSansCo = location.pathname === "/accueil-sans-connexion";
-  const estProfil = location.pathname === "/profil";
-
   return (
     <nav className="barreNavig">
-      {(estAccueilSansCo || location.pathname !== "/") && (
+      {location.pathname !== "/" && (
         <button className="boutonRetour" onClick={() => navigate("/")}>
           <ArrowBack />
         </button>
@@ -20,8 +17,10 @@ function BarreNavig({ title }) {
 
       <div className="titrePage">{title || "Accueil"}</div>
 
-      {!estProfil && location.pathname !== "/accueil-sans-connexion" && (
+      {/* Affichage de l'icône de profil uniquement si connecté */}
+      {estConnecte && (
         <button className="boutonProfil" onClick={() => navigate("/profil")}>
+          <AccountCircle />
         </button>
       )}
     </nav>

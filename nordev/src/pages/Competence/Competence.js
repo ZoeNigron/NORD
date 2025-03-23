@@ -1,9 +1,9 @@
 import React from "react";
-import BarreNavig from "../../../components/Navigation/BarreNavig";
+import BarreNavig from "../../components/Navigation/BarreNavig";
 import { Link } from "react-router-dom";
-import Entete from "../../../components/Entete/Entete";
-import "../../AvecConnexion/Competence/Competence.css";
-import competences from "../../../services/donnees/competences";
+import Entete from "../../components/Entete/Entete";
+import "./Competence.css";
+import competences from "../../services/donnees/competences";
 
 function Competence() {
   return (
@@ -12,6 +12,7 @@ function Competence() {
       <BarreNavig
         title="Mes compétences"
         backLink="/accueil"
+        profileLink="/profil"
       />
 
       <div className="competence-liste">

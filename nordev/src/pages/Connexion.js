@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Entete from "../../components/Entete/Entete";
-import CreationCompte from "../../components/CreationCompte/CreationCompte";
-import ConnexionCompte from "../../components/ConnexionCompte/ConnexionCompte";
+import Entete from "../components/Entete/Entete";
+import CreationCompte from "../components/CreationCompte/CreationCompte";
+import ConnexionCompte from "../components/ConnexionCompte/ConnexionCompte";
 
 const Connexion = () => {
   const [isInscription, setIsInscription] = useState(false);

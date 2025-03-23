@@ -1,11 +1,11 @@
 import React from "react";
 import { useParams, Link } from "react-router-dom";
-import BarreNavig from "../../../components/Navigation/BarreNavig";
-import lecons from "../../../services/donnees/lecons";
-import Entete from "../../../components/Entete/Entete";
-import Lecon1 from "../../../components/Lecon1/Lecon1";
-import Lecon2 from "../../../components/Lecon2/Lecon2";
-import "../../AvecConnexion/MenuLecon/MenuLecon.css";
+import BarreNavig from "../../components/Navigation/BarreNavig";
+import lecons from "../../services/donnees/lecons";
+import Entete from "../../components/Entete/Entete";
+import Lecon1 from "../../components/Lecon1/Lecon1";
+import Lecon2 from "../../components/Lecon2/Lecon2";
+import "./MenuLecon.css";
 
 function MenuLecons() {
   const { id } = useParams();
@@ -22,7 +22,7 @@ function MenuLecons() {
       <Entete />
       <BarreNavig
         title={id ? `Leçon ${id}` : "Menu des leçons"}
-        backLink={id ? "/menu-lecons" : "/evaluer-les-distances-sans-connexion"}
+        backLink={id ? "/menu-lecons" : "/evaluer-les-distances"}
         homeLink="/"
       />
 
