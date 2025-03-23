@@ -1,28 +1,27 @@
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { ArrowBack, AccountCircle } from "@mui/icons-material";
+import { ArrowBack } from "@mui/icons-material";
 import "./BarreNavig.css";
 
 function BarreNavig({ title }) {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const estAccueil = location.pathname === "/accueil";
+  const estAccueilSansCo = location.pathname === "/accueil-sans-connexion";
   const estProfil = location.pathname === "/profil";
 
   return (
     <nav className="barreNavig">
-      {!estAccueil && (
-        <button className="boutonRetour" onClick={() => window.history.back()}>
+      {(estAccueilSansCo || location.pathname !== "/") && (
+        <button className="boutonRetour" onClick={() => navigate("/")}>
           <ArrowBack />
         </button>
       )}
 
       <div className="titrePage">{title || "Accueil"}</div>
 
-      {!estProfil && (
+      {!estProfil && location.pathname !== "/accueil-sans-connexion" && (
         <button className="boutonProfil" onClick={() => navigate("/profil")}>
-          <AccountCircle />
         </button>
       )}
     </nav>

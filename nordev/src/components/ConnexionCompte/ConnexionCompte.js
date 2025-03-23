@@ -38,6 +38,11 @@ function ConnexionCompte() {
   return (
     <div className="container">
       <h2>Connexion</h2>
+      <p>
+        Si vous n'utilisez pas le PC de Zoé où l'API, qui n'a pas pu être déployée, est en local,
+        la création de compte ainsi que la connexion ne fonctionneront pas. 
+        Dans ce cas, nous vous recommandons d'utiliser l'option "Sans Connexion".
+      </p>
       {erreur && <p className="erreur">{erreur}</p>}
       <form onSubmit={gererConnexion}>
         <input

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import BarreNavig from "../../components/Navigation/BarreNavig";
+import BarreNavig from "../../../components/Navigation/BarreNavig";
 import { Link } from "react-router-dom";
-import Entete from "../../components/Entete/Entete";
-import Quiz from "../../components/Quiz/Quiz";
+import Entete from "../../../components/Entete/Entete";
+import Quiz from "../../../components/Quiz/Quiz";
 
 const Distance = () => {
   const [quizComplet, setQuizComplet] = useState(false);

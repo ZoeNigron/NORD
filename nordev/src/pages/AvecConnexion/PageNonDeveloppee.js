@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Entete from "../components/Entete/Entete";
-import BarreNavig from "../components/Navigation/BarreNavig";
+import Entete from "../../components/Entete/Entete";
+import BarreNavig from "../../components/Navigation/BarreNavig";
 
-function PageNonDeveloppee () {
+function PageNonDeveloppee() {
   return (
     <div>
       <Entete />
@@ -13,6 +13,6 @@ function PageNonDeveloppee () {
       <p>Cette fonctionnalité n'a pas été développée pour ce projet.</p>
     </div>
   );
-};
+}
 
 export default PageNonDeveloppee;

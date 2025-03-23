@@ -92,7 +92,7 @@ export const obtenirQuestions = async () => {
 export const obtenirAstuces = async () => {
   try {
     const response = await axios.get(`${API_BASE_URL}/astuces`);
-    return response.data; // Retourne toutes les astuces
+    return response.data;
   } catch (error) {
     console.error("Erreur lors de la récupération des astuces :", error);
     return [];
@@ -121,6 +121,7 @@ export const ajouterAstuce = async (astuceData) => {
   }
 };
 
+// Modifier une astuce
 export const modifierAstuce = async (id, nouvelleAstuce) => {
   console.log("ID envoyé :", id);
   console.log("Corps de la requête :", JSON.stringify(nouvelleAstuce, null, 2));

@@ -4,7 +4,7 @@ import {
   ajouterAstuce,
   modifierAstuce,
   supprimerAstuce,
-} from "../api";
+} from "../../api";
 
 import "./GestionAstuces.css";
 import { Button, TextField, List, ListItem, IconButton } from "@mui/material";
@@ -16,7 +16,6 @@ function GestionAstuces() {
   const [modificationId, setModificationId] = useState(null);
   const [contenuModification, setContenuModification] = useState("");
 
-  // Charger les astuces depuis l'API
   useEffect(() => {
     const chargerAstuces = async () => {
       const data = await obtenirAstuces();
@@ -25,8 +24,7 @@ function GestionAstuces() {
     chargerAstuces();
   }, []);
 
-  // Ajouter une nouvelle astuce
-  const handleAjouterAstuce = async () => {
+  const gererAjouterAstuce = async () => {
     if (nouvelleAstuce.trim() !== "") {
       const nouvelle = await ajouterAstuce({ contenu: nouvelleAstuce });
       setAstuces([...astuces, nouvelle]);
@@ -34,39 +32,55 @@ function GestionAstuces() {
     }
   };
 
-  // Supprimer une astuce
-  const handleSupprimerAstuce = async (id) => {
+  const gererSupprimerAstuce = async (id) => {
     await supprimerAstuce(id);
     setAstuces(astuces.filter((astuce) => astuce.id !== id));
   };
 
-  // Modifier une astuce
-  const handleModifierAstuce = async (id) => {
-    const astuceModifiee = await modifierAstuce(id, {
-      contenu: contenuModification,
-    });
-    setAstuces(astuces.map((a) => (a.id === id ? astuceModifiee : a)));
+  const gererModifierAstuce = async (id) => {
+    // on sauvegarde l'état actuel des astuces au cas où la modification échoue
+    const ancienneAstuce = [...astuces];
+
+    setAstuces(
+      astuces.map(
+        (a) => (a.id === id ? { ...a, contenu: contenuModification } : a) // on met à jour directement l'élément modifié
+      )
+    );
+
+    try {
+      // on appel l'API pour valider la modification côté serveur
+      await modifierAstuce(id, { contenu: contenuModification });
+
+      // si l'appel réussit, les données sont déjà à jour
+    } catch (error) {
+      // en cas d'erreur, on affiche un message
+      alert("Erreur lors de la modification, annulation des changements.");
+
+      // restauration des anciennes données dans ce cas
+      setAstuces(ancienneAstuce);
+    }
+
     setModificationId(null);
     setContenuModification("");
   };
 
   return (
     <div className="gestion-astuces-container">
-      <h2>Gestion des Astuces</h2>
-
-      {/* Formulaire d'ajout */}
       <div className="ajout-astuce">
         <TextField
           label="Nouvelle astuce"
           value={nouvelleAstuce}
           onChange={(e) => setNouvelleAstuce(e.target.value)}
         />
-        <Button variant="contained" color="primary" onClick={handleAjouterAstuce}>
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={gererAjouterAstuce}
+        >
           Ajouter
         </Button>
       </div>
 
-      {/* Liste des astuces */}
       <List>
         {astuces.map((astuce) => (
           <ListItem key={astuce.id} className="astuce-item">
@@ -77,7 +91,8 @@ function GestionAstuces() {
                   onChange={(e) => setContenuModification(e.target.value)}
                 />
                 <Button
-                  onClick={() => handleModifierAstuce(astuce.id)}
+                  className="confirm-button"
+                  onClick={() => gererModifierAstuce(astuce.id)}
                   color="success"
                   variant="contained"
                 >
@@ -98,7 +113,7 @@ function GestionAstuces() {
                 </IconButton>
                 <IconButton
                   color="error"
-                  onClick={() => handleSupprimerAstuce(astuce.id)}
+                  onClick={() => gererSupprimerAstuce(astuce.id)}
                 >
                   <Delete />
                 </IconButton>
