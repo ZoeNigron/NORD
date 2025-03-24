@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+//import BarreNavig from "./components/Navigation/BarreNavig";
 import Connexion from "./pages/Connexion";
 import Accueil from "./pages/Accueil/Accueil";
 import Competence from "./pages/Competence/Competence";
@@ -14,18 +15,8 @@ function App() {
   return (
     <Router>
       <Routes>
-        {/* Route publique pour la page d'accueil */}
-        <Route path="/" element={<Accueil />} />
-        <Route path="/mes-competences" element={<Competence />} />
-        <Route path="/evaluer-les-distances" element={<Distance />} />
-        <Route path="/menu-lecons" element={<MenuLecon />} />
-        <Route path="/menu-lecons/:id" element={<MenuLecon />} />
-        <Route path="/page-non-developpee" element={<PageNonDeveloppee />} />
+        <Route path="/" element={<Connexion />} />
 
-        {/* Routes pour la connexion et la création de compte */}
-        <Route path="/connexion" element={<Connexion />} />
-
-        {/* Routes protégées accessibles uniquement si connecté */}
         <Route element={<RoutePrivee />}>
           <Route path="/accueil" element={<Accueil />} />
           <Route path="/mes-astuces" element={<Astuces />} />

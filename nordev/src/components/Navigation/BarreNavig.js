@@ -1,24 +1,26 @@
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { ArrowBack, AccountCircle } from "@mui/icons-material"; // Icône profil ajoutée
+import { ArrowBack, AccountCircle } from "@mui/icons-material";
 import "./BarreNavig.css";
 
-function BarreNavig({ title, estConnecte }) {
+function BarreNavig({ title }) {
   const location = useLocation();
   const navigate = useNavigate();
 
+  const estAccueil = location.pathname === "/accueil";
+  const estProfil = location.pathname === "/profil";
+
   return (
     <nav className="barreNavig">
-      {location.pathname !== "/" && (
-        <button className="boutonRetour" onClick={() => navigate("/")}>
+      {!estAccueil && (
+        <button className="boutonRetour" onClick={() => window.history.back()}>
           <ArrowBack />
         </button>
       )}
 
       <div className="titrePage">{title || "Accueil"}</div>
 
-      {/* Affichage de l'icône de profil uniquement si connecté */}
-      {estConnecte && (
+      {!estProfil && (
         <button className="boutonProfil" onClick={() => navigate("/profil")}>
           <AccountCircle />
         </button>

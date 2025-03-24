@@ -21,7 +21,7 @@ const Connexion = () => {
           : "Pas encore de compte ? Créer un compte"}
       </button>
 
-      <button onClick={() => navigate(-1)} className="bouton-retour">
+      <button onClick={() => navigate("/")} className="bouton-retour">
         Retour
       </button>
     </div>
