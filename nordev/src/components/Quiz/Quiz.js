@@ -127,4 +127,4 @@ function Quiz({ quiz }) {
   );
 }
 
-export default Quiz;
+export default Quiz; //
