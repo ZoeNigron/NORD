@@ -9,9 +9,7 @@ import Astuce from "../../components/Astuce/Astuce"; // Affichage des astuces aj
 
 const Accueil = () => {
   const navigate = useNavigate();
-  const [estConnecte, setEstConnecte] = useState(
-    localStorage.getItem("isAuthenticated") === "true"
-  );
+  const [estConnecte, setEstConnecte] = useState(false);
 
   useEffect(() => {
     modeAudio(
