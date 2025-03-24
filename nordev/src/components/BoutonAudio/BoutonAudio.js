@@ -4,17 +4,19 @@ import modeAudio from "../../services/fonctions/modeAudio";
 import "./BoutonAudio.css";
 
 function BoutonAudio({ texte }) {
-  // prop qui contient le texte à lire
   const [audioActive, setAudioActive] = useState(false);
 
   const audio = () => {
-    // bouton audio : on utilise l'API speechSynthesis du navigateur
-    setAudioActive(!audioActive); // Si true, on passe à false (arrêt du son)
-    // Si false, on passe à true (lancement du son)
     if (audioActive) {
-      window.speechSynthesis.cancel(); // Si audioActive était déjà true, on arrête la lecture
+      window.speechSynthesis.cancel(); // Arrêter l'audio en cours
+      setAudioActive(false); // Désactivation du bouton actif
     } else {
-      modeAudio(texte); // Sinon, on lance la lecture
+      modeAudio(texte); // Démarrage du texte audio
+      setAudioActive(true); // Activation du bouton actif
+
+      // Éviter que l'état "actif" reste bloqué même après la fin du texte
+      const synthese = window.speechSynthesis;
+      synthese.onend = () => setAudioActive(false);
     }
   };
 

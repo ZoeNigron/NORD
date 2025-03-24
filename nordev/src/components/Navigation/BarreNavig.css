@@ -9,6 +9,21 @@
   position: relative;
 }
 
+.titrePage {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 16px;
+  font-weight: bold;
+  color: #800000;
+  text-align: center;
+}
+
+.nav-icons {
+  display: flex;
+  align-items: center;  /* Alignement horizontal des icônes */
+  gap: 10px;            /* Espacement entre le bouton audio et l'icône profil */
+}
 .boutonRetour {
   background: none;
   border: none;
@@ -49,7 +64,24 @@
   margin-left: auto;
 }
 
-.boutonRetour:hover,
-.boutonProfil:hover {
-  color: #ffe4e4;
+.boutonAudio {
+  background: none;
+  border: none;
+  color: #333;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 5px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px; /* 🔹 Pour espacer du bouton profil */
 }
+
+.boutonRetour:hover,
+.boutonProfil:hover,
+.boutonAudio:hover {
+  color: #800000; /* Harmonisation de la couleur au survol */
+}
+

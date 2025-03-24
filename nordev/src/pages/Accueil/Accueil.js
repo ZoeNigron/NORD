@@ -5,7 +5,6 @@ import Entete from "../../components/Entete/Entete";
 import Astuce from "../../components/Astuce/Astuce";
 import "./Accueil.css";
 import Utilisateur from "../../components/Utilisateur";
-import BoutonAudio from "../../components/BoutonAudio/BoutonAudio";
 import modeAudio from "../../services/fonctions/modeAudio";
 
 const Accueil = () => {
@@ -18,8 +17,11 @@ const Accueil = () => {
   return (
     <div className="accueil-container">
       <Entete />
-      <BarreNavig title="Accueil" homeLink="/" />
-      <BoutonAudio texte="Bienvenue sur la page d’accueil. Vous pouvez cliquer sur le bouton en bas de la page pour continuer. Cela vous permettra d'accéder à vos compétences et à d'autres fonctionnalités." />
+      <BarreNavig 
+        title="Accueil" 
+        homeLink="/"
+        texteAudio="Bienvenue sur la page d’accueil. Vous pouvez cliquer sur le bouton en bas de la page pour continuer. Cela vous permettra d'accéder à vos compétences et à d'autres fonctionnalités."
+      />
 
       <Astuce />
 

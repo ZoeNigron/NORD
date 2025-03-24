@@ -18,7 +18,9 @@ const Distance = () => {
         title="Évaluer les distances"
         backLink="/mes-competences"
         homeLink="/"
+        texteAudio="Bienvenue dans l'évaluation des distances. Complétez le quiz pour avancer."
       />
+      
       <Quiz quiz={gererQuizComplet} />
 
       {quizComplet && (

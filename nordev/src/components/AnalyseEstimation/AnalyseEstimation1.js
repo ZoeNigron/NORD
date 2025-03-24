@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ChoixErreur from "../ChoixErreur";
 import { CheckCircle, ArrowUpward, ArrowDownward, Cancel } from "@mui/icons-material";
 import "./AnalyseEstimation.css";
@@ -9,11 +9,14 @@ function AnalyseEstimation1({ distance, estimation }) {
 
   const [choixErrone, setChoixErrone] = useState(null);
   const [isCorrect, setIsCorrect] = useState(null);
+  const [sequenceCorrecte, setSequenceCorrecte] = useState(0);
+  const [score, setScore] = useState(0);
 
   let message = "";
   let messageClasse = "";
   let messageIcone = null;
 
+  // Vérifier si la différence est dans la marge d'erreur de 5 mètres
   if (difference <= 5) {
     message = "Bravo ! Vous avez parcouru la bonne distance (à 5 mètres près).";
     messageClasse = "message-correct";
@@ -32,6 +35,25 @@ function AnalyseEstimation1({ distance, estimation }) {
     setChoixErrone(distanceChoisie);
     setIsCorrect(distanceChoisie === distanceArrondie);
   };
+
+  useEffect(() => {
+    if (difference <= 5) {
+      setSequenceCorrecte((prevSequence) => {
+        const nouvelleSequence = prevSequence + 1;
+        if (nouvelleSequence >= 5) {
+          setScore((prevScore) => prevScore + 10); 
+          return 0; // Réinitialiser la séquence après 5 réussites
+        }
+        return nouvelleSequence;
+      });
+    } else {
+      setSequenceCorrecte(0); // Réinitialisation en cas d'erreur
+    }
+  }, [difference]);
+
+
+  // Afficher le nombre de réussites restantes avant le bonus
+  const reussitesRestantes = 5 - sequenceCorrecte;
 
   return (
     <div className="analyse-estimation">
@@ -71,6 +93,13 @@ function AnalyseEstimation1({ distance, estimation }) {
           )}
         </div>
       )}
+
+      <div className="score">
+        <p>Votre score : {score}</p>
+        {sequenceCorrecte > 0 && (
+          <p>Il vous reste {reussitesRestantes} réussite(s) avant un bonus de score !</p>
+        )}
+      </div>
     </div>
   );
 }

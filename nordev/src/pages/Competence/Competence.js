@@ -1,11 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import BarreNavig from "../../components/Navigation/BarreNavig";
 import { Link } from "react-router-dom";
 import Entete from "../../components/Entete/Entete";
 import "./Competence.css";
 import competences from "../../services/donnees/competences";
+import modeAudio from "../../services/fonctions/modeAudio"; 
+import BoutonAudio from "../../components/BoutonAudio/BoutonAudio";
 
 function Competence() {
+  useEffect(() => {
+    modeAudio("Bienvenue dans la section compétences. Sélectionnez une compétence pour commencer.");
+  }, []);
+
   return (
     <div className="competence-container">
       <Entete />
@@ -14,6 +20,8 @@ function Competence() {
         backLink="/accueil"
         profileLink="/profil"
       />
+
+      <BoutonAudio texte="Bienvenue dans la section compétences. Sélectionnez une compétence pour commencer." />
 
       <div className="competence-liste">
         {competences.map((competence) => (

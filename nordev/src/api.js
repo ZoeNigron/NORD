@@ -149,3 +149,26 @@ export const supprimerAstuce = async (id) => {
     return false;
   }
 };
+
+export const mettreAJourScore = (userId, score) => {
+  axios
+    .post(`${API_BASE_URL}/utilisateur/updateScore`, { userId, score })
+    .then((response) => {
+      console.log("Score mis à jour", response.data);
+    })
+    .catch((error) => {
+      console.error("Erreur de mise à jour du score", error);
+    });
+};
+
+// Fonction pour obtenir les meilleurs scores
+export const obtenirTopScores = async () => {
+  try {
+    const response = await axios.get(`${API_BASE_URL}/utilisateur/topScores`);
+    return response.data;
+  } catch (error) {
+    console.error("Erreur lors de la récupération des meilleurs scores", error);
+    throw error;
+  }
+};
+

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import BarreNavig from "../../components/Navigation/BarreNavig";
 import lecons from "../../services/donnees/lecons";
@@ -6,10 +6,20 @@ import Entete from "../../components/Entete/Entete";
 import Lecon1 from "../../components/Lecon1/Lecon1";
 import Lecon2 from "../../components/Lecon2/Lecon2";
 import "./MenuLecon.css";
+import modeAudio from "../../services/fonctions/modeAudio";
+import BoutonAudio from "../../components/BoutonAudio/BoutonAudio";
 
 function MenuLecons() {
   const { id } = useParams();
   const lecon = id ? lecons.find((lecon) => lecon.id === parseInt(id)) : null;
+
+  useEffect(() => {
+    modeAudio(
+      id
+        ? `Vous êtes dans la leçon ${id}. Suivez les instructions pour continuer.`
+        : "Bienvenue dans le menu des leçons. Sélectionnez une leçon pour commencer."
+    );
+  }, [id]);
 
   const afficherLecon = () => {
     if (id === "1") return <Lecon1 />;
@@ -24,6 +34,14 @@ function MenuLecons() {
         title={id ? `Leçon ${id}` : "Menu des leçons"}
         backLink={id ? "/menu-lecons" : "/evaluer-les-distances"}
         homeLink="/"
+      />
+
+      <BoutonAudio
+        texte={
+          id
+            ? `Vous êtes dans la leçon ${id}. Suivez les instructions pour continuer.`
+            : "Bienvenue dans le menu des leçons. Sélectionnez une leçon pour commencer."
+        }
       />
 
       {id && lecon ? (

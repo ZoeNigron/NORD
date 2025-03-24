@@ -1,9 +1,10 @@
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { ArrowBack, AccountCircle } from "@mui/icons-material";
+import BoutonAudio from "../../components/BoutonAudio/BoutonAudio";
 import "./BarreNavig.css";
 
-function BarreNavig({ title }) {
+function BarreNavig({ title, texteAudio }) {
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -19,6 +20,9 @@ function BarreNavig({ title }) {
       )}
 
       <div className="titrePage">{title || "Accueil"}</div>
+
+      {/* 🔈 Bouton audio ajouté ici */}
+      {texteAudio && <BoutonAudio texte={texteAudio} className="boutonAudio" />}
 
       {!estProfil && (
         <button className="boutonProfil" onClick={() => navigate("/profil")}>
