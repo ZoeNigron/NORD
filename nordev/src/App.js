@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Connexion from "./pages/Connexion";
+import Connexion from "./pages/Connexion/Connexion";
 import Accueil from "./pages/Accueil/Accueil";
 import Competence from "./pages/Competence/Competence";
 import Distance from "./pages/Distance/Distance";

@@ -21,9 +21,11 @@
 
 .nav-icons {
   display: flex;
-  align-items: center;  /* Alignement horizontal des icônes */
-  gap: 10px;            /* Espacement entre le bouton audio et l'icône profil */
+  align-items: center; 
+  gap: 10px; 
+  margin-left: auto;     
 }
+
 .boutonRetour {
   background: none;
   border: none;
@@ -64,24 +66,10 @@
   margin-left: auto;
 }
 
-.boutonAudio {
-  background: none;
-  border: none;
-  color: #333;
-  font-size: 20px;
-  cursor: pointer;
-  padding: 5px;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-right: 10px; /* 🔹 Pour espacer du bouton profil */
-}
-
 .boutonRetour:hover,
-.boutonProfil:hover,
-.boutonAudio:hover {
-  color: #800000; /* Harmonisation de la couleur au survol */
+.boutonProfil:hover{
+    color: #ffffff;
+    background-color: #800000;
+    transform: scale(1.1);
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
-

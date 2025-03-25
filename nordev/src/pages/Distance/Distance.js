@@ -7,17 +7,13 @@ import Quiz from "../../components/Quiz/Quiz";
 const Distance = () => {
   const [quizComplet, setQuizComplet] = useState(false);
 
-  const gererQuizComplet = () => {
-    setQuizComplet(true); // Fin du quiz
-  };
+  const gererQuizComplet = () => setQuizComplet(true);
 
   return (
     <div>
       <Entete />
       <BarreNavig
         title="Évaluer les distances"
-        backLink="/mes-competences"
-        homeLink="/"
         texteAudio="Bienvenue dans l'évaluation des distances. Complétez le quiz pour avancer."
       />
       

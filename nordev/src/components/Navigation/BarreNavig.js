@@ -21,14 +21,14 @@ function BarreNavig({ title, texteAudio }) {
 
       <div className="titrePage">{title || "Accueil"}</div>
 
-      {/* 🔈 Bouton audio ajouté ici */}
-      {texteAudio && <BoutonAudio texte={texteAudio} className="boutonAudio" />}
-
-      {!estProfil && (
-        <button className="boutonProfil" onClick={() => navigate("/profil")}>
-          <AccountCircle />
-        </button>
-      )}
+      <div className="nav-icons">
+        {texteAudio && <BoutonAudio texte={texteAudio} />}
+        {!estProfil && (
+          <button className="boutonProfil" onClick={() => navigate("/profil")}>
+            <AccountCircle />
+          </button>
+        )}
+      </div>
     </nav>
   );
 }

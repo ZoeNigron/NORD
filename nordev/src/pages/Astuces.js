@@ -1,20 +1,18 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Entete from "../components/Entete/Entete";
 import BarreNavig from "../components/Navigation/BarreNavig";
 import GestionAstuces from "../components/GestionAstuces/GestionAstuces";
-import modeAudio from "../services/fonctions/modeAudio";
-import BoutonAudio from "../components/BoutonAudio/BoutonAudio";
 
 function Astuces() {
-  useEffect(() => {
-    modeAudio("Bienvenue dans la section astuces. Écoutez attentivement pour progresser.");
-  }, []);
+  const texteAudio = "Bienvenue dans la section astuces. Voici les astuces que l'ensemble des utilisateurs trouve utiles pour améliorer le sens de l'orientation.";
 
   return (
     <div>
       <Entete />
-      <BarreNavig title="Mes astuces" homeLink="/" />
-      <BoutonAudio texte="Bienvenue dans la section astuces. Écoutez attentivement pour progresser." />
+      <BarreNavig 
+        title="Mes astuces"
+        texteAudio={texteAudio}
+      />
       <GestionAstuces />
     </div>
   );

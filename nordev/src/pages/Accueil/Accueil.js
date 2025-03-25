@@ -1,25 +1,17 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import BarreNavig from "../../components/Navigation/BarreNavig";
 import Entete from "../../components/Entete/Entete";
 import Astuce from "../../components/Astuce/Astuce";
 import "./Accueil.css";
 import Utilisateur from "../../components/Utilisateur";
-import modeAudio from "../../services/fonctions/modeAudio";
 
 const Accueil = () => {
-  useEffect(() => {
-    modeAudio(
-      "Bienvenue sur la page d'accueil. Vous pouvez accéder à vos compétences et à d'autres fonctionnalités."
-    );
-  }, []);
-
   return (
     <div className="accueil-container">
       <Entete />
       <BarreNavig 
-        title="Accueil" 
-        homeLink="/"
+        title="Accueil"
         texteAudio="Bienvenue sur la page d’accueil. Vous pouvez cliquer sur le bouton en bas de la page pour continuer. Cela vous permettra d'accéder à vos compétences et à d'autres fonctionnalités."
       />
 
