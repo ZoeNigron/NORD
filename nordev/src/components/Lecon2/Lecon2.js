@@ -32,7 +32,7 @@ const Lecon2 = () => {
   };
 
   return (
-    <div className="lecon-container">
+    <div>
       {!entrainementTermine ? (
         <Entrainement2 />
       ) : (

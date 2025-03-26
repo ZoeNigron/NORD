@@ -2,7 +2,7 @@ import React from "react";
 import { CheckCircle, ArrowUpward, ArrowDownward } from "@mui/icons-material";
 import "./AnalyseEstimation.css";
 
-function AnalyseEstimation2({ distance, estimation }) {
+function AnalyseEstimation2({ distance, estimation, compteur, onRefaireExercice }) {
   const distanceArrondie = Math.round(distance); // estimation au mètre près
   const difference = Math.abs(distanceArrondie - estimation);
 
@@ -29,9 +29,17 @@ function AnalyseEstimation2({ distance, estimation }) {
       <p>
         <strong>Distance réelle :</strong> {distanceArrondie} mètres
       </p>
-      <div className={`message ${messageClasse}`}>
+      <div className={`${messageClasse}`}>
         {messageIcone} {message}
       </div>
+
+      <div className="compteur">
+        <p>Vous avez refait cet exercice {compteur} fois.</p>
+      </div>
+
+      <button onClick={onRefaireExercice} className="refaire-bouton">
+        Refaire l'exercice
+      </button>
     </div>
   );
 }

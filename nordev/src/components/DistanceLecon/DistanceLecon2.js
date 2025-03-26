@@ -14,7 +14,7 @@ function DistanceLecon2({ distanceCalculee }) {
     if (!positionActuelle) {
       const timer = setTimeout(() => {
         setAfficherMessageErreur(true);
-      }, 3000); // 3 secondes
+      }, 5000); // 5 secondes
 
       return () => clearTimeout(timer);
     } else {

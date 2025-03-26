@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState} from "react";
 import ChoixErreur from "../ChoixErreur";
 import { CheckCircle, ArrowUpward, ArrowDownward, Cancel } from "@mui/icons-material";
 import "./AnalyseEstimation.css";
@@ -9,8 +9,6 @@ function AnalyseEstimation1({ distance, estimation }) {
 
   const [choixErrone, setChoixErrone] = useState(null);
   const [isCorrect, setIsCorrect] = useState(null);
-  const [sequenceCorrecte, setSequenceCorrecte] = useState(0);
-  const [score, setScore] = useState(0);
 
   let message = "";
   let messageClasse = "";
@@ -36,25 +34,6 @@ function AnalyseEstimation1({ distance, estimation }) {
     setIsCorrect(distanceChoisie === distanceArrondie);
   };
 
-  useEffect(() => {
-    if (difference <= 5) {
-      setSequenceCorrecte((prevSequence) => {
-        const nouvelleSequence = prevSequence + 1;
-        if (nouvelleSequence >= 5) {
-          setScore((prevScore) => prevScore + 10); 
-          return 0; // Réinitialiser la séquence après 5 réussites
-        }
-        return nouvelleSequence;
-      });
-    } else {
-      setSequenceCorrecte(0); // Réinitialisation en cas d'erreur
-    }
-  }, [difference]);
-
-
-  // Afficher le nombre de réussites restantes avant le bonus
-  const reussitesRestantes = 5 - sequenceCorrecte;
-
   return (
     <div className="analyse-estimation">
       {messageClasse === "message-correct" ? (
@@ -62,13 +41,13 @@ function AnalyseEstimation1({ distance, estimation }) {
           <p>
             <strong>Distance réelle :</strong> {distanceArrondie} mètres
           </p>
-          <div className={`message ${messageClasse}`}>
+          <div className={`${messageClasse}`}>
             {messageIcone} {message}
           </div>
         </>
       ) : (
         <>
-          <div className={`message ${messageClasse}`}>
+          <div className={`${messageClasse}`}>
             {messageIcone} {message}
           </div>
           <ChoixErreur
@@ -93,13 +72,6 @@ function AnalyseEstimation1({ distance, estimation }) {
           )}
         </div>
       )}
-
-      <div className="score">
-        <p>Votre score : {score}</p>
-        {sequenceCorrecte > 0 && (
-          <p>Il vous reste {reussitesRestantes} réussite(s) avant un bonus de score !</p>
-        )}
-      </div>
     </div>
   );
 }

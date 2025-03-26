@@ -1,6 +1,7 @@
 import axios from "axios";
 
 const API_BASE_URL = "http://localhost:5039/api";
+//const API_BASE_URL = "http://172.20.10.2:5039/api";
 
 // Connexion utilisateur
 export const connecterUtilisateur = async (identifiants) => {
@@ -172,3 +173,46 @@ export const obtenirTopScores = async () => {
   }
 };
 
+// Fonction pour obtenir les compétences
+export const getCompetences = async () => {
+  try {
+    const response = await axios.get(`${API_BASE_URL}/competences`);
+    return response.data;
+  } catch (error) {
+    console.error("Erreur lors de la récupération des compétences :", error);
+    return [];
+  }
+};
+
+// Fonction pour obtenir les exercices
+export const getExercices = async () => {
+  try {
+    const response = await axios.get(`${API_BASE_URL}/exercices`);
+    return response.data;
+  } catch (error) {
+    console.error("Erreur lors de la récupération des exercices :", error);
+    return [];
+  }
+};
+
+// Fonction pour obtenir les lecons
+export const getLecons = async () => {
+  try {
+    const response = await axios.get(`${API_BASE_URL}/lecons`);
+    return response.data;
+  } catch (error) {
+    console.error("Erreur lors de la récupération des leçons :", error);
+    return [];
+  }
+};
+
+// Fonction pour obtenir les quiz
+export const getQuestionsQuiz = async () => {
+  try {
+    const response = await axios.get(`${API_BASE_URL}/questionsquiz`);
+    return response.data;
+  } catch (error) {
+    console.error("Erreur lors de la récupération du quiz :", error);
+    return [];
+  }
+};

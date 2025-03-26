@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { CheckCircle, Cancel, ArrowForward } from "@mui/icons-material";
-import questionsQuiz from "../../services/donnees/questionsQuiz";
+import { getQuestionsQuiz } from "../../api";
 import "./Quiz.css";
 
 function Quiz({ quiz }) {
+  const [questionsQuiz, setQuestionsQuiz] = useState([]);
   const [questionActuelle, setQuestionActuelle] = useState(0);
   const [reponseSelectionnee, setReponseSelectionnee] = useState(null);
   const [score, setScore] = useState(0);
@@ -11,7 +12,26 @@ function Quiz({ quiz }) {
   const [reponseValidee, setReponseValidee] = useState(false);
   const [isquizPasse, setQuizPasse] = useState(false);
 
-  const question = questionsQuiz[questionActuelle];
+  // Fonction pour récupérer les questions depuis l'API
+  useEffect(() => {
+    const fetchQuestionsQuiz = async () => {
+      try {
+        const questions = await getQuestionsQuiz(); // Utiliser la fonction d'API pour récupérer les questions
+        setQuestionsQuiz(questions); // Met à jour les questions avec les données de l'API
+      } catch (error) {
+        console.error("Erreur lors de la récupération des questions:", error);
+      }
+    };
+
+    fetchQuestionsQuiz(); // Appel de la fonction pour récupérer les questions
+  }, []);
+
+  // Si aucune question n'est encore récupérée, on ne rend rien
+  if (questionsQuiz.length === 0) {
+    return <div>Chargement du quiz...</div>;
+  }
+
+  const question = questionsQuiz[questionActuelle]; // Utilise la question actuelle du tableau
 
   const selectionReponse = (idSelectionne) => {
     if (!reponseValidee) {
@@ -33,13 +53,13 @@ function Quiz({ quiz }) {
 
     if (questionActuelle === questionsQuiz.length - 1) {
       setQuizComplete(true);
-      quiz();
+      quiz(); // Appelle la fonction de retour après le quiz
     }
   };
 
   const abandonQuiz = () => {
     setQuizPasse(true);
-    quiz();
+    quiz(); // Appelle la fonction de retour après avoir abandonné
   };
 
   let message = "";
@@ -48,13 +68,13 @@ function Quiz({ quiz }) {
 
   if (reponseValidee) {
     if (reponseSelectionnee === question.bonneReponse) {
-      message = <><CheckCircle className="icone-correct" /> Bravo ! Vous avez donné la bonne réponse.</>
+      message = <><CheckCircle className="icone-correct" /> Bravo ! Vous avez donné la bonne réponse.</>;
       messageClasse = "message-correct";
     } else {
       message = <><Cancel className="icone-incorrect" /> Mauvaise réponse.</>;
       messageClasse = "message-incorrect";
 
-      const reponseCorrecte = question.options.find( 
+      const reponseCorrecte = question.options.find(
         (option) => option.id === question.bonneReponse
       );
       texteBonneReponse = `La bonne réponse était : "${reponseCorrecte.texte}"`;

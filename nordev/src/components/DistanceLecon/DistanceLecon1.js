@@ -45,7 +45,7 @@ const DistanceLecon1 = ({ exercice, onDistanceCalculee, onErreurPosition }) => {
         setErreurPosition(
           "Impossible de récupérer votre position. Veuillez vérifier vos paramètres de localisation."
         );
-      }, 3000);
+      }, 5000);
 
       return () => clearTimeout(timer);
     }

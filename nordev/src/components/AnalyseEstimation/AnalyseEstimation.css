@@ -23,15 +23,15 @@
 }
 
 .message-incorrect {
-  color: #721c24;
+  color: #800000;
   background-color: #f8d7da;
   border: 1px solid #f5c6cb;
 }
 
 .icon-correct {
-  color: green;
+  color: #155724;
 }
 
 .icon-incorrect {
-  color: red;
+  color: #800000;
 }

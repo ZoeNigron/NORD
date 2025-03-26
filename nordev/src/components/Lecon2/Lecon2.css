@@ -18,13 +18,12 @@
   .resultat {
     margin-top: 20px;
     padding: 20px;
-    background-color: #e1f7d5;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   }
   
   @media (max-width: 768px) {
-    .lecon2-container {
+    .lecon-container {
       padding: 15px;
     }
   

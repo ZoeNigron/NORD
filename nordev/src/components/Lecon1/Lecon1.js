@@ -1,15 +1,25 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import SelectionExercice from "../SelectionExercice/SelectionExercice";
 import Entrainement1 from "../Entrainement/Entrainement1";
 import DistanceLecon1 from "../DistanceLecon/DistanceLecon1";
 import AnalyseEstimation1 from "../AnalyseEstimation/AnalyseEstimation1";
-import exercices from "../../services/donnees/exercices";
+import { getExercices } from "../../api";
 import "./Lecon1.css";
 
 function Lecon1() {
+  const [exercices, setExercices] = useState([]);
   const [exerciceActif, setExerciceActif] = useState(null);
   const [distanceParcourue, setDistanceParcourue] = useState(null);
   const [entrainementTermine, setEntrainementTermine] = useState(false);
+
+  useEffect(() => {
+    const fetchExercices = async () => {
+      const data = await getExercices();
+      setExercices(data);
+    };
+
+    fetchExercices();
+  }, []);
 
   return (
     <div>
