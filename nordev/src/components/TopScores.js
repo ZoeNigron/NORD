@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { obtenirTopScores } from './api';
+import React, { useEffect, useState } from "react";
+import { obtenirTopScores } from "./api";
 
 function TopScores() {
   const [topScores, setTopScores] = useState([]);
@@ -10,7 +10,7 @@ function TopScores() {
         const scores = await obtenirTopScores();
         setTopScores(scores);
       } catch (error) {
-        console.error('Erreur lors de la récupération des scores', error);
+        console.error("Erreur lors de la récupération des scores", error);
       }
     };
     fetchTopScores();

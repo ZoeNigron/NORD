@@ -7,8 +7,6 @@ import Quiz from "../../components/Quiz/Quiz";
 const Distance = () => {
   const [quizComplet, setQuizComplet] = useState(false);
 
-  const gererQuizComplet = () => setQuizComplet(true);
-
   return (
     <div>
       <Entete />
@@ -16,17 +14,12 @@ const Distance = () => {
         title="Évaluer les distances"
         texteAudio="Bienvenue dans l'évaluation des distances. Complétez le quiz pour avancer."
       />
-      
-      <Quiz quiz={gererQuizComplet} />
+
+      <Quiz id={1} onQuizEnd={() => setQuizComplet(true)} />
 
       {quizComplet && (
         <Link to="/menu-lecons">
-          <button
-            className="bouton"
-            onClick={() => console.log("Navigation vers Menu Leçons")}
-          >
-            Accéder à mes leçons
-          </button>
+          <button className="bouton">Accéder à mes leçons</button>
         </Link>
       )}
     </div>

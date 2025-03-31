@@ -100,57 +100,64 @@ export const obtenirAstuces = async () => {
   }
 };
 
-// Obtenir une astuce par son ID
-export const obtenirAstuceParId = async (id) => {
+// Fonction pour obtenir les compétences
+export const obtenirCompetences = async () => {
   try {
-    const response = await axios.get(`${API_BASE_URL}/astuces/${id}`);
+    const response = await axios.get(`${API_BASE_URL}/competences`);
     return response.data;
   } catch (error) {
-    console.error("Erreur lors de la récupération de l'astuce :", error);
-    throw new Error("Erreur lors de la récupération de l'astuce");
+    console.error("Erreur lors de la récupération des compétences :", error);
+    return [];
   }
 };
 
-// Ajouter une nouvelle astuce
-export const ajouterAstuce = async (astuceData) => {
+// Fonction pour obtenir les exercices
+export const obtenirExercices = async () => {
   try {
-    const response = await axios.post(`${API_BASE_URL}/astuces`, astuceData);
+    const response = await axios.get(`${API_BASE_URL}/exercices`);
     return response.data;
   } catch (error) {
-    console.error("Erreur lors de l'ajout de l'astuce :", error);
-    return null;
+    console.error("Erreur lors de la récupération des exercices :", error);
+    return [];
   }
 };
 
-// Modifier une astuce
-export const modifierAstuce = async (id, nouvelleAstuce) => {
-  console.log("ID envoyé :", id);
-  console.log("Corps de la requête :", JSON.stringify(nouvelleAstuce, null, 2));
+// Fonction pour obtenir les lecons
+export const obtenirLecons = async () => {
   try {
-    const response = await axios.put(
-      `${API_BASE_URL}/astuces/${id}`,
-      { id, ...nouvelleAstuce },
-      { headers: { "Content-Type": "application/json" } }
-    );
-    console.log("Réponse de l'API :", response.data);
+    const response = await axios.get(`${API_BASE_URL}/lecons`);
     return response.data;
   } catch (error) {
-    console.error("Erreur lors de la mise à jour de l'astuce :", error);
-    throw new Error("Erreur lors de la mise à jour de l'astuce");
+    console.error("Erreur lors de la récupération des leçons :", error);
+    return [];
   }
 };
 
-// Supprimer une astuce
-export const supprimerAstuce = async (id) => {
+// Fonction pour obtenir les quiz
+export const obtenirQuiz = async (quizId) => {
+  console.log("Quiz ID: ", quizId);
   try {
-    await axios.delete(`${API_BASE_URL}/astuces/${id}`);
-    return true;
+    console.log(`Fetching quiz with ID: ${quizId}`);
+    const response = await axios.get(`${API_BASE_URL}/quiz/${quizId}`);
+    console.log("Quiz data:", response.data);
+    return response.data;
   } catch (error) {
-    console.error("Erreur lors de la suppression de l'astuce :", error);
-    return false;
+    console.error("Error fetching quiz:", error);
+    throw error;
   }
 };
 
+export const obtenirScore = async (idUtilisateur) => {
+  try {
+    const response = await axios.get(`${API_BASE_URL}/utilisateur/${idUtilisateur}`);
+    return response.data.score; // Récupère uniquement le score
+  } catch (error) {
+    console.error("Erreur lors de la récupération du score :", error);
+    return null; // Retourne null en cas d'erreur
+  }
+};
+
+// Fonction pour mettre à jour le score
 export const mettreAJourScore = (userId, score) => {
   axios
     .post(`${API_BASE_URL}/utilisateur/updateScore`, { userId, score })
@@ -170,49 +177,5 @@ export const obtenirTopScores = async () => {
   } catch (error) {
     console.error("Erreur lors de la récupération des meilleurs scores", error);
     throw error;
-  }
-};
-
-// Fonction pour obtenir les compétences
-export const getCompetences = async () => {
-  try {
-    const response = await axios.get(`${API_BASE_URL}/competences`);
-    return response.data;
-  } catch (error) {
-    console.error("Erreur lors de la récupération des compétences :", error);
-    return [];
-  }
-};
-
-// Fonction pour obtenir les exercices
-export const getExercices = async () => {
-  try {
-    const response = await axios.get(`${API_BASE_URL}/exercices`);
-    return response.data;
-  } catch (error) {
-    console.error("Erreur lors de la récupération des exercices :", error);
-    return [];
-  }
-};
-
-// Fonction pour obtenir les lecons
-export const getLecons = async () => {
-  try {
-    const response = await axios.get(`${API_BASE_URL}/lecons`);
-    return response.data;
-  } catch (error) {
-    console.error("Erreur lors de la récupération des leçons :", error);
-    return [];
-  }
-};
-
-// Fonction pour obtenir les quiz
-export const getQuestionsQuiz = async () => {
-  try {
-    const response = await axios.get(`${API_BASE_URL}/questionsquiz`);
-    return response.data;
-  } catch (error) {
-    console.error("Erreur lors de la récupération du quiz :", error);
-    return [];
   }
 };

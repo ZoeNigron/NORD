@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import { getLecons } from "../../api"; 
+import { obtenirLecons } from "../../api"; 
 import BarreNavig from "../../components/Navigation/BarreNavig";
 import Entete from "../../components/Entete/Entete";
 import Lecon1 from "../../components/Lecon1/Lecon1";
@@ -16,7 +16,7 @@ function MenuLecons() {
   useEffect(() => {
     const fetchLecons = async () => {
       try {
-        const data = await getLecons();
+        const data = await obtenirLecons();
         setLecons(data);
       } catch (err) {
         setError("Erreur lors de la récupération des leçons.");

@@ -9,6 +9,8 @@ import PageNonDeveloppee from "./pages/PageNonDeveloppee";
 import Profil from "./pages/Profil";
 import RoutePrivee from "./components/RoutePrivee";
 import Astuces from "./pages/Astuces";
+import PointsCardinaux from "./pages/PointsCardinaux/PointsCardinaux";
+import DistanceEtPoints from "./pages/DistanceEtPoints/DistanceEtPoints";
 
 function App() {
   return (
@@ -21,6 +23,8 @@ function App() {
           <Route path="/mes-astuces" element={<Astuces />} />
           <Route path="/mes-competences" element={<Competence />} />
           <Route path="/evaluer-les-distances" element={<Distance />} />
+          <Route path="/points-cardinaux" element={<PointsCardinaux />} />
+          <Route path="/distance-et-points" element={<DistanceEtPoints/>} />
           <Route path="/menu-lecons" element={<MenuLecon />} />
           <Route path="/menu-lecons/:id" element={<MenuLecon />} />
           <Route path="/page-non-developpee" element={<PageNonDeveloppee />} />

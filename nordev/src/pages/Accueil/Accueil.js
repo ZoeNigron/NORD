@@ -4,7 +4,6 @@ import BarreNavig from "../../components/Navigation/BarreNavig";
 import Entete from "../../components/Entete/Entete";
 import Astuce from "../../components/Astuce/Astuce";
 import "./Accueil.css";
-import Utilisateur from "../../components/Utilisateur";
 
 const Accueil = () => {
   return (
@@ -24,8 +23,7 @@ const Accueil = () => {
           Je commence
         </button>
       </Link>
-      
-      <Utilisateur />
+
     </div>
   );
 };

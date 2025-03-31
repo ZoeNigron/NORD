@@ -34,7 +34,7 @@ function AnalyseEstimation2({ distance, estimation, compteur, onRefaireExercice 
       </div>
 
       <div className="compteur">
-        <p>Vous avez refait cet exercice {compteur} fois.</p>
+        <p>Vous avez fait cet exercice {compteur} fois d'affilée.</p>
       </div>
 
       <button onClick={onRefaireExercice} className="refaire-bouton">

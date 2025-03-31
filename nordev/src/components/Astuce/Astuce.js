@@ -22,7 +22,7 @@ function Astuce() {
             className="gestion-astuce-btn"
             onClick={() => navigate("/mes-astuces")}
           >
-            Gérer les astuces
+            Découvrir les autres astuces
           </button>
       </div>
   );

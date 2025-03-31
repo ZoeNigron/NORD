@@ -1,65 +1,68 @@
 import React, { useState, useEffect } from "react";
 import { CheckCircle, Cancel, ArrowForward } from "@mui/icons-material";
-import { getQuestionsQuiz } from "../../api";
+import { obtenirQuiz } from "../../api";
 import "./Quiz.css";
 
-function Quiz({ quiz }) {
-  const [questionsQuiz, setQuestionsQuiz] = useState([]);
+function Quiz({ id, onQuizEnd }) {
+  const [quiz, setQuiz] = useState(null);
   const [questionActuelle, setQuestionActuelle] = useState(0);
   const [reponseSelectionnee, setReponseSelectionnee] = useState(null);
   const [score, setScore] = useState(0);
   const [quizComplete, setQuizComplete] = useState(false);
   const [reponseValidee, setReponseValidee] = useState(false);
-  const [isquizPasse, setQuizPasse] = useState(false);
+  const [quizPasse, setQuizPasse] = useState(false);
 
-  // Fonction pour récupérer les questions depuis l'API
   useEffect(() => {
-    const fetchQuestionsQuiz = async () => {
+    const fetchQuiz = async () => {
       try {
-        const questions = await getQuestionsQuiz(); // Utiliser la fonction d'API pour récupérer les questions
-        setQuestionsQuiz(questions); // Met à jour les questions avec les données de l'API
+        const data = await obtenirQuiz(id);
+        setQuiz(data);
       } catch (error) {
-        console.error("Erreur lors de la récupération des questions:", error);
+        console.error("Erreur lors de la récupération du quiz :", error);
       }
     };
 
-    fetchQuestionsQuiz(); // Appel de la fonction pour récupérer les questions
-  }, []);
+    fetchQuiz();
+  }, [id]);
 
-  // Si aucune question n'est encore récupérée, on ne rend rien
-  if (questionsQuiz.length === 0) {
+  if (!quiz) {
     return <div>Chargement du quiz...</div>;
   }
 
-  const question = questionsQuiz[questionActuelle]; // Utilise la question actuelle du tableau
+  if (!quiz.questionsQuiz || quiz.questionsQuiz.length === 0) {
+    return <div>Aucune question disponible.</div>;
+  }
 
-  const selectionReponse = (idSelectionne) => {
+  const question = quiz.questionsQuiz[questionActuelle]; // Question actuelle
+
+  const selectionReponse = (optionId) => {
     if (!reponseValidee) {
-      setReponseSelectionnee(idSelectionne);
+      setReponseSelectionnee(optionId);
     }
   };
 
   const validationReponse = () => {
     setReponseValidee(true);
-    if (reponseSelectionnee === question.bonneReponse) {
+    const bonneReponse = question.options.find((option) => option.estCorrecte);
+    if (reponseSelectionnee === bonneReponse.id) {
       setScore(score + 1);
     }
   };
 
   const questionSuivante = () => {
-    setQuestionActuelle(questionActuelle + 1);
-    setReponseSelectionnee(null);
-    setReponseValidee(false);
-
-    if (questionActuelle === questionsQuiz.length - 1) {
+    if (questionActuelle + 1 < quiz.questionsQuiz.length) {
+      setQuestionActuelle(questionActuelle + 1);
+      setReponseSelectionnee(null);
+      setReponseValidee(false);
+    } else {
       setQuizComplete(true);
-      quiz(); // Appelle la fonction de retour après le quiz
+      if (onQuizEnd) onQuizEnd();
     }
   };
 
   const abandonQuiz = () => {
     setQuizPasse(true);
-    quiz(); // Appelle la fonction de retour après avoir abandonné
+    if (onQuizEnd) onQuizEnd();
   };
 
   let message = "";
@@ -67,30 +70,37 @@ function Quiz({ quiz }) {
   let texteBonneReponse = "";
 
   if (reponseValidee) {
-    if (reponseSelectionnee === question.bonneReponse) {
-      message = <><CheckCircle className="icone-correct" /> Bravo ! Vous avez donné la bonne réponse.</>;
+    const bonneReponse = question.options.find((option) => option.estCorrecte);
+
+    if (reponseSelectionnee === bonneReponse.id) {
+      message = (
+        <>
+          <CheckCircle className="icone-correct" /> Bravo ! Bonne réponse.
+        </>
+      );
       messageClasse = "message-correct";
     } else {
-      message = <><Cancel className="icone-incorrect" /> Mauvaise réponse.</>;
-      messageClasse = "message-incorrect";
-
-      const reponseCorrecte = question.options.find(
-        (option) => option.id === question.bonneReponse
+      message = (
+        <>
+          <Cancel className="icone-incorrect" /> Mauvaise réponse.
+        </>
       );
-      texteBonneReponse = `La bonne réponse était : "${reponseCorrecte.texte}"`;
+      messageClasse = "message-incorrect";
+      texteBonneReponse = `La bonne réponse était : "${bonneReponse.texte}"`;
     }
   }
 
   return (
     <div className="quiz-container">
-      <h2>Quiz éducatif - Apprendre à évaluer les distances</h2>
+      <h2>Quiz : {quiz.titre}</h2>
 
-      {!quizComplete && !isquizPasse ? (
+      {!quizComplete && !quizPasse ? (
         <>
           <div className="question-container">
             <h3>{question.question}</h3>
+
             <div className="options">
-              {question.options.map((option) => (
+              {question.options?.map((option) => (
                 <div key={option.id} className="option">
                   <input
                     type="radio"
@@ -109,13 +119,22 @@ function Quiz({ quiz }) {
             {reponseValidee && (
               <div className={`message ${messageClasse}`}>
                 <p>{message}</p>
-                {texteBonneReponse && <p><strong>{texteBonneReponse}</strong></p>}
-                <p><strong>Explication :</strong> {question.explication}</p>
+                {texteBonneReponse && (
+                  <p>
+                    <strong>{texteBonneReponse}</strong>
+                  </p>
+                )}
+                <p>
+                  <strong>Explication :</strong> {question.explication}
+                </p>
               </div>
             )}
 
             {!reponseValidee && (
-              <button onClick={validationReponse} disabled={!reponseSelectionnee}>
+              <button
+                onClick={validationReponse}
+                disabled={!reponseSelectionnee}
+              >
                 Valider
               </button>
             )}
@@ -130,12 +149,12 @@ function Quiz({ quiz }) {
       ) : (
         <div className="quiz-results">
           <h3>
-            Vous avez obtenu {score} sur {questionsQuiz.length} bonnes réponses !
+            Score : {score} / {quiz.questionsQuiz.length}
           </h3>
         </div>
       )}
 
-      {!isquizPasse && !quizComplete && (
+      {!quizPasse && !quizComplete && (
         <button onClick={abandonQuiz}>Passer le quiz</button>
       )}
     </div>

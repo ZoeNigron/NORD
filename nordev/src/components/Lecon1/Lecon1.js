@@ -3,7 +3,7 @@ import SelectionExercice from "../SelectionExercice/SelectionExercice";
 import Entrainement1 from "../Entrainement/Entrainement1";
 import DistanceLecon1 from "../DistanceLecon/DistanceLecon1";
 import AnalyseEstimation1 from "../AnalyseEstimation/AnalyseEstimation1";
-import { getExercices } from "../../api";
+import { obtenirExercices } from "../../api";
 import "./Lecon1.css";
 
 function Lecon1() {
@@ -14,7 +14,7 @@ function Lecon1() {
 
   useEffect(() => {
     const fetchExercices = async () => {
-      const data = await getExercices();
+      const data = await obtenirExercices();
       setExercices(data);
     };
 

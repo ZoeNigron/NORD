@@ -3,15 +3,16 @@ import BarreNavig from "../../components/Navigation/BarreNavig";
 import { Link } from "react-router-dom";
 import Entete from "../../components/Entete/Entete";
 import "./Competence.css";
-import { getCompetences } from "../../api"; // Import de la fonction API
+import { obtenirCompetences } from "../../api";
 
 function Competence() {
   const [competences, setCompetences] = useState([]);
-  const texteAudio = "Bienvenue dans la section compétences. Sélectionnez une compétence pour commencer.";
+  const texteAudio =
+    "Bienvenue dans la section compétences. Sélectionnez une compétence pour commencer.";
 
   useEffect(() => {
     const fetchCompetences = async () => {
-      const data = await getCompetences();
+      const data = await obtenirCompetences();
       setCompetences(data); // Met à jour l'état avec les données récupérées
     };
 
