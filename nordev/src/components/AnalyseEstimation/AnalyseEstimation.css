@@ -7,15 +7,6 @@
   text-align: center;
 }
 
-.message {
-  font-size: 18px;
-  font-weight: bold;
-  padding: 10px;
-  margin: 15px 0;
-  border-radius: 6px;
-  transition: all 0.3s ease-in-out;
-}
-
 .message-correct {
   color: #155724;
   background-color: #d4edda;
@@ -28,10 +19,27 @@
   border: 1px solid #f5c6cb;
 }
 
-.icon-correct {
+.icone-correcte {
   color: #155724;
 }
 
-.icon-incorrect {
+.icone-incorrecte {
   color: #800000;
+}
+
+.compteur-exercices {
+  margin-top: 15px;
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #333;
+}
+
+.bouton-refaire {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 1em;
+  background-color: #800000;
+  color: white;
+  border: none;
+  border-radius: 5px;
 }

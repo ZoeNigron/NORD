@@ -1,3 +1,8 @@
+// Ce composant permet à un utilisateur de se connecter à son compte
+// Lorsqu'un utilisateur envoie le formulaire, le composant fait une demande à l'API pour vérifier les informations de connexion
+// En entrée, il utilise l'adresse email de l'utilisateur (string) et le motDePasse (string)
+// En sortie, si les informations sont correctes, il redirige l'utilisateur vers la page d'accueil et stocke les informations d'authentification dans le localStorage, sinon il affiche un message d'erreur
+
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { connecterUtilisateur } from "../../api";
@@ -35,7 +40,7 @@ function ConnexionCompte() {
   };
 
   return (
-    <div className="container">
+    <div className="connexion">
       <h2>Connexion</h2>
       {erreur && <p className="erreur">{erreur}</p>}
       <form onSubmit={gererConnexion}>
@@ -53,7 +58,7 @@ function ConnexionCompte() {
           placeholder="Mot de passe"
           required
         />
-        <button type="submit">Se connecter</button>
+        <button className="bouton-connexion" type="submit">Se connecter</button>
       </form>
     </div>
   );

@@ -1,6 +1,6 @@
 
   
-  .bouton {
+  .bouton-lecon-2{
     color: white;
     font-size: 1rem;
     padding: 12px 20px;
@@ -11,24 +11,13 @@
     width: 200px;
   }
   
-  .bouton:hover {
+  .bouton-lecon-2:hover {
     background-color: #bb0000;
   }
   
-  .resultat {
+  .resultat-lecon-2 {
     margin-top: 20px;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   }
-  
-  @media (max-width: 768px) {
-    .lecon-container {
-      padding: 15px;
-    }
-  
-    .bouton {
-      width: 150px;
-    }
-  }
-  

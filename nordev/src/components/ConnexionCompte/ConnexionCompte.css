@@ -1,4 +1,4 @@
-.container {
+.connexion {
     max-width: 400px;
     margin: 50px auto;
     padding: 20px;
@@ -28,16 +28,16 @@
     border-radius: 5px;
   }
   
-  button {
+  .bouton-connexion{
     padding: 10px;
-    background-color: #721c24;
+    background-color: #800000;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
   }
   
-  button:hover {
-    background-color: #721c24;
+.bouton-connexion:hover{
+    background-color: #660000;
   }
   

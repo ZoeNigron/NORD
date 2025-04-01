@@ -1,3 +1,7 @@
+// Ce composant gère la création d'un compte utilisateur
+// En entrée, aucun paramètre n'est passé en prop, mais il utilise des champs de formulaire pour récupérer les informations de l'utilisateur
+// En sortie, il ne retourne rien directement, mais il effectue une requête API pour créer un compte et il affiche un message de succès ou d'erreur
+
 import React, { useState } from "react";
 import { creerUtilisateur } from "../../api";
 import "./CreationCompte.css";
@@ -11,8 +15,8 @@ function CreationCompte() {
   const [erreur, setErreur] = useState("");
   const [message, setMessage] = useState("");
 
-  const gererSoumission = async (event) => {
-    event.preventDefault();
+  const gererSoumission = async (e) => {
+    e.preventDefault();
     setErreur("");
     setMessage("");
 
@@ -56,12 +60,12 @@ function CreationCompte() {
   };    
 
   return (
-    <div className="container">
+    <div className="creer-compte">
       <h2>Créer un compte</h2>
       {erreur && <p className="erreur">{erreur}</p>}
-      {message && <p className="message success">{message}</p>}
+      {message && <p className="message-succes">{message}</p>}
       
-      <form onSubmit={gererSoumission} className="form-creation">
+      <form onSubmit={gererSoumission}>
         <input
           type="text"
           value={nom}
@@ -97,7 +101,7 @@ function CreationCompte() {
           placeholder="Confirmer le mot de passe"
           required
         />
-        <button type="submit">Créer mon compte</button>
+        <button className="bouton-creation" type="submit">Créer mon compte</button>
       </form>
     </div>
   );

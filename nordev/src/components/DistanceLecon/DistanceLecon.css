@@ -1,4 +1,4 @@
-.bouton {
+.bouton-phase {
     background-color: #800000;
     color: white;
     padding: 12px 24px;
@@ -12,7 +12,7 @@
     font-size: 16px;
   }
   
-  .bouton:hover {
+  .bouton-phase:hover {
     background-color: #660000;
   }
 

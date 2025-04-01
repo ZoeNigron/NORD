@@ -1,77 +1,57 @@
+// Cette page affiche la liste des leçons disponibles pour l'utilisateur pour qu'il puisse sélectionner une leçon. Si l'utilisateur sélectionne une leçon non encore développée, il est redirigé vers une page faite pour cela
+
 import React, { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
-import { obtenirLecons } from "../../api"; 
+import { Link } from "react-router-dom";
+import { obtenirLecons } from "../../api";
 import BarreNavig from "../../components/Navigation/BarreNavig";
 import Entete from "../../components/Entete/Entete";
-import Lecon1 from "../../components/Lecon1/Lecon1";
-import Lecon2 from "../../components/Lecon2/Lecon2";
 import "./MenuLecon.css";
 
 function MenuLecons() {
-  const { id } = useParams();
   const [lecons, setLecons] = useState([]);
-  const [loading, setLoading] = useState(true); 
-  const [error, setError] = useState(null); 
+  const [chargement, setChargement] = useState(true);
+  const [erreur, setErreur] = useState(null);
 
   useEffect(() => {
     const fetchLecons = async () => {
       try {
-        const data = await obtenirLecons();
+        const data = await obtenirLecons(); // on appelle l'API pour obtenir les leçons
         setLecons(data);
       } catch (err) {
-        setError("Erreur lors de la récupération des leçons.");
+        setErreur("Erreur lors de la récupération des leçons.");
       } finally {
-        setLoading(false);
+        setChargement(false);
       }
     };
 
     fetchLecons();
   }, []);
 
-  const lecon = id ? lecons.find((lecon) => lecon.id === parseInt(id)) : null;
-
-  const afficherLecon = () => {
-    if (id === "1") return <Lecon1 />;
-    if (id === "2") return <Lecon2 />;
-    return <p>Leçon non trouvée.</p>;
-  };
-
-  if (loading) return <p>Chargement des leçons...</p>;
-  if (error) return <p>{error}</p>;
+  if (chargement) return <p>Chargement des leçons...</p>;
+  if (erreur) return <p>{erreur}</p>;
 
   return (
     <div>
       <Entete />
+
       <BarreNavig
-        title={id ? `Leçon ${id}` : "Menu des leçons"}
-        texteAudio={
-          id
-            ? `Vous êtes dans la leçon ${id}. Suivez les instructions pour continuer.`
-            : "Bienvenue dans le menu des leçons. Sélectionnez une leçon pour commencer."
-        }
+        title="Menu des leçons"
+        texteAudio="Bienvenue dans le menu des leçons. Sélectionnez une leçon pour commencer."
       />
 
-      {id && lecon ? (
-        <div className="lecon-detail">
-          <h2>{lecon.titre}</h2>
-          <p>{lecon.description}</p>
-          <p>
-            <strong>Objectif :</strong> {lecon.objectif}
-          </p>
-          <div>{afficherLecon()}</div>
-        </div>
-      ) : (
-        <div>
-          <h2>Choisissez une leçon :</h2>
-          <ul>
-            {lecons.map((lecon) => (
-              <li key={lecon.id}>
-                <Link to={`/menu-lecons/${lecon.id}`}>{lecon.titre}</Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
+      <h2>Choisissez une leçon :</h2>
+      <ul>
+        {/* on fait un boucle à travers la liste des leçons et et on affiche avec une redirection conditionnelle */}
+        {lecons.map((lecon) => (
+          <li key={lecon.id}>
+            {lecon.id === 1 || lecon.id === 2 ? (
+              <Link to={`/lecon/${lecon.id}`}>{lecon.titre}</Link> // leçon existante
+            ) : (
+              <Link to="/page-non-developpee">{lecon.titre}</Link> // leçon non développée
+            )}
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }

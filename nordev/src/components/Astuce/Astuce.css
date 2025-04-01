@@ -1,4 +1,4 @@
-.astuce-container {
+.astuce {
   width: 80%;
   max-width: 500px;
   height: auto;
@@ -16,7 +16,7 @@
   border: 2px solid #800000;
 }
 
-.astuce-header {
+.astuce-entete {
   width: 100%;
   background-color: #800000;
   padding: 10px 0;
@@ -30,7 +30,7 @@
   border-radius: 20px 20px 0 0;
 }
 
-.astuce-content {
+.astuce-contenu {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -38,19 +38,28 @@
   width: 100%;
 }
 
-.astuce-icon {
+.astuce-icone {
   color: #fbc02d;
   font-size: 2rem;
 }
 
-.astuce-text {
+.astuce-texte {
   font-size: 1.2rem;
   color: #333;
   text-align: center;
   font-weight: normal;
   margin-top: 10px;
- 
   border-radius: 10px;
   padding: 10px;
   width: 80%;
+}
+
+.bouton-gestion-astuce {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 1em;
+  background-color: #800000;
+  color: white;
+  border: none;
+  border-radius: 5px;
 }

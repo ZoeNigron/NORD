@@ -14,14 +14,28 @@ const Entrainement1 = () => {
     <div className="lecon-container">
       <h2>Entraînement</h2>
       <p>
-      Commencez par vous entraîner avant de débuter la leçon. Cliquez sur le bouton "Démarrer" lorsque vous êtes prêt à marcher. Déplacez-vous sur quelques mètres, puis appuyez sur le bouton "Terminer". L'application vous indiquera la distance que vous avez parcourue. Répétez cette opération plusieurs fois en testant différentes distances. Lorsque vous vous sentez à l'aise, nous vous recommandons de changer d'environnement en marchant un peu, puis vous pourrez démarrer la leçon !
+        Commencez par vous entraîner avant de débuter la leçon. Cliquez sur le
+        bouton "Démarrer" lorsque vous êtes prêt à marcher. Déplacez-vous sur
+        quelques mètres, puis appuyez sur le bouton "Terminer". L'application
+        vous indiquera la distance que vous avez parcourue. Répétez cette
+        opération plusieurs fois en testant différentes distances. Lorsque vous
+        vous sentez à l'aise, nous vous recommandons de changer d'environnement
+        en marchant un peu, puis vous pourrez démarrer la leçon !
       </p>
 
-      <DistanceLecon1 exercice={{}} onDistanceCalculee={gererDistanceCalculee} />
+      <DistanceLecon1
+        exercice={{}}
+        lorsDistanceCalculee={gererDistanceCalculee}
+        lorsErreurPosition={(erreur) =>
+          console.log("Erreur de position :", erreur)
+        }
+      />
 
       {distance !== null && (
         <div className="resultat-container">
-          <div className="resultat-titre">La distance que vous avez parcourue est de</div>
+          <div className="resultat-titre">
+            La distance que vous avez parcourue est de
+          </div>
           <div className="resultat-valeur">{Math.round(distance)} mètres</div>
         </div>
       )}

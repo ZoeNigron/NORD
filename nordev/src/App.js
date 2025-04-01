@@ -11,6 +11,8 @@ import RoutePrivee from "./components/RoutePrivee";
 import Astuces from "./pages/Astuces";
 import PointsCardinaux from "./pages/PointsCardinaux/PointsCardinaux";
 import DistanceEtPoints from "./pages/DistanceEtPoints/DistanceEtPoints";
+import Lecon1 from "./pages/Lecon1/Lecon1";
+import Lecon2 from "./pages/Lecon2/Lecon2";
 
 function App() {
   return (
@@ -26,7 +28,8 @@ function App() {
           <Route path="/points-cardinaux" element={<PointsCardinaux />} />
           <Route path="/distance-et-points" element={<DistanceEtPoints/>} />
           <Route path="/menu-lecons" element={<MenuLecon />} />
-          <Route path="/menu-lecons/:id" element={<MenuLecon />} />
+          <Route path="/lecon/1" element={<Lecon1 />} />
+          <Route path="/lecon/2" element={<Lecon2 />} />
           <Route path="/page-non-developpee" element={<PageNonDeveloppee />} />
           <Route path="/profil" element={<Profil />} />
         </Route>

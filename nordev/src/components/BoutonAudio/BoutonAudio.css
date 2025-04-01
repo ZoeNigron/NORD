@@ -1,4 +1,4 @@
-.audio-button {
+.bouton-audio {
   position: static;
   background-color: #ffffff;
   color: #333;
@@ -15,14 +15,14 @@
   transition: all 0.3s ease;
 }
 
-.audio-button:hover {
+.bouton-audio:hover {
   color: #ffffff;
   background-color: #800000;
   transform: scale(1.1);
   transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-.audio-button.active {
+.bouton-audio.active {
   animation: pulse 1.5s infinite;
 }
 

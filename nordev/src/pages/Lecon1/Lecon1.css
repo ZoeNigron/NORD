@@ -1,5 +1,5 @@
  
-  .bouton {
+  .bouton-lecon-1 {
     color: white;
     font-size: 1rem;
     padding: 12px 20px;
@@ -10,14 +10,6 @@
     width: 200px;
   }
   
-  .bouton:hover {
+  .bouton-lecon-1:hover {
     background-color: #bb0000;
   }
-  
-  .resultat {
-    margin-top: 20px;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
-  

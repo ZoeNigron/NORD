@@ -1,4 +1,4 @@
-.form-estimation {
+.formulaire-estimation {
   display: flex;
   flex-direction: column; 
   align-items: center;
@@ -11,7 +11,7 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-.estimation-input {
+.saisie-estimation {
   padding: 12px;
   font-size: 16px;
   border: 2px solid #ccc;
@@ -22,19 +22,19 @@
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.estimation-input:focus {
+.saisie-estimation:focus {
   border-color: #800000;
   box-shadow: 0 0 8px rgba(255, 215, 0, 0.4);
 }
 
-.erreur-message {
+.message-erreur {
   color: red;
   font-size: 14px;
   margin: 0;
   text-align: center;
 }
 
-.valider-bouton {
+.bouton-valider {
   background-color: #800000;
   color: white;
   padding: 12px 24px;
@@ -48,6 +48,6 @@
   font-size: 16px;
 }
 
-.valider-bouton:hover {
+.bouton-valider:hover {
   background-color: #660000;
 }

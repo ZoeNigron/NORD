@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "axios"; // avec axios, la réponse est automatiquement convertie en JSON (si elle est en JSON) et accessible via response.data
 
 const API_BASE_URL = "http://localhost:5039/api";
 //const API_BASE_URL = "http://172.20.10.2:5039/api";
