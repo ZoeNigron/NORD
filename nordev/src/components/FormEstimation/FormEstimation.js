@@ -1,3 +1,7 @@
+// Ce composant permet de saisir et valider une estimation de distance
+// En entrée, ce composant prend trois props : "estimation" (int), qui est la valeur actuelle de l'estimation, "miseAJourEstimation" (fonction), qui met à jour l'estimation lors de la saisie par l'utilisateur et "gererValidation" (fonction), qui déclenche la validation de l'estimation saisie
+// En sortie, il met à jour l'état de l'estimation avec une valeur valide (entier positif ou zéro), affiche un message d'erreur si la saisie est invalide et permet la validation via un bouton
+
 import React, { useState } from "react";
 import "./FormEstimation.css";
 

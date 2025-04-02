@@ -1,5 +1,7 @@
+// Cette page affiche les compétences disponbiles sous forme de scroll vertical et laisse la possibilité à l'utilisateur de cliquer sur l'une d'entre elles
+
 import React, { useEffect, useState } from "react";
-import BarreNavig from "../../components/Navigation/BarreNavig";
+import BarreNavig from "../../components/BarreNavig/BarreNavig";
 import { Link } from "react-router-dom";
 import Entete from "../../components/Entete/Entete";
 import "./Competence.css";
@@ -7,32 +9,33 @@ import { obtenirCompetences } from "../../api";
 
 function Competence() {
   const [competences, setCompetences] = useState([]);
-  const texteAudio =
-    "Bienvenue dans la section compétences. Sélectionnez une compétence pour commencer.";
 
   useEffect(() => {
     const fetchCompetences = async () => {
-      const data = await obtenirCompetences();
-      setCompetences(data); // Met à jour l'état avec les données récupérées
+      const data = await obtenirCompetences(); // on récupère les compétences depuis l'API
+      setCompetences(data);
     };
 
     fetchCompetences();
   }, []);
 
   return (
-    <div className="competence-container">
+    <div>
       <Entete />
-      <BarreNavig title="Mes compétences" texteAudio={texteAudio} />
+      <BarreNavig
+        titre="Mes compétences"
+        texteAudio="Bienvenue dans la section compétences. Sélectionnez une compétence pour commencer."
+      />
 
-      <div className="competence-liste">
+      <div className="liste-competences">
         {competences.map((competence) => (
-          <div className="competence-box" key={competence.id}>
-            <h3 className="competence-titre">{competence.titre}</h3>
-            <p className="competence-description">{competence.description}</p>
-            <div className="competence-icone">{competence.icon}</div>
+          <div className="encadre-competence" key={competence.id}>
+            <h3 className="titre-competence">{competence.titre}</h3>
+            <p className="description-competence">{competence.description}</p>
+            <div className="icone-competence">{competence.icone}</div>
             <Link to={competence.lien}>
               <button
-                className="bouton"
+                className="bouton-competences"
                 onClick={() =>
                   console.log(`Navigation vers Compétence ${competence.id}`)
                 }

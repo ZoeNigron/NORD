@@ -1,22 +1,36 @@
 // Cette page gère le déroulement de la leçon 2 avec un entraînement, l'activité de mesure de distance, l'estimation et l'analyse de la réponse
 
-import React, { useState } from "react";
-import BarreNavig from "../../components/Navigation/BarreNavig";
+import React, { useState, useEffect } from "react";
+import BarreNavig from "../../components/BarreNavig/BarreNavig";
 import Entete from "../../components/Entete/Entete";
-import Entrainement2 from "../../components/Entrainement/Entrainement2";
+import Entrainement from "../../components/Entrainement/Entrainement";
 import DistanceLecon2 from "../../components/DistanceLecon/DistanceLecon2";
 import FormEstimation from "../../components/FormEstimation/FormEstimation";
-import AnalyseEstimation2 from "../../components/AnalyseEstimation/AnalyseEstimation2";
+import AnalyseEstimation from "../../components/AnalyseEstimation/AnalyseEstimation";
 import GestionScore from "../../components/GestionScore";
+import { obtenirLecon } from "../../api";
 import "./Lecon2.css";
 
 const Lecon2 = () => {
+  const [lecon, setLecon] = useState(null);
   const [distance, setDistance] = useState(null);
   const [estimation, setEstimation] = useState("");
   const [resultat, setResultat] = useState(null);
   const [entrainementTermine, setEntrainementTermine] = useState(false);
   const [tentativesReussies, setTentativesReussies] = useState(0);
   const [compteur, setCompteur] = useState(0);
+
+  useEffect(() => {
+    const fetchLecons = async () => {
+      try {
+        const donneesLecon = await obtenirLecon(2);
+        setLecon(donneesLecon);
+      } catch (error) {
+        console.error("Erreur lors du chargement des données :", error);
+      }
+    };
+    fetchLecons();
+  }, []);
 
   const gererDistanceCalculee = (nouvelleDistance) => {
     setDistance(nouvelleDistance);
@@ -31,18 +45,19 @@ const Lecon2 = () => {
       const estReussi = difference <= 5; // à 5 mètres près
 
       setResultat(
-        <AnalyseEstimation2
+        <AnalyseEstimation
           distance={distance}
           estimation={estimationNumerique}
           compteur={compteur + 1}
           refaireExercice={gererRefaireExercice}
+          leconId={2}
         />
       );
 
       setCompteur(compteur + 1); // on incrémente le nombre total d'exercices tentés
 
       if (estReussi) {
-        setTentativesReussies((prev) => prev + 1);
+        setTentativesReussies((pre) => pre + 1);
       } else {
         setTentativesReussies(0); // on réinitialise le compteur en cas d'échec
       }
@@ -53,8 +68,7 @@ const Lecon2 = () => {
     }
   };
 
-  const gererRefaireExercice = () => {
-    // pour recommencer l'exercice
+  const gererRefaireExercice = () => { // pour recommencer l'exercice
     setEstimation("");
     setResultat(null);
     setDistance(null);
@@ -65,15 +79,22 @@ const Lecon2 = () => {
       <Entete />
 
       <BarreNavig
-        title="Leçon 2 : Évaluation des distances sans se déplacer"
+        titre="Leçon 2 : Évaluation des distances sans se déplacer"
         texteAudio="Bienvenue dans la leçon 2. Suivez les étapes pour estimer et analyser une distance sans se déplacer."
       />
 
       <div>
         {!entrainementTermine ? (
-          <Entrainement2 /> // on affiche l'entraînement avant de passer à la leçon
+          <Entrainement leconId={2} /> // on affiche l'entraînement avant de passer à la leçon
         ) : (
           <>
+            {lecon && (
+              <div className="objectif-lecon">
+                <h3>Objectif de la leçon</h3>
+                <p>{lecon.objectif}</p>
+              </div>
+            )}
+
             <DistanceLecon2
               distanceCalculee={gererDistanceCalculee}
               lorsErreurPosition={(erreur) =>
@@ -85,12 +106,12 @@ const Lecon2 = () => {
             {distance !== null && !resultat && (
               <FormEstimation
                 estimation={estimation}
-                setEstimation={setEstimation}
+                miseAJourEstimation={setEstimation}
                 gererValidation={gererValidation}
               />
             )}
 
-            {resultat && <div className="resultat">{resultat}</div>}
+            {resultat && <div className="resultat-lecon-1">{resultat}</div>}
 
             <GestionScore tentativesReussies={tentativesReussies} />
             <div>

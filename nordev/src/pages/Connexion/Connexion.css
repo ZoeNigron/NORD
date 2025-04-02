@@ -1,4 +1,4 @@
-.connexion-container {
+.connexion-contenu {
     display: flex;
     flex-direction: column;
     justify-content: center; 
@@ -7,12 +7,30 @@
     width: 100%;
   }
   
-  .connexion-container > div {
+  .connexion-contenu > div {
     width: 50%;
     max-width: 400px;
     padding: 20px;
     background-color: #f5f5f5; 
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 120px;
   }
   
+  .bouton-connexion {
+    background-color: #800000;
+    color: white;
+    padding: 12px 24px;
+    margin: 20px auto;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: auto;
+    text-align: center;
+    display: block;
+    font-size: 16px;
+  }
+  
+  .bouton-connexion:hover {
+    background-color: #8a7216;
+  }

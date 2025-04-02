@@ -25,17 +25,22 @@
     border-radius: 8px;
   }
   
-  .bouton-creation{
-    padding: 10px;
+  .bouton-creation {
     background-color: #800000;
     color: white;
+    padding: 12px 24px;
+    margin: 20px auto;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    width: auto;
+    text-align: center;
+    display: block;
+    font-size: 16px;
   }
   
-.bouton-creation:hover{
-    background-color: #660000;
+  .bouton-creation:hover {
+    background-color: #8a7216;
   }
   
   .erreur {

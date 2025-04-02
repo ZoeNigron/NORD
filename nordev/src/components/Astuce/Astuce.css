@@ -54,12 +54,20 @@
   width: 80%;
 }
 
-.bouton-gestion-astuce {
-  margin-top: 20px;
-  padding: 10px 20px;
-  font-size: 1em;
+.bouton-gestion-astuce{
   background-color: #800000;
   color: white;
+  padding: 12px 24px;
+  margin: 20px auto;
   border: none;
   border-radius: 5px;
+  cursor: pointer;
+  width: auto;
+  text-align: center;
+  display: block;
+  font-size: 16px;
+}
+
+.bouton-gestion-astuce:hover {
+  background-color: #8a7216;
 }

@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { obtenirLecons } from "../../api";
-import BarreNavig from "../../components/Navigation/BarreNavig";
+import BarreNavig from "../../components/BarreNavig/BarreNavig";
 import Entete from "../../components/Entete/Entete";
 import "./MenuLecon.css";
 
@@ -35,7 +35,7 @@ function MenuLecons() {
       <Entete />
 
       <BarreNavig
-        title="Menu des leçons"
+        titre="Menu des leçons"
         texteAudio="Bienvenue dans le menu des leçons. Sélectionnez une leçon pour commencer."
       />
 

@@ -1,20 +1,20 @@
 .bouton-phase {
-    background-color: #800000;
-    color: white;
-    padding: 12px 24px;
-    margin: 20px auto;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    width: auto;
-    text-align: center;
-    display: block;
-    font-size: 16px;
-  }
-  
-  .bouton-phase:hover {
-    background-color: #660000;
-  }
+  background-color: #800000;
+  color: white;
+  padding: 12px 24px;
+  margin: 20px auto;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: auto;
+  text-align: center;
+  display: block;
+  font-size: 16px;
+}
+
+.bouton-phase:hover {
+  background-color: #8a7216;
+}
 
   .erreur-position {
     background-color: #f8d7da;
@@ -32,5 +32,13 @@
     justify-content: center;
     align-items: center;
     height: 100px;
+  }
+  
+  .exercice-nom {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #222; 
+    margin: 10px 0;
   }
   

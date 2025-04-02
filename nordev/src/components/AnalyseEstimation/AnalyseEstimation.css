@@ -35,11 +35,19 @@
 }
 
 .bouton-refaire {
-  margin-top: 20px;
-  padding: 10px 20px;
-  font-size: 1em;
   background-color: #800000;
   color: white;
+  padding: 12px 24px;
+  margin: 20px auto;
   border: none;
   border-radius: 5px;
+  cursor: pointer;
+  width: auto;
+  text-align: center;
+  display: block;
+  font-size: 16px;
+}
+
+.bouton-refaire:hover {
+  background-color: #8a7216;
 }

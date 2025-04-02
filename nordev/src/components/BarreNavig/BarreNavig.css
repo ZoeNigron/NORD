@@ -1,4 +1,4 @@
-.barreNavig {
+.barre-navig {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -9,7 +9,7 @@
   position: relative;
 }
 
-.titrePage {
+.titre-page {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
@@ -19,14 +19,14 @@
   text-align: center;
 }
 
-.nav-icons {
+.icones-navigation {
   display: flex;
   align-items: center; 
   gap: 10px; 
   margin-left: auto;     
 }
 
-.boutonRetour {
+.bouton-retour {
   background: none;
   border: none;
   color: #333;
@@ -41,17 +41,7 @@
   justify-content: center;
 }
 
-.titrePage {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 16px;
-  font-weight: bold;
-  color: #800000;
-  text-align: center;
-}
-
-.boutonProfil {
+.bouton-profil {
   background: none;
   border: none;
   color: #333;
@@ -66,8 +56,8 @@
   margin-left: auto;
 }
 
-.boutonRetour:hover,
-.boutonProfil:hover{
+.bouton-retour:hover,
+.bouton-profil:hover{
     color: #ffffff;
     background-color: #800000;
     transform: scale(1.1);

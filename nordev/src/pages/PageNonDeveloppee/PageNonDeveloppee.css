@@ -1,0 +1,17 @@
+.page-indisponible {
+    text-align: center;
+    font-size: 28px;
+    color: #d9534f;
+    margin-top: 50px;
+  }
+  
+  .texte-page-indisponible {
+    text-align: center;
+    font-size: 18px;
+    color: #777;
+    margin-top: 20px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+  }

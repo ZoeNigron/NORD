@@ -1,4 +1,4 @@
-.competence-liste {
+.liste-competences {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -10,7 +10,7 @@
   box-sizing: border-box;
 }
 
-.competence-box {
+.encadre-competence {
   background-color: #ffffff;
   border-radius: 15px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -19,7 +19,6 @@
   width: calc(100% - 30px);
   max-width: 350px;
   text-align: center;
-  transition: transform 0.3s ease;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -27,73 +26,42 @@
   box-sizing: border-box;
 }
 
-.competence-box:hover {
+.encadre-competence:hover {
   transform: scale(1.05);
 }
 
-.competence-titre {
+.titre-competence {
   font-size: 1.3rem;
   font-weight: bold;
   color: #800000;
   margin-bottom: 10px;
 }
 
-.competence-description {
+.description-competence {
   font-size: 1rem;
   color: #333;
   margin-bottom: 15px;
 }
 
-.competence-icone {
+.icone-competence {
   font-size: 2rem;
   margin-bottom: 20px;
 }
 
-.bouton {
+.bouton-competences {
   background-color: #800000;
-  color: #ffffff;
-  padding: 10px 20px;
-  border-radius: 25px;
-  font-weight: bold;
-  cursor: pointer;
-  text-decoration: none;
-  box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.3);
-  transition: all 0.3s ease;
+  color: white;
+  padding: 12px 24px;
+  margin: 20px auto;
   border: none;
-  margin-top: 15px;
-  width: 100%;
+  border-radius: 5px;
+  cursor: pointer;
+  width: auto;
+  text-align: center;
+  display: block;
+  font-size: 16px;
 }
 
-.bouton:hover {
-  background-color: #bb0000;
-  box-shadow: 6px 6px 16px rgba(0, 0, 0, 0.4);
-  transform: scale(1.05);
-}
-
-.bouton:active {
-  transform: scale(0.95);
-  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
-}
-
-@media (max-width: 768px) {
-  .competence-box {
-      height: auto;
-      padding-bottom: 20px;
-  }
-
-  .competence-titre {
-      font-size: 1.1rem;
-  }
-
-  .competence-description {
-      font-size: 0.9rem;
-  }
-
-  .competence-icone {
-      font-size: 1.8rem;
-  }
-
-  .bouton {
-      margin-top: 10px;
-  }
+.bouton-competences:hover {
+  background-color: #8a7216;
 }

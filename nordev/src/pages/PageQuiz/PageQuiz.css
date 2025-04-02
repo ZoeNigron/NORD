@@ -1,0 +1,17 @@
+.bouton-acceder-lecons {
+  background-color: #800000;
+  color: white;
+  padding: 12px 24px;
+  margin: 20px auto;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: auto;
+  text-align: center;
+  display: block;
+  font-size: 16px;
+}
+
+.bouton-acceder-lecons:hover {
+  background-color: #8a7216;
+}

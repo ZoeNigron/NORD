@@ -133,16 +133,28 @@ export const obtenirLecons = async () => {
   }
 };
 
-// Fonction pour obtenir les quiz
-export const obtenirQuiz = async (quizId) => {
-  console.log("Quiz ID: ", quizId);
+// Fonction pour obtenir une leçon (par son id)
+export const obtenirLecon = async (leconId) => {
   try {
-    console.log(`Fetching quiz with ID: ${quizId}`);
-    const response = await axios.get(`${API_BASE_URL}/quiz/${quizId}`);
-    console.log("Quiz data:", response.data);
+    console.log(`On récupère la leçon dont l'id est : ${leconId}`);
+    const response = await axios.get(`${API_BASE_URL}/lecons/${leconId}`);
+    console.log("Données leçon :", response.data);
     return response.data;
   } catch (error) {
-    console.error("Error fetching quiz:", error);
+    console.error("Erreur récupération leçon :", error);
+    throw error;
+  }
+};
+
+// Fonction pour obtenir les quiz
+export const obtenirQuiz = async (quizId) => {
+  try {
+    console.log(`On récupère le quiz dont l'id est : ${quizId}`);
+    const response = await axios.get(`${API_BASE_URL}/quiz/${quizId}`);
+    console.log("Données quiz :", response.data);
+    return response.data;
+  } catch (error) {
+    console.error("Erreur récupération quiz :", error);
     throw error;
   }
 };

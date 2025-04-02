@@ -68,7 +68,7 @@ const DistanceLecon1 = ({
 
   return (
     <div>
-      <h3>{exercice.nom}</h3>
+      <h3 className="exercice-nom">{exercice.nom}</h3>
 
       {erreurPosition && (
         <div className="erreur-position">{erreurPosition}</div>
@@ -130,7 +130,7 @@ const DistanceLecon1 = ({
         }
       />
 
-      {/* Une fois que les deux positions sont enregistrées, on calcule la distance */}
+      {/* une fois que les deux positions sont enregistrées, on calcule la distance */}
       {positionDepart && positionArrivee && (
         <CalculDistance
           point1={positionDepart}

@@ -3,16 +3,14 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Connexion from "./pages/Connexion/Connexion";
 import Accueil from "./pages/Accueil/Accueil";
 import Competence from "./pages/Competence/Competence";
-import Distance from "./pages/Distance/Distance";
 import MenuLecon from "./pages/MenuLecon/MenuLecon";
-import PageNonDeveloppee from "./pages/PageNonDeveloppee";
+import PageNonDeveloppee from "./pages/PageNonDeveloppee/PageNonDeveloppee";
 import Profil from "./pages/Profil";
 import RoutePrivee from "./components/RoutePrivee";
 import Astuces from "./pages/Astuces";
-import PointsCardinaux from "./pages/PointsCardinaux/PointsCardinaux";
-import DistanceEtPoints from "./pages/DistanceEtPoints/DistanceEtPoints";
 import Lecon1 from "./pages/Lecon1/Lecon1";
 import Lecon2 from "./pages/Lecon2/Lecon2";
+import PageQuiz from "./pages/PageQuiz/PageQuiz";
 
 function App() {
   return (
@@ -24,9 +22,7 @@ function App() {
           <Route path="/accueil" element={<Accueil />} />
           <Route path="/mes-astuces" element={<Astuces />} />
           <Route path="/mes-competences" element={<Competence />} />
-          <Route path="/evaluer-les-distances" element={<Distance />} />
-          <Route path="/points-cardinaux" element={<PointsCardinaux />} />
-          <Route path="/distance-et-points" element={<DistanceEtPoints/>} />
+          <Route path="/quiz/:type" element={<PageQuiz />} />
           <Route path="/menu-lecons" element={<MenuLecon />} />
           <Route path="/lecon/1" element={<Lecon1 />} />
           <Route path="/lecon/2" element={<Lecon2 />} />
