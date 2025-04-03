@@ -5,7 +5,7 @@ import BarreNavig from "../../components/BarreNavig/BarreNavig";
 import { Link } from "react-router-dom";
 import Entete from "../../components/Entete/Entete";
 import "./Competence.css";
-import { obtenirCompetences } from "../../api";
+import { obtenirCompetences } from "../../services/api";
 
 function Competence() {
   const [competences, setCompetences] = useState([]);

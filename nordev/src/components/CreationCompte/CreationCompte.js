@@ -3,7 +3,7 @@
 // En sortie, il ne retourne rien directement, mais il effectue une requête API pour créer un compte et il affiche un message de succès ou d'erreur
 
 import React, { useState } from "react";
-import { creerUtilisateur } from "../../api";
+import { creerUtilisateur } from "../../services/api";
 import "./CreationCompte.css";
 
 function CreationCompte() {
@@ -20,7 +20,8 @@ function CreationCompte() {
     setErreur("");
     setMessage("");
 
-    if (motDePasse !== confirmeMotDePasse) { // si le mot de passe que l'on a entré en premier n'est pas le même que le mot de passe que l'on a entré la deuxième fois, le message d'erreur s'affiche
+    if (motDePasse !== confirmeMotDePasse) {
+      // si le mot de passe que l'on a entré en premier n'est pas le même que le mot de passe que l'on a entré la deuxième fois, le message d'erreur s'affiche
       setErreur("Les mots de passe ne correspondent pas !");
       return;
     }
@@ -30,7 +31,7 @@ function CreationCompte() {
     try {
       const response = await creerUtilisateur(utilisateur); // on utilise l'API pour créer un nouvel utilisateur
       console.log("Réponse du serveur :", response);
-    
+
       if (response.status === 201) {
         setMessage("Compte créé avec succès ! Vous allez être redirigé...");
         setTimeout(() => {
@@ -39,11 +40,11 @@ function CreationCompte() {
       }
     } catch (err) {
       console.error("Erreur complète :", err);
-    
+
       if (err.response) {
         console.error("Statut :", err.response.status);
         console.error("Données :", err.response.data);
-    
+
         if (err.response.status === 400) {
           setErreur(err.response.data.message || "Cet email est déjà utilisé.");
         } else {
@@ -57,14 +58,14 @@ function CreationCompte() {
         console.error("Erreur inconnue :", err.message);
       }
     }
-  };    
+  };
 
   return (
     <div className="creer-compte">
       <h2>Créer un compte</h2>
       {erreur && <p className="erreur">{erreur}</p>}
       {message && <p className="message-succes">{message}</p>}
-      
+
       <form onSubmit={gererSoumission}>
         <input
           type="text"
@@ -101,7 +102,9 @@ function CreationCompte() {
           placeholder="Confirmer le mot de passe"
           required
         />
-        <button className="bouton-creation" type="submit">Créer mon compte</button>
+        <button className="bouton-creation" type="submit">
+          Créer mon compte
+        </button>
       </form>
     </div>
   );

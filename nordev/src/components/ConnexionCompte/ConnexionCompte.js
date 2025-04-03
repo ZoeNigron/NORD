@@ -4,28 +4,30 @@
 
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { connecterUtilisateur } from "../../api";
+import { connecterUtilisateur } from "../../services/api";
 import "./ConnexionCompte.css";
 
 function ConnexionCompte() {
   const [email, setEmail] = useState("");
   const [motDePasse, setMotDePasse] = useState("");
   const [erreur, setErreur] = useState("");
-  
+
   const navigate = useNavigate(); // on utilise ce hook pour naviguer entre les pages
 
-  const gererConnexion = async (e) => { // fonction pour gérer la soumission du formulaire et vérifier les informations de connexion
+  const gererConnexion = async (e) => {
+    // fonction pour gérer la soumission du formulaire et vérifier les informations de connexion
     e.preventDefault();
     setErreur("");
 
     try {
       const response = await connecterUtilisateur({ email, motDePasse }); // on appelle l'API pour vérifier les informations de connexion
 
-      if (response.token && response.id) { // si la réponse contient un token et un id utilisateur, la connexion est réussie et on stocke les infos dans le localStorage
+      if (response.token && response.id) {
+        // si la réponse contient un token et un id utilisateur, la connexion est réussie et on stocke les infos dans le localStorage
         localStorage.setItem("token", response.token);
         localStorage.setItem("idUtilisateur", response.id);
         localStorage.setItem("estAuthentifie", "true");
-        
+
         navigate("/accueil");
       } else {
         setErreur("Email ou mot de passe incorrect.");
@@ -59,7 +61,9 @@ function ConnexionCompte() {
           placeholder="Mot de passe"
           required
         />
-        <button className="bouton-connexion" type="submit">Se connecter</button>
+        <button className="bouton-connexion" type="submit">
+          Se connecter
+        </button>
       </form>
     </div>
   );

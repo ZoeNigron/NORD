@@ -1,5 +1,3 @@
-// Cette page gère le déroulement de la leçon 1 avec un entraînement, l'activité de mesure de distance, l'estimation et l'analyse de la réponse
-
 import React, { useState, useEffect } from "react";
 import BarreNavig from "../../components/BarreNavig/BarreNavig";
 import Entete from "../../components/Entete/Entete";
@@ -7,9 +5,9 @@ import SelectionExercice from "../../components/SelectionExercice/SelectionExerc
 import Entrainement from "../../components/Entrainement/Entrainement";
 import DistanceLecon1 from "../../components/DistanceLecon/DistanceLecon1";
 import AnalyseEstimation from "../../components/AnalyseEstimation/AnalyseEstimation";
-import GestionScore from "../../components/GestionScore";
-import { obtenirExercices, obtenirLecon } from "../../api";
+import { obtenirExercices, obtenirLecon } from "../../services/api";
 import "./Lecon1.css";
+import { useNavigate } from "react-router-dom";
 
 const Lecon1 = () => {
   const [lecon, setLecon] = useState(null);
@@ -20,8 +18,10 @@ const Lecon1 = () => {
   const [tentativesReussies, setTentativesReussies] = useState(0);
   const [compteur, setCompteur] = useState(0);
 
+  const navigate = useNavigate(); // Déclaration de useNavigate
+
   useEffect(() => {
-    // on appelle les données de la leçon et des exercices depuis l'API
+    // Appeler les données de la leçon et des exercices depuis l'API
     const fetchDonnees = async () => {
       try {
         const donneesLecon = await obtenirLecon(1);
@@ -37,18 +37,18 @@ const Lecon1 = () => {
   }, []);
 
   const gererDistanceCalculee = (distance) => {
-    // pour mettre à jour la distance parcourue après la mesure
+    // Mettre à jour la distance parcourue après la mesure
     setDistanceParcourue(distance);
   };
 
   const gererRefaireExercice = () => {
-    // pour recommencer un exercice
+    // Recommencer un exercice
     setDistanceParcourue(null);
     setExerciceActif(null);
   };
 
   useEffect(() => {
-    // on analyse le résultat en comparant la distance mesurée à la distance cible
+    // Analyser le résultat en comparant la distance mesurée à la distance cible
     if (distanceParcourue !== null && exerciceActif) {
       const difference = Math.abs(
         distanceParcourue - exerciceActif.distanceCible
@@ -84,7 +84,7 @@ const Lecon1 = () => {
         ) : (
           <div>
             {lecon && (
-              <div className="objectif-lecon">
+              <div className="objectif-lecon-1">
                 <h3>Objectif de la leçon</h3>
                 <p>{lecon.objectif}</p>
               </div>
@@ -98,20 +98,16 @@ const Lecon1 = () => {
               }
             />
 
-            {distanceParcourue !== null && ( // on analyse et on gère le score après la mesure
+            {distanceParcourue !== null && ( // Analyser et gérer le score après la mesure
               <>
                 <AnalyseEstimation
                   distance={distanceParcourue}
                   estimation={exerciceActif.distanceCible}
-                  compteur={compteur}
+                  compteur={tentativesReussies} // Affichage des réussites consécutives
                   refaireExercice={gererRefaireExercice}
                   leconId={1}
+                  tentativesReussies={tentativesReussies} // Passer les tentatives réussies
                 />
-
-                <GestionScore tentativesReussies={tentativesReussies} />
-                <div>
-                  <p>{tentativesReussies} réussite(s) d'affilée !</p>
-                </div>
               </>
             )}
           </div>
@@ -121,7 +117,7 @@ const Lecon1 = () => {
       {!entrainementTermine && (
         <button
           className="bouton-lecon-1"
-          onClick={() => setEntrainementTermine(true)} // bouton pour passer de l'entraînement à la leçon
+          onClick={() => setEntrainementTermine(true)} // Passer de l'entraînement à la leçon
         >
           Passer à la leçon
         </button>

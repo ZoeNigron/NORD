@@ -1,44 +1,70 @@
-body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background-color: #f8f9fa;
-    color: #333;
-    margin: 0;
-    padding: 0;
-  }
-  
-  h1 {
+.titre-choix-lecon {
     text-align: center;
     font-size: 24px;
     color: #333;
     margin-bottom: 20px;
   }
-
-  ul {
+  
+  .liste-lecon {
     list-style-type: none;
     padding: 0;
     margin: 0;
   }
   
-  ul li {
-    background-color: #ffeb99;
-    margin: 10px 0;
+  .puce-lecon {
+    background-color: transparent;
+    margin: 10px 20px;
     padding: 15px;
     border-radius: 12px;
     text-align: center;
     font-weight: bold;
+    border: 2px solid #880000;
     box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
-    transition: all 0.3s ease;
   }
   
-  ul li:hover {
-    background-color: #ffd700;
+  .puce-lecon:hover {
+    background-color: #880000;
+    color: #fff;
     box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.3);
     transform: scale(1.05);
   }
   
-  ul li a {
+  .puce-lecon a {
     text-decoration: none;
-    color: #333;
+    color: #880000;
     font-size: 18px;
+    display: block;
   }
-
+  
+  .puce-lecon:hover a {
+    color: #fff;
+  }
+  
+  .lecon-validee {
+    background-color: transparent;
+    margin: 10px 20px;
+    padding: 15px;
+    border-radius: 12px;
+    text-align: center;
+    font-weight: bold;
+    border: 2px solid #00884d;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .lecon-validee:hover {
+    background-color: #00884d;
+    color: #fff;
+    box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.3);
+    transform: scale(1.05);
+  }
+  
+  .lecon-validee a {
+    text-decoration: none;
+    color: #00884d;
+    font-size: 18px;
+    display: block;
+  }
+  
+  .lecon-validee:hover a {
+    color: #fff;
+  }

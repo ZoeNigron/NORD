@@ -4,7 +4,7 @@
 
 import { useEffect, useState } from "react";
 import { Marker, Popup, useMap } from "react-leaflet";
-import obtenirPositionActuelle from "../services/fonctions/obtenirPositionActuelle"; // la fonction pour récupérer la position de l'utilisateur
+import obtenirPositionActuelle from "../services/obtenirPositionActuelle"; // la fonction pour récupérer la position de l'utilisateur
 import IconePosition from "../services/IconePosition";
 import { LocationOn } from "@mui/icons-material";
 

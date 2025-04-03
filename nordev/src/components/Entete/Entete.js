@@ -3,7 +3,7 @@
 import React from "react";
 import { useNavigate, useLocation } from "react-router-dom"; // on utilise les deux hooks useNavigate et useLocation qui proviennent de la bibliothèque react-router-dom et qui servent à interagir avec la navigation et l'état de l'URL
 import "./Entete.css";
-import logo from "../../services/images/logo.png";
+import logo from "../../assets/images/logo.png";
 
 const Entete = () => {
   const navigate = useNavigate();

@@ -8,7 +8,7 @@ import DistanceLecon2 from "../../components/DistanceLecon/DistanceLecon2";
 import FormEstimation from "../../components/FormEstimation/FormEstimation";
 import AnalyseEstimation from "../../components/AnalyseEstimation/AnalyseEstimation";
 import GestionScore from "../../components/GestionScore";
-import { obtenirLecon } from "../../api";
+import { obtenirLecon } from "../../services/api";
 import "./Lecon2.css";
 
 const Lecon2 = () => {
@@ -68,7 +68,8 @@ const Lecon2 = () => {
     }
   };
 
-  const gererRefaireExercice = () => { // pour recommencer l'exercice
+  const gererRefaireExercice = () => {
+    // pour recommencer l'exercice
     setEstimation("");
     setResultat(null);
     setDistance(null);
@@ -89,7 +90,7 @@ const Lecon2 = () => {
         ) : (
           <>
             {lecon && (
-              <div className="objectif-lecon">
+              <div className="objectif-lecon-2">
                 <h3>Objectif de la leçon</h3>
                 <p>{lecon.objectif}</p>
               </div>
@@ -111,7 +112,7 @@ const Lecon2 = () => {
               />
             )}
 
-            {resultat && <div className="resultat-lecon-1">{resultat}</div>}
+            {resultat && <div className="resultat-lecon-2">{resultat}</div>}
 
             <GestionScore tentativesReussies={tentativesReussies} />
             <div>

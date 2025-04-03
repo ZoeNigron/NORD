@@ -1,19 +1,20 @@
+.bouton-lecon-2 {
+  background-color: #800000;
+  color: white;
+  padding: 12px 24px;
+  margin: 20px auto;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: auto;
+  text-align: center;
+  display: block;
+  font-size: 16px;
+}
 
-  
-  .bouton-lecon-2{
-    color: white;
-    font-size: 1rem;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    margin-top: 30px;
-    width: 200px;
-  }
-  
-  .bouton-lecon-2:hover {
-    background-color: #bb0000;
-  }
+.bouton-lecon-2:hover {
+  background-color: #8a7216;
+}
   
   .resultat-lecon-2 {
     margin-top: 20px;
@@ -23,7 +24,7 @@
   }
 
 
-  .objectif-lecon {
+  .objectif-lecon-2 {
     background-color: #f9f9f9;
     border-left: 5px solid #880000;
     padding: 15px;
@@ -32,13 +33,13 @@
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
   }
   
-  .objectif-lecon h3 {
+  .objectif-lecon-2 h3 {
     margin: 0 0 10px;
     color: #333;
     font-size: 1.2rem;
   }
   
-  .objectif-lecon p {
+  .objectif-lecon-2 p {
     margin: 0;
     color: #555;
     font-size: 1rem;

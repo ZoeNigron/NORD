@@ -5,7 +5,7 @@ import React, { useEffect, useState } from "react";
 import "./Astuce.css";
 import { LightbulbOutlined } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
-import { obtenirAstuces } from "../../api";
+import { obtenirAstuces } from "../../services/api";
 
 function Astuce() {
   const [astuceDuJour, setAstuceDuJour] = useState("");

@@ -39,7 +39,7 @@ const PageQuiz = () => {
     <div>
       <Entete />
       <BarreNavig titre={titre} texteAudio={texteAudio} />
-      <Quiz id={id} onQuizEnd={() => setQuizComplet(true)} />
+      <Quiz id={id} gererFinQuiz={() => setQuizComplet(true)} />
       {quizComplet && messageFin}
     </div>
   );

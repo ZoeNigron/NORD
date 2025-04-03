@@ -48,7 +48,7 @@ export const creerUtilisateur = async (data) => {
 // Obtenir les informations d'un utilisateur spécifique
 export const obtenirInfosUtilisateur = async (id) => {
   try {
-    console.log(`Récupération des infos pour l'ID : ${id}`);
+    console.log(`Récupération des infos pour l'id : ${id}`);
     const response = await axios.get(`${API_BASE_URL}/utilisateur/${id}`);
     console.log("Réponse de l'API :", response.data);
     return response.data;
@@ -161,7 +161,9 @@ export const obtenirQuiz = async (quizId) => {
 
 export const obtenirScore = async (idUtilisateur) => {
   try {
-    const response = await axios.get(`${API_BASE_URL}/utilisateur/${idUtilisateur}`);
+    const response = await axios.get(
+      `${API_BASE_URL}/utilisateur/${idUtilisateur}`
+    );
     return response.data.score; // Récupère uniquement le score
   } catch (error) {
     console.error("Erreur lors de la récupération du score :", error);
@@ -188,6 +190,18 @@ export const obtenirTopScores = async () => {
     return response.data;
   } catch (error) {
     console.error("Erreur lors de la récupération des meilleurs scores", error);
+    throw error;
+  }
+};
+
+export const mettreAJourLeconsValidees = async (userId, leconId) => {
+  try {
+    const response = await axios.put(`${API_BASE_URL}/utilisateur/${userId}`, {
+      LeconsValidees: [leconId], // Ajouter leçon à la liste
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Erreur lors de la mise à jour des leçons validées", error);
     throw error;
   }
 };

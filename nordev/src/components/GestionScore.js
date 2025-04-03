@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { obtenirScore, mettreAJourScore } from "../api";
+import { obtenirScore, mettreAJourScore } from "../services/api";
 
 const GestionScore = ({ tentativesReussies }) => {
   const [score, setScore] = useState(0);
@@ -22,8 +22,7 @@ const GestionScore = ({ tentativesReussies }) => {
 
   return (
     <div className="gestion-score">
-      <h3>Score d'apprentissage : {score >= 10 ? `${score}%` : "0%"}</h3>
-      <p>Gagnez 5 fois d'affilée pour augmenter votre score de 10%.</p>
+      <p>Réussissez la leçon 5 fois d'affilée pour la valider !</p>
     </div>
   );
 };

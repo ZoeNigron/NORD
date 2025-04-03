@@ -2,7 +2,7 @@
 // En sortie, il affiche la liste de ces astuces qui sont ajoutables, modifiables et supprimables depuis le Swagger
 
 import React, { useState, useEffect } from "react";
-import { obtenirAstuces } from "../../api";
+import { obtenirAstuces } from "../../services/api";
 import "./GestionAstuces.css";
 import { List, ListItem } from "@mui/material";
 

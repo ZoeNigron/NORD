@@ -9,6 +9,7 @@ function BoutonDeconnexion() {
   const gererDeconnexion = () => { // on enlève le token et l'état "estAuthentifié" du localStorage
     localStorage.removeItem("token");
     localStorage.removeItem("estAuthentifie");
+    //localStorage.removeItem("id");
     navigate("/");
   };
 

@@ -4,7 +4,7 @@
 
 import React, { useState } from "react";
 import { FaVolumeUp, FaVolumeMute } from "react-icons/fa";
-import modeAudio from "../../services/fonctions/modeAudio";
+import modeAudio from "../../services/modeAudio";
 import "./BoutonAudio.css";
 
 function BoutonAudio({ texte }) {

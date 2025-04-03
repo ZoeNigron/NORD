@@ -2,30 +2,47 @@
 
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { obtenirLecons } from "../../api";
+import { obtenirLecons, obtenirInfosUtilisateur } from "../../services/api";
 import BarreNavig from "../../components/BarreNavig/BarreNavig";
 import Entete from "../../components/Entete/Entete";
 import "./MenuLecon.css";
 
 function MenuLecons() {
   const [lecons, setLecons] = useState([]);
+  const [leconsValidees, setLeconsValidees] = useState([]);
   const [chargement, setChargement] = useState(true);
   const [erreur, setErreur] = useState(null);
+  const userId = localStorage.getItem("idUtilisateur"); // ID utilisateur stocké en localStorage
+  console.log("ID utilisateur dans localStorage :", userId);
 
   useEffect(() => {
     const fetchLecons = async () => {
       try {
-        const data = await obtenirLecons(); // on appelle l'API pour obtenir les leçons
+        const data = await obtenirLecons();
         setLecons(data);
       } catch (err) {
         setErreur("Erreur lors de la récupération des leçons.");
+      }
+    };
+
+    const fetchUserInfos = async () => {
+      try {
+        const utilisateur = await obtenirInfosUtilisateur(userId);
+        console.log("Leçons validées récupérées :", utilisateur.leconsvalidees);
+        setLeconsValidees(utilisateur.leconsvalidees || []); // Récupérer les leçons validées
+      } catch (err) {
+        console.error(
+          "Erreur lors de la récupération des infos utilisateur :",
+          err
+        );
       } finally {
         setChargement(false);
       }
     };
 
     fetchLecons();
-  }, []);
+    fetchUserInfos();
+  }, [userId]);
 
   if (chargement) return <p>Chargement des leçons...</p>;
   if (erreur) return <p>{erreur}</p>;
@@ -33,24 +50,28 @@ function MenuLecons() {
   return (
     <div>
       <Entete />
-
       <BarreNavig
         titre="Menu des leçons"
         texteAudio="Bienvenue dans le menu des leçons. Sélectionnez une leçon pour commencer."
       />
+      <h2 className="titre-choix-lecon">Choisissez une leçon :</h2>
+      <ul className="liste-lecon">
+        {lecons.map((lecon) => {
+          const estValidee = leconsValidees.includes(lecon.id);
+          console.log(
+            `Leçon ${lecon.id} (${lecon.titre}) - Validée :`,
+            estValidee
+          );
 
-      <h2>Choisissez une leçon :</h2>
-      <ul>
-        {/* on fait un boucle à travers la liste des leçons et et on affiche avec une redirection conditionnelle */}
-        {lecons.map((lecon) => (
-          <li key={lecon.id}>
-            {lecon.id === 1 || lecon.id === 2 ? (
-              <Link to={`/lecon/${lecon.id}`}>{lecon.titre}</Link> // leçon existante
-            ) : (
-              <Link to="/page-non-developpee">{lecon.titre}</Link> // leçon non développée
-            )}
-          </li>
-        ))}
+          // Classes conditionnelles
+          const classNameLecon = estValidee ? "lecon-validee" : "puce-lecon";
+
+          return (
+            <li key={lecon.id} className={classNameLecon}>
+              <Link to={`/lecon/${lecon.id}`}>{lecon.titre}</Link>
+            </li>
+          );
+        })}
       </ul>
     </div>
   );

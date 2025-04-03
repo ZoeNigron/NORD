@@ -2,7 +2,10 @@
 // En sortie, il affiche le formulaire contenant ces informations ainsi que le bouton mettre à jour
 
 import React, { useState, useEffect } from "react";
-import { obtenirInfosUtilisateur, mettreAJourInfosUtilisateur } from "../../api";
+import {
+  obtenirInfosUtilisateur,
+  mettreAJourInfosUtilisateur,
+} from "../../services/api";
 import "./ProfilUtilisateur.css";
 
 function ProfilUtilisateur() {
@@ -17,7 +20,7 @@ function ProfilUtilisateur() {
   const [email, setEmail] = useState("");
   const [nouveauMotDePasse, setNouveauMotDePasse] = useState("");
   const [confirmationMotDePasse, setConfirmationMotDePasse] = useState("");
-  const [message, setMessage] = useState(""); 
+  const [message, setMessage] = useState("");
   const [erreur, setErreur] = useState("");
 
   useEffect(() => {
@@ -26,8 +29,10 @@ function ProfilUtilisateur() {
         const id = localStorage.getItem("utilisateurId"); // on récupère l'id de l'utilisateur depuis le localStorage
         if (!id) throw new Error("Id utilisateur manquant.");
 
-        console.log(`Tentative de récupération des infos utilisateur avec l'Id : ${id}`);
-        
+        console.log(
+          `Tentative de récupération des infos utilisateur avec l'Id : ${id}`
+        );
+
         const infosUtilisateur = await obtenirInfosUtilisateur(id); // on récupère les informations de l'utilisateur à partir de l'API
 
         console.log("Réponse de l'API utilisateur:", infosUtilisateur);
@@ -37,7 +42,10 @@ function ProfilUtilisateur() {
         setPrenom(infosUtilisateur.prenom);
         setEmail(infosUtilisateur.email);
       } catch (err) {
-        console.error("Erreur lors de la récupération des données utilisateur:", err);
+        console.error(
+          "Erreur lors de la récupération des données utilisateur:",
+          err
+        );
         setErreur("Une erreur est survenue en récupérant les informations.");
       }
     };
@@ -45,13 +53,14 @@ function ProfilUtilisateur() {
     fetchInfosUtilisateur();
   }, []);
 
-
-  const gererMiseAJour = async (e) => { // fonction pour gérer la mise à jour des informations de l'utilisateur
-    e.preventDefault();  // cela empêche le rechargement de la page
-    setMessage(""); 
+  const gererMiseAJour = async (e) => {
+    // fonction pour gérer la mise à jour des informations de l'utilisateur
+    e.preventDefault(); // cela empêche le rechargement de la page
+    setMessage("");
     setErreur("");
 
-    if (nouveauMotDePasse && nouveauMotDePasse !== confirmationMotDePasse) { // on vérifie si le mot de passe et sa confirmation correspondent
+    if (nouveauMotDePasse && nouveauMotDePasse !== confirmationMotDePasse) {
+      // on vérifie si le mot de passe et sa confirmation correspondent
       setErreur("Les nouveaux mots de passe ne correspondent pas.");
       return;
     }
@@ -62,12 +71,13 @@ function ProfilUtilisateur() {
       return;
     }
 
-    const utilisateurMisAJour = { // on crée un objet avec les informations mises à jour
+    const utilisateurMisAJour = {
+      // on crée un objet avec les informations mises à jour
       id,
       nom,
       prenom,
       email,
-      motDePasse: nouveauMotDePasse || utilisateur.motDePasse,  // si le mot de passe est vide, on garde l'ancien
+      motDePasse: nouveauMotDePasse || utilisateur.motDePasse, // si le mot de passe est vide, on garde l'ancien
     };
 
     try {
@@ -75,7 +85,9 @@ function ProfilUtilisateur() {
       setMessage("Les informations ont été mises à jour avec succès !");
     } catch (err) {
       console.error(err);
-      setErreur("Une erreur est survenue lors de la mise à jour des informations.");
+      setErreur(
+        "Une erreur est survenue lors de la mise à jour des informations."
+      );
     }
   };
 
@@ -136,7 +148,9 @@ function ProfilUtilisateur() {
           />
         </div>
 
-        <button className="profil-utilisateur-bouton" type="submit">Mettre à jour</button>
+        <button className="profil-utilisateur-bouton" type="submit">
+          Mettre à jour
+        </button>
       </form>
     </div>
   );
