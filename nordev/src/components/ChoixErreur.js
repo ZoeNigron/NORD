@@ -9,8 +9,8 @@ function ChoixErreur({ distance, selection }) {
   return (
     <div className="choix-erreur">
       <p>Vous vous êtes trompé dans votre estimation ! Que pensez-vous avoir parcouru ?</p>
-      <button onClick={() => selection(distance)}>{distance} mètres</button> {/* Bouton avec la distance réelle */}
-      <button onClick={() => selection(distanceDoublee)}>{distanceDoublee} mètres</button> {/* Bouton avec la distance doublée */}
+      <button onClick={() => selection(distance)}>{distance} mètres</button> {/* bouton avec la distance réelle */}
+      <button onClick={() => selection(distanceDoublee)}>{distanceDoublee} mètres</button> {/* bouton avec la distance doublée */}
     </div>
   );
 }

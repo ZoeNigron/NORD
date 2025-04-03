@@ -21,7 +21,7 @@ const Entrainement = ({ leconId }) => {
 
       {leconId === 1 ? (
         <>
-          <p>
+          <p className="entrainement-texte">
             Commencez par vous entraîner avant de débuter la leçon. Cliquez sur le
             bouton "Démarrer" lorsque vous êtes prêt à marcher. Déplacez-vous sur
             quelques mètres, puis appuyez sur le bouton "Terminer". L'application
@@ -40,7 +40,7 @@ const Entrainement = ({ leconId }) => {
         </>
       ) : leconId === 2 ? (
         <>
-          <p>
+         <p className="entrainement-texte">
             Commencez par vous entraîner avant de débuter la leçon. Observez la
             carte : le point que vous voyez représente votre position actuelle.
             Regardez devant vous et repérez un élément remarquable. Placez ce point
@@ -53,7 +53,7 @@ const Entrainement = ({ leconId }) => {
           <DistanceLecon2 distanceCalculee={gererDistanceCalculee} />
         </>
       ) : (
-        <p>Entraînement non disponible pour cette leçon.</p>
+        <p className="entrainement-texte">Entraînement non disponible pour cette leçon.</p>
       )}
 
       {distance !== null && (

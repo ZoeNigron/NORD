@@ -1,17 +1,11 @@
-.gestion-astuces-container {
+.gestion-astuces-contenu {
   padding: 20px;
   background-color: #f9f9f9;
   border-radius: 12px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.ajout-astuce {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 20px;
-}
-
-.astuce-item {
+.item-astuce {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -20,23 +14,5 @@
   border-radius: 8px;
   padding: 10px;
   margin-bottom: 8px;
-}
-
-.MuiIconButton-root:active, .MuiIconButton-root:focus {
-  background-color: rgba(0, 0, 0, 0.08);
-  transform: scale(1.1);
-  transition: transform 0.2s ease;
-}
-
-.MuiButton-containedPrimary:active, .MuiButton-containedPrimary:focus {
-  background-color: #1565c0;
-}
-
-.MuiButton-containedSuccess:active, .MuiButton-containedSuccess:focus {
-  background-color: #2e7d32;
-}
-
-.confirm-button {
-  margin-left: auto;
 }
 

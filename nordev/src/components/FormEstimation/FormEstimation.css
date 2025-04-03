@@ -19,7 +19,6 @@
   width: 90%;
   max-width: 400px;
   outline: none;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .saisie-estimation:focus {

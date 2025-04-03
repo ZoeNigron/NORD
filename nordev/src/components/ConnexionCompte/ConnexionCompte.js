@@ -1,6 +1,5 @@
-// Ce composant permet à un utilisateur de se connecter à son compte
-// Lorsqu'un utilisateur envoie le formulaire, le composant fait une demande à l'API pour vérifier les informations de connexion
-// En entrée, il utilise l'adresse email de l'utilisateur (string) et le motDePasse (string)
+// Ce composant permet à un utilisateur de se connecter à son compte. Lorsqu'un utilisateur envoie le formulaire, on fait une demande à l'API pour vérifier les informations de connexion
+// En entrée, le composant utilise l'adresse email de l'utilisateur (string) et le motDePasse (string)
 // En sortie, si les informations sont correctes, il redirige l'utilisateur vers la page d'accueil et stocke les informations d'authentification dans le localStorage, sinon il affiche un message d'erreur
 
 import { useState } from "react";
@@ -12,19 +11,21 @@ function ConnexionCompte() {
   const [email, setEmail] = useState("");
   const [motDePasse, setMotDePasse] = useState("");
   const [erreur, setErreur] = useState("");
-  const navigate = useNavigate();
+  
+  const navigate = useNavigate(); // on utilise ce hook pour naviguer entre les pages
 
-  const gererConnexion = async (e) => {
+  const gererConnexion = async (e) => { // fonction pour gérer la soumission du formulaire et vérifier les informations de connexion
     e.preventDefault();
     setErreur("");
 
     try {
-      const response = await connecterUtilisateur({ email, motDePasse });
+      const response = await connecterUtilisateur({ email, motDePasse }); // on appelle l'API pour vérifier les informations de connexion
 
-      if (response.token && response.id) {
+      if (response.token && response.id) { // si la réponse contient un token et un id utilisateur, la connexion est réussie et on stocke les infos dans le localStorage
         localStorage.setItem("token", response.token);
-        localStorage.setItem("userId", response.id);
-        localStorage.setItem("isAuthenticated", "true");
+        localStorage.setItem("idUtilisateur", response.id);
+        localStorage.setItem("estAuthentifie", "true");
+        
         navigate("/accueil");
       } else {
         setErreur("Email ou mot de passe incorrect.");

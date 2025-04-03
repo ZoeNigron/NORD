@@ -1,4 +1,4 @@
-.profil-container {
+.profil-utilisateur-contenu {
     max-width: 600px;
     margin: 50px auto;
     padding: 20px;
@@ -30,27 +30,31 @@
     border-radius: 8px;
   }
   
-  button {
-    padding: 12px;
-    font-size: 16px;
+  .profil-utilisateur-bouton {
     background-color: #800000;
     color: white;
+    padding: 12px 24px;
+    margin: 20px auto;
     border: none;
-    border-radius: 8px;
+    border-radius: 5px;
     cursor: pointer;
+    width: auto;
+    text-align: center;
+    display: block;
+    font-size: 16px;
   }
   
-  button:hover {
-    background-color: #b00000;
+  .profil-utilisateur-bouton:hover {
+    background-color: #8a7216;
   }
   
-  .erreur {
+  .erreur-profil-utilisateur {
     color: red;
     font-size: 14px;
     text-align: center;
   }
   
-  .message {
+  .message-profil-utilisateur {
     color: green;
     font-size: 14px;
     text-align: center;

@@ -1,26 +1,27 @@
-.lecon2-container {
-    font-family: 'Calibri', sans-serif;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
-  
-  h2 {
+h2 {
     text-align: center;
     font-size: 2rem;
     margin-bottom: 20px;
     color: #333;
   }
   
-  p {
-    font-size: 1rem;
-    line-height: 1.6;
+.entrainement-texte {
+    font-size: 16px;
     color: #555;
+    line-height: 1.6;
     margin-bottom: 20px;
+    text-align: justify;
+    padding: 10px;
+    border: 2px solid #800000;
+    border-radius: 8px;
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #f9f9f9; 
+    box-sizing: border-box;
   }
   
-  .resultat-container {
+  .resultat-entrainement {
     margin-top: 30px;
     padding: 20px;
     background-color: #ffffff;
@@ -29,33 +30,20 @@
     text-align: center;
   }
   
-  .resultat-titre {
+  .resultat-entrainement-titre {
     font-size: 1.2rem;
     font-weight: bold;
     color: #000000;
     margin-bottom: 10px;
   }
   
-  .resultat-valeur {
+  .resultat-entrainement-valeur {
     font-size: 2rem;
     font-weight: 700;
     color: #880000;
     margin-top: 10px;
     padding: 10px;
-    
     background-color: #ffffff;
-   
     display: inline-block;
     margin-top: 10px;
   }
-  
-  @media (max-width: 768px) {
-    .lecon2-container {
-      padding: 15px;
-    }
-  
-    .resultat-container {
-      margin-top: 20px;
-    }
-  }
-  

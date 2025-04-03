@@ -20,7 +20,7 @@ function CreationCompte() {
     setErreur("");
     setMessage("");
 
-    if (motDePasse !== confirmeMotDePasse) {
+    if (motDePasse !== confirmeMotDePasse) { // si le mot de passe que l'on a entré en premier n'est pas le même que le mot de passe que l'on a entré la deuxième fois, le message d'erreur s'affiche
       setErreur("Les mots de passe ne correspondent pas !");
       return;
     }
@@ -28,7 +28,7 @@ function CreationCompte() {
     const utilisateur = { nom, prenom, email, motDePasse };
 
     try {
-      const response = await creerUtilisateur(utilisateur);
+      const response = await creerUtilisateur(utilisateur); // on utilise l'API pour créer un nouvel utilisateur
       console.log("Réponse du serveur :", response);
     
       if (response.status === 201) {
