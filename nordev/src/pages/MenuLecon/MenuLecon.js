@@ -12,24 +12,24 @@ function MenuLecons() {
   const [leconsValidees, setLeconsValidees] = useState([]);
   const [chargement, setChargement] = useState(true);
   const [erreur, setErreur] = useState(null);
-  const userId = localStorage.getItem("idUtilisateur"); // ID utilisateur stocké en localStorage
-  console.log("ID utilisateur dans localStorage :", userId);
+  const utilisateurId = localStorage.getItem("idUtilisateur"); // on stocke l'id de l'utilisateur dans le localStorage
+  console.log("Id utilisateur dans localStorage :", utilisateurId);
 
   useEffect(() => {
     const fetchLecons = async () => {
       try {
-        const data = await obtenirLecons();
+        const data = await obtenirLecons(); // on récupère les lecons depuis l'API
         setLecons(data);
       } catch (err) {
         setErreur("Erreur lors de la récupération des leçons.");
       }
     };
 
-    const fetchUserInfos = async () => {
+    const fetchInfosUtilisateur = async () => {
       try {
-        const utilisateur = await obtenirInfosUtilisateur(userId);
+        const utilisateur = await obtenirInfosUtilisateur(utilisateurId);
         console.log("Leçons validées récupérées :", utilisateur.leconsvalidees);
-        setLeconsValidees(utilisateur.leconsvalidees || []); // Récupérer les leçons validées
+        setLeconsValidees(utilisateur.leconsvalidees || []); // on récupère les leçons validées
       } catch (err) {
         console.error(
           "Erreur lors de la récupération des infos utilisateur :",
@@ -41,8 +41,8 @@ function MenuLecons() {
     };
 
     fetchLecons();
-    fetchUserInfos();
-  }, [userId]);
+    fetchInfosUtilisateur();
+  }, [utilisateurId]);
 
   if (chargement) return <p>Chargement des leçons...</p>;
   if (erreur) return <p>{erreur}</p>;
@@ -57,18 +57,21 @@ function MenuLecons() {
       <h2 className="titre-choix-lecon">Choisissez une leçon :</h2>
       <ul className="liste-lecon">
         {lecons.map((lecon) => {
-          const estValidee = leconsValidees.includes(lecon.id);
+          const estValidee = leconsValidees.includes(lecon.id); // on cherche les leçons dont les id sont les mêmes que les chiffres récupérés dans les leçons validées des utilisateurs
           console.log(
             `Leçon ${lecon.id} (${lecon.titre}) - Validée :`,
             estValidee
           );
 
-          // Classes conditionnelles
-          const classNameLecon = estValidee ? "lecon-validee" : "puce-lecon";
+          const classNameLecon = estValidee ? "lecon-validee" : "puce-lecon"; // on attribue un className conditionnel pour que l'affichage des leçons validées se fasse en vert
 
           return (
             <li key={lecon.id} className={classNameLecon}>
-              <Link to={`/lecon/${lecon.id}`}>{lecon.titre}</Link>
+              {lecon.id === 1 || lecon.id === 2 ? (
+                <Link to={`/lecon/${lecon.id}`}>{lecon.titre}</Link>
+              ) : (
+                <Link to="/page-non-developpee">{lecon.titre}</Link>
+              )}
             </li>
           );
         })}

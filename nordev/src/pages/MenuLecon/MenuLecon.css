@@ -1,70 +1,105 @@
 .titre-choix-lecon {
-    text-align: center;
-    font-size: 24px;
-    color: #333;
-    margin-bottom: 20px;
+  text-align: center;
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.liste-lecon {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.puce-lecon, .lecon-validee {
+  background-color: transparent;
+  margin: 10px 20px;
+  padding: 15px;
+  border-radius: 12px;
+  text-align: center;
+  font-weight: bold;
+  border: 2px solid;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.puce-lecon {
+  border-color: #880000;
+  color: #880000;
+  background: linear-gradient(90deg, rgba(136,0,0,0.2) 0%, rgba(136,0,0,0) 100%);
+}
+
+.puce-lecon:hover {
+  background: #880000;
+  color: #fff;
+  box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.3);
+  transform: scale(1.05);
+}
+
+.lecon-validee {
+  border-color: #00884d;
+  color: #00884d;
+  background: linear-gradient(90deg, rgba(0,136,77,0.2) 0%, rgba(0,136,77,0) 100%);
+}
+
+.lecon-validee:hover {
+  background: #00884d;
+  color: #fff;
+  box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.3);
+  transform: scale(1.05);
+}
+
+.puce-lecon a, .lecon-validee a {
+  text-decoration: none;
+  color: inherit;
+  font-size: 18px;
+  display: block;
+  transition: color 0.3s ease;
+}
+
+.puce-lecon:hover a, .lecon-validee:hover a {
+  color: #fff;
+}
+
+.lecon-validee::after {
+  content: "✔";
+  font-size: 16px;
+  color: #00884d;
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.puce-lecon::after {
+  content: "✖";
+  font-size: 16px;
+  color: #880000;
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+@media (max-width: 768px) {
+  .titre-choix-lecon {
+      font-size: 20px;
   }
   
-  .liste-lecon {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
+  .puce-lecon, .lecon-validee {
+      padding: 10px;
+      font-size: 16px;
+      margin: 5px 10px;
   }
   
-  .puce-lecon {
-    background-color: transparent;
-    margin: 10px 20px;
-    padding: 15px;
-    border-radius: 12px;
-    text-align: center;
-    font-weight: bold;
-    border: 2px solid #880000;
-    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+  .puce-lecon a, .lecon-validee a {
+      font-size: 16px;
   }
   
-  .puce-lecon:hover {
-    background-color: #880000;
-    color: #fff;
-    box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.3);
-    transform: scale(1.05);
+  .lecon-validee::after, .puce-lecon::after {
+      font-size: 14px;
+      right: 10px;
   }
-  
-  .puce-lecon a {
-    text-decoration: none;
-    color: #880000;
-    font-size: 18px;
-    display: block;
-  }
-  
-  .puce-lecon:hover a {
-    color: #fff;
-  }
-  
-  .lecon-validee {
-    background-color: transparent;
-    margin: 10px 20px;
-    padding: 15px;
-    border-radius: 12px;
-    text-align: center;
-    font-weight: bold;
-    border: 2px solid #00884d;
-    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
-  }
-  
-  .lecon-validee:hover {
-    background-color: #00884d;
-    color: #fff;
-    box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.3);
-    transform: scale(1.05);
-  }
-  
-  .lecon-validee a {
-    text-decoration: none;
-    color: #00884d;
-    font-size: 18px;
-    display: block;
-  }
-  
-  .lecon-validee:hover a {
-    color: #fff;
-  }
+}

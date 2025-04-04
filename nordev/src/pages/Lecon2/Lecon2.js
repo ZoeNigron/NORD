@@ -7,7 +7,6 @@ import Entrainement from "../../components/Entrainement/Entrainement";
 import DistanceLecon2 from "../../components/DistanceLecon/DistanceLecon2";
 import FormEstimation from "../../components/FormEstimation/FormEstimation";
 import AnalyseEstimation from "../../components/AnalyseEstimation/AnalyseEstimation";
-import GestionScore from "../../components/GestionScore";
 import { obtenirLecon } from "../../services/api";
 import "./Lecon2.css";
 
@@ -18,7 +17,6 @@ const Lecon2 = () => {
   const [resultat, setResultat] = useState(null);
   const [entrainementTermine, setEntrainementTermine] = useState(false);
   const [tentativesReussies, setTentativesReussies] = useState(0);
-  const [compteur, setCompteur] = useState(0);
 
   useEffect(() => {
     const fetchLecons = async () => {
@@ -41,35 +39,33 @@ const Lecon2 = () => {
     if (distance !== null && estimation !== "") {
       const estimationNumerique = parseFloat(estimation);
       const difference = Math.abs(distance - estimationNumerique);
-
+  
       const estReussi = difference <= 5; // à 5 mètres près
-
+  
+      if (estReussi) {
+        setTentativesReussies((prev) => prev + 1); // On incrémente les tentatives réussies
+      } else {
+        setTentativesReussies(0); // On réinitialise le compteur en cas d'échec
+      }
+  
+      // Passer directement la nouvelle valeur de tentativesReussies
       setResultat(
         <AnalyseEstimation
           distance={distance}
           estimation={estimationNumerique}
-          compteur={compteur + 1}
           refaireExercice={gererRefaireExercice}
           leconId={2}
+          tentativesReussies={tentativesReussies + (estReussi ? 1 : 0)} // Passe la valeur mise à jour ici
         />
       );
-
-      setCompteur(compteur + 1); // on incrémente le nombre total d'exercices tentés
-
-      if (estReussi) {
-        setTentativesReussies((pre) => pre + 1);
-      } else {
-        setTentativesReussies(0); // on réinitialise le compteur en cas d'échec
-      }
     } else {
       alert(
         "Veuillez d'abord calculer la distance, puis entrer votre estimation."
       );
     }
   };
-
-  const gererRefaireExercice = () => {
-    // pour recommencer l'exercice
+  
+  const gererRefaireExercice = () => { // pour recommencer l'exercice
     setEstimation("");
     setResultat(null);
     setDistance(null);
@@ -113,11 +109,6 @@ const Lecon2 = () => {
             )}
 
             {resultat && <div className="resultat-lecon-2">{resultat}</div>}
-
-            <GestionScore tentativesReussies={tentativesReussies} />
-            <div>
-              <p>{tentativesReussies} réussite(s) d'affilée !</p>
-            </div>
           </>
         )}
       </div>

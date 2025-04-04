@@ -8,20 +8,18 @@ import {
 } from "@mui/icons-material";
 import "./AnalyseEstimation.css";
 import { useNavigate } from "react-router-dom";
-import { mettreAJourLeconsValidees } from "../../services/api"; // Import de la fonction API
+import { mettreAJourLeconsValidees } from "../../services/api";
 
 function AnalyseEstimation({
   distance,
   estimation,
-  compteur,
   refaireExercice,
   leconId,
   tentativesReussies,
-  userId, // Ajout du userId en prop
+  utilisateurId,
 }) {
-
   const navigate = useNavigate();
-  
+
   const distanceArrondie = Math.round(distance); // estimation au mètre près
   const difference = Math.abs(distanceArrondie - estimation);
 
@@ -33,15 +31,22 @@ function AnalyseEstimation({
     if (tentativesReussies >= 5) {
       const validerLecon = async () => {
         try {
-          await mettreAJourLeconsValidees(userId, leconId);
-          console.log(`Leçon ${leconId} validée pour l'utilisateur ${userId}`);
+          const utilisateurId = localStorage.getItem("idUtilisateur"); // Récupérer userId ici
+          if (!utilisateurId) {
+            console.error("Aucun utilisateur trouvé.");
+            return;
+          }
+          await mettreAJourLeconsValidees(utilisateurId, leconId);
+          console.log(
+            `Leçon ${leconId} validée pour l'utilisateur ${utilisateurId}`
+          );
         } catch (error) {
           console.error("Erreur lors de la validation de la leçon :", error);
         }
       };
       validerLecon();
     }
-  }, [tentativesReussies, userId, leconId]);
+  }, [tentativesReussies, leconId]);
 
   let message = "";
   let messageClasse = "";
@@ -75,27 +80,16 @@ function AnalyseEstimation({
 
   return (
     <div className="analyse-estimation">
-      {messageClasse === "message-correct" ? (
-        <>
-          <p>
-            <strong>Distance réelle :</strong> {distanceArrondie} mètres
-          </p>
-          <div className={`${messageClasse}`}>
-            {messageIcone} {message}
-          </div>
-        </>
-      ) : (
-        <>
-          <div className={`${messageClasse}`}>
-            {messageIcone} {message}
-          </div>
-          {leconId === 1 && (
-            <ChoixErreur
-              distance={distanceArrondie}
-              selection={gererSelection}
-            />
-          )}
-        </>
+      <p>
+        <strong>Distance réelle :</strong> {distanceArrondie} mètres
+      </p>
+
+      <div className={`${messageClasse}`}>
+        {messageIcone} {message}
+      </div>
+
+      {leconId === 1 && (
+        <ChoixErreur distance={distanceArrondie} selection={gererSelection} />
       )}
 
       {choixErrone !== null && (

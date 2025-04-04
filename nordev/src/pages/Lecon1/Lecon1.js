@@ -7,7 +7,6 @@ import DistanceLecon1 from "../../components/DistanceLecon/DistanceLecon1";
 import AnalyseEstimation from "../../components/AnalyseEstimation/AnalyseEstimation";
 import { obtenirExercices, obtenirLecon } from "../../services/api";
 import "./Lecon1.css";
-import { useNavigate } from "react-router-dom";
 
 const Lecon1 = () => {
   const [lecon, setLecon] = useState(null);
@@ -16,9 +15,6 @@ const Lecon1 = () => {
   const [distanceParcourue, setDistanceParcourue] = useState(null);
   const [entrainementTermine, setEntrainementTermine] = useState(false);
   const [tentativesReussies, setTentativesReussies] = useState(0);
-  const [compteur, setCompteur] = useState(0);
-
-  const navigate = useNavigate(); // Déclaration de useNavigate
 
   useEffect(() => {
     // Appeler les données de la leçon et des exercices depuis l'API
@@ -54,8 +50,6 @@ const Lecon1 = () => {
         distanceParcourue - exerciceActif.distanceCible
       );
       const estReussi = difference <= 5;
-
-      setCompteur((pre) => pre + 1);
 
       if (estReussi) {
         setTentativesReussies((pre) => pre + 1);
@@ -103,7 +97,6 @@ const Lecon1 = () => {
                 <AnalyseEstimation
                   distance={distanceParcourue}
                   estimation={exerciceActif.distanceCible}
-                  compteur={tentativesReussies} // Affichage des réussites consécutives
                   refaireExercice={gererRefaireExercice}
                   leconId={1}
                   tentativesReussies={tentativesReussies} // Passer les tentatives réussies
