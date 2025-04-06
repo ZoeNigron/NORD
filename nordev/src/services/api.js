@@ -194,14 +194,29 @@ export const obtenirTopScores = async () => {
   }
 };
 
-export const mettreAJourLeconsValidees = async (userId, leconId) => {
+export const mettreAJourLeconsValidees = async (id, leconId) => {
   try {
-    const response = await axios.put(`${API_BASE_URL}/utilisateur/${userId}`, {
-      LeconsValidees: [leconId], // Ajouter leçon à la liste
+    // Étape 1 : récupérer l'utilisateur
+    const userRes = await axios.get(`${API_BASE_URL}/utilisateur/${id}`);
+    const utilisateur = userRes.data;
+
+    // Étape 2 : merger sans doublons
+    const nouvellesLecons = Array.from(new Set([
+      ...(utilisateur.leconsvalidees || []),
+      leconId
+    ]));
+
+    // Étape 3 : mise à jour
+    const response = await axios.put(`${API_BASE_URL}/utilisateur/${id}`, {
+      ...utilisateur, // inclure les autres champs
+      leconsvalidees: nouvellesLecons,
     });
+
     return response.data;
   } catch (error) {
     console.error("Erreur lors de la mise à jour des leçons validées", error);
+    console.error("Détails:", error.response?.data);
     throw error;
   }
 };
+

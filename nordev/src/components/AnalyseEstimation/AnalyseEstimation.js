@@ -16,7 +16,6 @@ function AnalyseEstimation({
   refaireExercice,
   leconId,
   tentativesReussies,
-  utilisateurId,
 }) {
   const navigate = useNavigate();
 
@@ -28,7 +27,7 @@ function AnalyseEstimation({
 
   // Envoi à l'API quand la leçon est validée
   useEffect(() => {
-    if (tentativesReussies >= 5) {
+    if (tentativesReussies >= 1) {
       const validerLecon = async () => {
         try {
           const utilisateurId = localStorage.getItem("idUtilisateur"); // Récupérer userId ici
@@ -88,7 +87,7 @@ function AnalyseEstimation({
         {messageIcone} {message}
       </div>
 
-      {leconId === 1 && (
+      {leconId === 1 && difference > 5 && (
         <ChoixErreur distance={distanceArrondie} selection={gererSelection} />
       )}
 
@@ -113,7 +112,7 @@ function AnalyseEstimation({
         <p>Vous avez réussi {tentativesReussies} fois d'affilée.</p>
       </div>
 
-      {tentativesReussies >= 5 ? (
+      {tentativesReussies >= 1 ? (
         <button
           onClick={() => navigate("/menu-lecons")}
           className="bouton-menu-lecon"
