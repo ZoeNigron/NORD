@@ -27,9 +27,9 @@ function MenuLecons() {
 
     const fetchInfosUtilisateur = async () => {
       try {
-        const utilisateur = await obtenirInfosUtilisateur(utilisateurId);
+        const utilisateur = await obtenirInfosUtilisateur(utilisateurId); // on récupère les infos de l'utilisateur (pour avoir accès à ses leçons validées)
         console.log("Leçons validées récupérées :", utilisateur.leconsvalidees);
-        setLeconsValidees(utilisateur.leconsvalidees || []); // on récupère les leçons validées
+        setLeconsValidees(utilisateur.leconsvalidees || []); // on récupère ses leçons validées
       } catch (err) {
         console.error(
           "Erreur lors de la récupération des infos utilisateur :",
@@ -70,7 +70,7 @@ function MenuLecons() {
               {lecon.id === 1 || lecon.id === 2 ? (
                 <Link to={`/lecon/${lecon.id}`}>{lecon.titre}</Link>
               ) : (
-                <Link to="/page-non-developpee">{lecon.titre}</Link>
+                <Link to="/page-non-developpee">{lecon.titre}</Link> // si la leçon n'existe pas, on redirige l'utilisateur vers une page dédiée à cela
               )}
             </li>
           );

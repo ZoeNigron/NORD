@@ -21,7 +21,7 @@ const Lecon2 = () => {
   useEffect(() => {
     const fetchLecons = async () => {
       try {
-        const donneesLecon = await obtenirLecon(2);
+        const donneesLecon = await obtenirLecon(2); // on récupère les données de la leçon 2 depuis l'API
         setLecon(donneesLecon);
       } catch (error) {
         console.error("Erreur lors du chargement des données :", error);
@@ -43,19 +43,18 @@ const Lecon2 = () => {
       const estReussi = difference <= 5; // à 5 mètres près
   
       if (estReussi) {
-        setTentativesReussies((prev) => prev + 1); // On incrémente les tentatives réussies
+        setTentativesReussies((pre) => pre + 1); // on incrémente les tentatives réussies
       } else {
-        setTentativesReussies(0); // On réinitialise le compteur en cas d'échec
+        setTentativesReussies(0); // on réinitialise le compteur en cas d'échec
       }
   
-      // Passer directement la nouvelle valeur de tentativesReussies
       setResultat(
         <AnalyseEstimation
           distance={distance}
           estimation={estimationNumerique}
           refaireExercice={gererRefaireExercice}
-          leconId={2}
-          tentativesReussies={tentativesReussies + (estReussi ? 1 : 0)} // Passe la valeur mise à jour ici
+          leconId={2} // on est sur la leçon 2
+          tentativesReussies={tentativesReussies + (estReussi ? 1 : 0)} // on passe directement la nouvelle valeur de tentativesReussies
         />
       );
     } else {

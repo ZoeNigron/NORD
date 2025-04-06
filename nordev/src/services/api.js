@@ -1,9 +1,9 @@
-import axios from "axios"; // avec axios, la réponse est automatiquement convertie en JSON (si elle est en JSON) et accessible via response.data
+import axios from "axios"; // avec axios, la réponse est automatiquement convertie en JSON et accessible via response.data
 
-const API_BASE_URL = "http://localhost:5039/api";
-//const API_BASE_URL = "http://172.20.10.2:5039/api";
+const API_BASE_URL = "http://localhost:5039/api"; // le lien pour relier l'API avec le localhost
+//const API_BASE_URL = "http://172.20.10.2:5039/api"; // le lien pour relier l'API et visualiser mon application depuis mon téléphone, à condition d'être sous le même réseau wifi que mon PC
 
-// Connexion utilisateur
+// Fonction pour connecter un utilisateur (utilisée dans le composant "ConnexionCompte")
 export const connecterUtilisateur = async (identifiants) => {
   try {
     const response = await axios.post(
@@ -20,18 +20,7 @@ export const connecterUtilisateur = async (identifiants) => {
   }
 };
 
-// Obtenir la liste des utilisateurs
-export const obtenirUtilisateurs = async () => {
-  try {
-    const response = await axios.get(`${API_BASE_URL}/utilisateur`);
-    return response.data;
-  } catch (error) {
-    console.error("Erreur lors de la récupération des utilisateurs:", error);
-    return [];
-  }
-};
-
-// Créer un nouvel utilisateur
+// Fonction pour créer un nouvel utilisateur (utilisée dans le composant "CreationCompte")
 export const creerUtilisateur = async (data) => {
   try {
     const response = await axios.post(
@@ -45,7 +34,7 @@ export const creerUtilisateur = async (data) => {
   }
 };
 
-// Obtenir les informations d'un utilisateur spécifique
+// Fonction pour obtenir les informations d'un utilisateur spécifique (utilisée dans le composant "ProfilUtilisateur" et dans la page "MenuLecon")
 export const obtenirInfosUtilisateur = async (id) => {
   try {
     console.log(`Récupération des infos pour l'id : ${id}`);
@@ -61,7 +50,7 @@ export const obtenirInfosUtilisateur = async (id) => {
   }
 };
 
-// Mettre à jour les informations d'un utilisateur spécifique
+// Fonction pour mettre à jour les informations d'un utilisateur spécifique (utilisée dans le composant "ProfilUtilisateur")
 export const mettreAJourInfosUtilisateur = async (id, utilisateurMisAJour) => {
   try {
     const response = await axios.put(
@@ -78,18 +67,7 @@ export const mettreAJourInfosUtilisateur = async (id, utilisateurMisAJour) => {
   }
 };
 
-// Fonction pour obtenir toutes les questions avec leurs réponses
-export const obtenirQuestions = async () => {
-  try {
-    const response = await axios.get(`${API_BASE_URL}/questions`);
-    return response.data;
-  } catch (error) {
-    console.error("Erreur lors de la récupération des questions:", error);
-    return [];
-  }
-};
-
-// Obtenir toutes les astuces
+// Fonction pour obtenir toutes les astuces (utilisée dans les composants "Astuce" et "GestionAstuces")
 export const obtenirAstuces = async () => {
   try {
     const response = await axios.get(`${API_BASE_URL}/astuces`);

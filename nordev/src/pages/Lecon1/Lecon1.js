@@ -1,3 +1,5 @@
+// Cette page gère le déroulement de la leçon 1 avec un entraînement, l'activité de mesure de distance, l'estimation et l'analyse de la réponse
+
 import React, { useState, useEffect } from "react";
 import BarreNavig from "../../components/BarreNavig/BarreNavig";
 import Entete from "../../components/Entete/Entete";
@@ -17,11 +19,10 @@ const Lecon1 = () => {
   const [tentativesReussies, setTentativesReussies] = useState(0);
 
   useEffect(() => {
-    // Appeler les données de la leçon et des exercices depuis l'API
-    const fetchDonnees = async () => {
+    const fetchDonnees = async () => { // on appelle les données de la leçon et des exercices depuis l'API
       try {
-        const donneesLecon = await obtenirLecon(1);
-        const donneesExercices = await obtenirExercices();
+        const donneesLecon = await obtenirLecon(1); // on s'intéresse à la leçon dont l'id est 1
+        const donneesExercices = await obtenirExercices(); // on récupère les données des exercices qui composent la leçon 1
         setLecon(donneesLecon);
         setExercices(donneesExercices);
       } catch (error) {
@@ -33,23 +34,20 @@ const Lecon1 = () => {
   }, []);
 
   const gererDistanceCalculee = (distance) => {
-    // Mettre à jour la distance parcourue après la mesure
-    setDistanceParcourue(distance);
+    setDistanceParcourue(distance); // on met à jour la distance parcourue après la mesure
   };
 
-  const gererRefaireExercice = () => {
-    // Recommencer un exercice
+  const gererRefaireExercice = () => { // pour recommencer un exercice
     setDistanceParcourue(null);
     setExerciceActif(null);
   };
 
   useEffect(() => {
-    // Analyser le résultat en comparant la distance mesurée à la distance cible
-    if (distanceParcourue !== null && exerciceActif) {
+    if (distanceParcourue !== null && exerciceActif) { // on analyse le résultat en comparant la distance mesurée à la distance cible
       const difference = Math.abs(
         distanceParcourue - exerciceActif.distanceCible
       );
-      const estReussi = difference <= 5;
+      const estReussi = difference <= 5; // on laisse la marge d'erreur de 5 mètres
 
       if (estReussi) {
         setTentativesReussies((pre) => pre + 1);
@@ -92,14 +90,14 @@ const Lecon1 = () => {
               }
             />
 
-            {distanceParcourue !== null && ( // Analyser et gérer le score après la mesure
+            {distanceParcourue !== null && (
               <>
                 <AnalyseEstimation
                   distance={distanceParcourue}
                   estimation={exerciceActif.distanceCible}
                   refaireExercice={gererRefaireExercice}
-                  leconId={1}
-                  tentativesReussies={tentativesReussies} // Passer les tentatives réussies
+                  leconId={1} // on est sur la leçon 1
+                  tentativesReussies={tentativesReussies}
                 />
               </>
             )}
@@ -110,7 +108,7 @@ const Lecon1 = () => {
       {!entrainementTermine && (
         <button
           className="bouton-lecon-1"
-          onClick={() => setEntrainementTermine(true)} // Passer de l'entraînement à la leçon
+          onClick={() => setEntrainementTermine(true)} // pour passer de l'entraînement à la leçon
         >
           Passer à la leçon
         </button>

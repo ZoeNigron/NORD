@@ -51,3 +51,21 @@
 .bouton-refaire:hover {
   background-color: #8a7216;
 }
+
+.bouton-menu-lecon {
+  background-color: #00884d;
+  color: white;
+  padding: 12px 24px;
+  margin: 20px auto;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: auto;
+  text-align: center;
+  display: block;
+  font-size: 16px;
+}
+
+.bouton-menu-lecon:hover {
+  background-color: #8a7216;
+}

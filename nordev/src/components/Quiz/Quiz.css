@@ -122,3 +122,10 @@
 .quiz-icone-incorrecte {
   color: #e74c3c;
 }
+
+.chargement-quiz {
+  margin-top: 15px;
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #333;
+}

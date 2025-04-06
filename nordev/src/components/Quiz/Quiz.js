@@ -30,7 +30,7 @@ function Quiz({ id, gererFinQuiz }) {
   }, [id]); // il y a une dépendance à l'id du quiz, on recharge les données si l'id change
 
   if (!quiz) {
-    return <div>Chargement du quiz...</div>;
+    return <div className="chargement-quiz">Chargement du quiz...</div>;
   }
 
   // on vérifie si le quiz contient des questions, sinon affiche un message d'erreur
