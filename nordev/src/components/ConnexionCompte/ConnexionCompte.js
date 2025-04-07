@@ -61,7 +61,7 @@ function ConnexionCompte() {
           placeholder="Mot de passe"
           required
         />
-        <button className="bouton-connexion" type="submit">
+        <button className="bouton-se-connecter" type="submit">
           Se connecter
         </button>
       </form>

@@ -18,16 +18,17 @@ const Accueil = () => {
 
       <Astuce />
 
-      <h2 className="texte-intro">J'améliore mon sens de l'orientation :</h2>
-
-      <Link to="/mes-competences">
-        <button
-          className="bouton-commencer"
-          onClick={() => console.log("Navigation vers Mes Compétences")}
-        >
-          Je commence
-        </button>
-      </Link>
+      <div className="section-intro">
+        <h2 className="texte-intro">J'améliore mon sens de l'orientation :</h2>
+        <Link to="/mes-competences">
+          <button
+            className="bouton-commencer"
+            onClick={() => console.log("Navigation vers Mes Compétences")}
+          >
+            Je commence
+          </button>
+        </Link>
+      </div>
     </div>
   );
 };

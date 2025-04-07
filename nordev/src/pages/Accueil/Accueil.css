@@ -1,5 +1,18 @@
+.section-intro {
+  background-color: #ffffff;
+  border-left: 6px solid #800000;
+  border-radius: 12px;
+  padding: 2px 20px 2px 20px;
+  margin: 30px auto;
+  width: 70%;
+  max-width: 680px;
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
+  position: relative;
+  text-align: center;
+}
+
 .texte-intro{
-    font-size: 1rem;
+    font-size: 1.1rem;
     font-weight: bold;
     color: #000000;
     text-align: center;
@@ -18,7 +31,7 @@
     width: auto;
     text-align: center;
     display: block;
-    font-size: 16px;
+    font-size: 18px;
   }
   
   .bouton-commencer:hover {

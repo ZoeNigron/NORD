@@ -9,7 +9,7 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  margin: 30px auto;
+  margin: 40px auto;
   padding: 20px;
   position: relative;
   overflow: hidden;
@@ -39,8 +39,7 @@
 }
 
 .astuce-icone {
-  color: #fbc02d;
-  font-size: 2rem;
+  color: #fbc02d;;
 }
 
 .astuce-texte {
@@ -65,50 +64,10 @@
   width: auto;
   text-align: center;
   display: block;
-  font-size: 16px;
+  font-size: 17px;
 }
 
 .bouton-gestion-astuce:hover {
   background-color: #8a7216;
 }
 
-@media (max-width: 767px) {
-  .astuce {
-    width: 70%;
-    max-width: none;
-    margin: 20px auto;
-    padding: 15px;
-    box-shadow: none;
-    border: 2px solid #800000;
-  }
-
-  .astuce-entete {
-    font-size: 1.1rem;
-    padding: 8px 0;
-  }
-
-  .astuce-contenu {
-    margin-top: 20px;
-  }
-
-  .astuce-icone {
-    font-size: 1.5rem;
-  }
-
-  .astuce-texte {
-    font-size: 1rem;
-    padding: 8px;
-    width: 100%;
-  }
-
-  .bouton-gestion-astuce {
-    width: 100%;
-    padding: 10px;
-    font-size: 14px;
-    margin: 10px auto;
-  }
-
-  .bouton-gestion-astuce:hover {
-    background-color: #8a7216;
-  }
-}

@@ -1,6 +1,6 @@
 .creer-compte {
     max-width: 450px;
-    margin: 50px auto;
+    margin: 30px auto;
     padding: 20px;
     background-color: #f9f9f9;
     border-radius: 10px;
@@ -36,7 +36,7 @@
     width: auto;
     text-align: center;
     display: block;
-    font-size: 16px;
+    font-size: 20px;
   }
   
   .bouton-creation:hover {

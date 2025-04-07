@@ -4,7 +4,7 @@
   justify-content: space-between;
   padding: 10px;
   background-color: white;
-  height: 60px;
+  height: 80px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   position: relative;
 }
@@ -13,20 +13,30 @@
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  font-size: 16px;
+  font-size: 25px;
   font-weight: bold;
   color: #800000;
   text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 70%;
 }
 
 .icones-navigation {
   display: flex;
-  align-items: center; 
-  gap: 10px; 
-  margin-left: auto;     
+  align-items: center;
+  gap: 20px;
+  margin-left: auto;
 }
 
-.bouton-retour {
+.icones-navigation svg {
+  width: 35px;
+  height: 35px;
+}
+
+.bouton-retour,
+.bouton-profil {
   background: none;
   border: none;
   color: #333;
@@ -41,49 +51,38 @@
 }
 
 .bouton-profil {
-  background: none;
-  border: none;
-  color: #333;
   font-size: 24px;
-  cursor: pointer;
-  padding: 5px;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   margin-left: auto;
 }
 
 .bouton-retour:hover,
-.bouton-profil:hover{
-    color: #ffffff;
-    background-color: #800000;
-    transform: scale(1.1);
+.bouton-profil:hover {
+  color: #ffffff;
+  background-color: #800000;
+  transform: scale(1.1);
 }
 
 @media (max-width: 767px) {
   .barre-navig {
-    flex-direction: row;
-    height: 60px;
-    padding: 10px;
+    flex-direction: column;
+    height: auto;
+    padding: 12px 10px;
+    gap: 5px;
   }
 
   .titre-page {
-    font-size: 14px;
-    flex-grow: 1;
-    margin: 0;
+    position: static;
+    transform: none;
+    font-size: 25px;
+    text-align: center;
+    max-width: 90%;
+    line-height: 1.4;
+    white-space: normal;
+    word-break: break-word;
   }
 
   .icones-navigation {
     margin-left: 0;
-    gap: 15px;
-    margin-left: auto;
-  }
-
-  .bouton-retour, .bouton-profil {
-    font-size: 18px;
-    width: 35px;
-    height: 35px;
+    gap: 12px;
   }
 }

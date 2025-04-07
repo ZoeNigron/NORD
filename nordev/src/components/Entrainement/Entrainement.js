@@ -17,7 +17,7 @@ const Entrainement = ({ leconId }) => {
 
   return (
     <div className="entrainement">
-      <h2>Entraînement</h2>
+      <h2 className="entrainement-titre">Entraînement</h2>
 
       {leconId === 1 ? (
         <>

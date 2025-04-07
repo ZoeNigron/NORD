@@ -44,7 +44,7 @@ function MenuLecons() {
     fetchInfosUtilisateur();
   }, [utilisateurId]);
 
-  if (chargement) return <p>Chargement des leçons...</p>;
+  if (chargement) return <p className="chargement-lecons">Chargement des leçons...</p>;
   if (erreur) return <p>{erreur}</p>;
 
   return (

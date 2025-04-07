@@ -1,5 +1,5 @@
 .profil-utilisateur-contenu {
-    max-width: 600px;
+    max-width: 70%;
     margin: 50px auto;
     padding: 20px;
     background-color: #f9f9f9;
@@ -10,22 +10,24 @@
   h2 {
     color: #333;
     text-align: center;
+    margin: 5px;
   }
   
   form {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 30px;
   }
   
   label {
     font-weight: bold;
-    margin-bottom: 5px;
+    margin-bottom: 15px;
+    font-size: 20px;
   }
   
   input {
-    padding: 12px;
-    font-size: 16px;
+    padding: 18px;
+    font-size: 20px;
     border: 1px solid #ccc;
     border-radius: 8px;
   }
@@ -41,7 +43,7 @@
     width: auto;
     text-align: center;
     display: block;
-    font-size: 16px;
+    font-size: 20px;
   }
   
   .profil-utilisateur-bouton:hover {

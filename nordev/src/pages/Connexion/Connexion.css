@@ -3,34 +3,36 @@
     flex-direction: column;
     justify-content: center; 
     align-items: center;
-    height: 100vh;
+    margin-top: 60px;
     width: 100%;
   }
   
   .connexion-contenu > div {
-    width: 50%;
-    max-width: 400px;
+    width: 70%;
+    max-width: 70%;
     padding: 20px;
     background-color: #f5f5f5; 
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-top: 120px;
+    margin-top: 10px;
   }
   
   .bouton-connexion {
-    background-color: #800000;
-    color: white;
+    background: transparent;
+    color: #800000;
     padding: 12px 24px;
     margin: 20px auto;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    width: auto;
+    width: 63%;
     text-align: center;
     display: block;
-    font-size: 16px;
+    font-size: 18px;
+    border: 2px solid #800000;
   }
   
   .bouton-connexion:hover {
-    background-color: #8a7216;
+    background: #800000;
+    color: white;
   }

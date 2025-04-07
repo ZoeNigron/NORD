@@ -1,7 +1,7 @@
-h2 {
+.entrainement-titre {
     text-align: center;
     font-size: 2rem;
-    margin-bottom: 20px;
+    margin: 20px;
     color: #333;
   }
   
@@ -14,7 +14,7 @@ h2 {
     padding: 10px;
     border: 2px solid #800000;
     border-radius: 8px;
-    max-width: 90%;
+    max-width: 82%;
     margin-left: auto;
     margin-right: auto;
     background-color: #f9f9f9; 
@@ -31,10 +31,10 @@ h2 {
   }
   
   .resultat-entrainement-titre {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: bold;
     color: #000000;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
   }
   
   .resultat-entrainement-valeur {

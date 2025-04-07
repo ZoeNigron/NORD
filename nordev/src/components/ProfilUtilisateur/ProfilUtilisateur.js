@@ -139,7 +139,7 @@ function ProfilUtilisateur() {
           />
         </div>
         <div>
-          <label>Confirmer le mot de passe : </label>
+          <label>Confirmation du mot de passe : </label>
           <input
             type="password"
             value={confirmationMotDePasse}

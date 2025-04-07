@@ -10,21 +10,23 @@
   }
   
   .bouton-selection {
-      background-color: #800000;
-      color: white;
       padding: 12px 24px;
       margin: 20px auto;
       border: none;
       border-radius: 5px;
       cursor: pointer;
-      width: auto;
+      width: 70%;
       text-align: center;
       display: block;
-      font-size: 16px;
+      font-size: 20px;
+      background: transparent;
+      color: #800000;
+      border: 2px solid #800000
     }
     
     .bouton-selection:hover {
-      background-color: #8a7216;
+      background-color: #800000;
+      color : white;
     }
     
   

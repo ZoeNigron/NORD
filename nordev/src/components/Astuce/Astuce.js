@@ -35,7 +35,7 @@ function Astuce() {
     <div className="astuce">
       <div className="astuce-entete">L'astuce du jour</div>
       <div className="astuce-contenu">
-        <LightbulbOutlined className="astuce-icone" />
+        <LightbulbOutlined fontSize="large" className="astuce-icone" />
         <p className="astuce-texte">{astuceDuJour}</p>
       </div>
 
