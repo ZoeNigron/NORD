@@ -62,7 +62,7 @@ function CreationCompte() {
 
   return (
     <div className="creer-compte">
-      <h2>Créer un compte</h2>
+      <h2 className="creation-titre">Créer un compte</h2>
       {erreur && <p className="erreur">{erreur}</p>}
       {message && <p className="message-succes">{message}</p>}
 

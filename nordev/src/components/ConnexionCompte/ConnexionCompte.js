@@ -44,7 +44,7 @@ function ConnexionCompte() {
 
   return (
     <div className="connexion">
-      <h2>Connexion</h2>
+      <h2 className="connexion-titre">Connexion</h2>
       {erreur && <p className="erreur">{erreur}</p>}
       <form onSubmit={gererConnexion}>
         <input
