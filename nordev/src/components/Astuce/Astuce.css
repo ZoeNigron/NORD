@@ -1,5 +1,5 @@
 .astuce {
-  width: 80%;
+  width: 70%;
   max-width: 500px;
   height: auto;
   background: #ffffff;
@@ -7,9 +7,9 @@
   box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.2);
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
-  margin: 60px auto;
+  margin: 30px auto;
   padding: 20px;
   position: relative;
   overflow: hidden;
@@ -51,10 +51,10 @@
   margin-top: 10px;
   border-radius: 10px;
   padding: 10px;
-  width: 80%;
+  width: 100%;
 }
 
-.bouton-gestion-astuce{
+.bouton-gestion-astuce {
   background-color: #800000;
   color: white;
   padding: 12px 24px;
@@ -70,4 +70,45 @@
 
 .bouton-gestion-astuce:hover {
   background-color: #8a7216;
+}
+
+@media (max-width: 767px) {
+  .astuce {
+    width: 70%;
+    max-width: none;
+    margin: 20px auto;
+    padding: 15px;
+    box-shadow: none;
+    border: 2px solid #800000;
+  }
+
+  .astuce-entete {
+    font-size: 1.1rem;
+    padding: 8px 0;
+  }
+
+  .astuce-contenu {
+    margin-top: 20px;
+  }
+
+  .astuce-icone {
+    font-size: 1.5rem;
+  }
+
+  .astuce-texte {
+    font-size: 1rem;
+    padding: 8px;
+    width: 100%;
+  }
+
+  .bouton-gestion-astuce {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    margin: 10px auto;
+  }
+
+  .bouton-gestion-astuce:hover {
+    background-color: #8a7216;
+  }
 }

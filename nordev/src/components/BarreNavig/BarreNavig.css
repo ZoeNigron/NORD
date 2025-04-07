@@ -33,7 +33,6 @@
   font-size: 20px;
   cursor: pointer;
   padding: 5px;
-  transition: transform 0.2s ease;
   width: 40px;
   height: 40px;
   display: flex;
@@ -61,5 +60,30 @@
     color: #ffffff;
     background-color: #800000;
     transform: scale(1.1);
-    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+@media (max-width: 767px) {
+  .barre-navig {
+    flex-direction: row;
+    height: 60px;
+    padding: 10px;
+  }
+
+  .titre-page {
+    font-size: 14px;
+    flex-grow: 1;
+    margin: 0;
+  }
+
+  .icones-navigation {
+    margin-left: 0;
+    gap: 15px;
+    margin-left: auto;
+  }
+
+  .bouton-retour, .bouton-profil {
+    font-size: 18px;
+    width: 35px;
+    height: 35px;
+  }
 }

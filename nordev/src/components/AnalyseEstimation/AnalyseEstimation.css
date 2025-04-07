@@ -69,3 +69,25 @@
 .bouton-menu-lecon:hover {
   background-color: #8a7216;
 }
+
+@media (max-width: 767px) {
+  .analyse-estimation {
+    margin: 10px;
+    padding: 10px;
+  }
+
+  .compteur-exercices {
+    font-size: 1em;
+  }
+
+  .bouton-refaire, .bouton-menu-lecon {
+    width: 90%;
+    padding: 10px;
+    font-size: 14px;
+    margin: 10px auto;
+  }
+
+  .bouton-refaire:hover, .bouton-menu-lecon:hover {
+    background-color: #8a7216;
+  }
+}
