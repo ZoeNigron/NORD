@@ -22,13 +22,13 @@ const PageQuiz = () => {
       titre: "S'orienter avec les points cardinaux",
       texteAudio: "Bienvenue dans la partie pour apprendre à s'orienter avec les points cardinaux. Complétez le quiz pour avancer.",
       id: 2,
-      messageFin: <p> Il n'existe pas encore de leçons !</p>
+      messageFin: <p className="pas-de-lecon"> Il n'existe pas encore de leçons !</p>
     },
     distancePoints: {
       titre: "Distances et points cardinaux",
       texteAudio: "Bienvenue dans la partie pour apprendre à s'orienter en combinant les distances et les points cardinaux. Complétez le quiz pour avancer.",
       id: 3,
-      messageFin: <p> Il n'existe pas encore de leçons !</p>
+      messageFin: <p className="pas-de-lecon"> Il n'existe pas encore de leçons !</p>
     }
   };
 

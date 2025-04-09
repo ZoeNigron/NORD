@@ -33,9 +33,6 @@ const Entrainement = ({ leconId }) => {
           <DistanceLecon1
             exercice={{}}
             lorsDistanceCalculee={gererDistanceCalculee}
-            lorsErreurPosition={(erreur) =>
-              console.log("Erreur de position :", erreur)
-            }
           />
         </>
       ) : leconId === 2 ? (

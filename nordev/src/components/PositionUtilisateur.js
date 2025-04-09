@@ -8,9 +8,8 @@ import obtenirPositionActuelle from "../services/obtenirPositionActuelle"; // la
 import IconePosition from "../services/IconePosition";
 import { LocationOn } from "@mui/icons-material";
 
-function PositionUtilisateur({ positionTrouvee, miseAJourErreur }) {
+function PositionUtilisateur({ positionTrouvee }) {
   const [position, setPosition] = useState(null);
-  const [error, setError] = useState(null);
   const map = useMap(); // on utilise le hook useMap pour manipuler la carte
 
   useEffect(() => {
@@ -24,19 +23,9 @@ function PositionUtilisateur({ positionTrouvee, miseAJourErreur }) {
         }
       })
       .catch((err) => {
-        setError(
-          "Impossible de récupérer la position de l'utilisateur. Veuillez vérifier les paramètres de géolocalisation."
-        );
-        if (miseAJourErreur) {
-          miseAJourErreur(err);
-        }
-        console.error(err);
+        console.error("Erreur de géolocalisation :", err);
       });
-  }, [map, positionTrouvee, miseAJourErreur]); // la position est mise à jour si "map" ou "positionTrouvee" changent
-
-  if (error) {
-    return <p>{error}</p>;
-  }
+  }, [map, positionTrouvee]); // la position est mise à jour si "map" ou "positionTrouvee" changent
 
   return position ? (
     <Marker position={position} icon={IconePosition}>

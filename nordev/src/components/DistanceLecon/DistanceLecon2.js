@@ -9,51 +9,42 @@ import PointSelectionne from "../PointSelectionne";
 import CalculDistance from "../CalculDistance";
 import "./DistanceLecon.css";
 
-function DistanceLecon2({ distanceCalculee, lorsErreurPosition }) {
+function DistanceLecon2({ distanceCalculee }) {
   const [positionActuelle, setPositionActuelle] = useState(null);
   const [positionCliquee, setPositionCliquee] = useState(null);
   const [erreurPosition, setErreurPosition] = useState(null);
 
-  const gererErreurPosition = (erreur) => {
-    setErreurPosition(
-      "Impossible de récupérer votre position. Veuillez vérifier vos paramètres de localisation."
-    );
-
-    if (lorsErreurPosition) {
-      lorsErreurPosition(erreur);
-    }
-  };
-
   useEffect(() => {
     if (!positionActuelle) {
       const timer = setTimeout(() => {
-        setErreurPosition(true);
+        setErreurPosition(
+          "Impossible de récupérer votre position. Veuillez vérifier vos paramètres de localisation."
+        );
       }, 5000); // si la position n'est pas récupérée au bout de 5 secondes, on affiche le message d'erreur
 
       return () => clearTimeout(timer);
     } else {
-      setErreurPosition(false);
+      setErreurPosition(null);
     }
   }, [positionActuelle]);
 
   return (
     <div>
+      {erreurPosition && (
+        <div className="erreur-position">{erreurPosition}</div>
+      )}
+
       <Carte
         contenu={
           <>
             <PositionUtilisateur
               positionTrouvee={setPositionActuelle} // on capture la position actuelle de l'utilisateur
-              miseAJourErreur={gererErreurPosition}
             />
             {/* pour que l'utilisateur choisisse un point sur la carte */}
             <PointSelectionne positionTrouvee={setPositionCliquee} />
           </>
         }
       />
-
-      {erreurPosition && (
-        <div className="erreur-position">{erreurPosition}</div>
-      )}
 
       {positionActuelle && positionCliquee && !erreurPosition && (
         <CalculDistance

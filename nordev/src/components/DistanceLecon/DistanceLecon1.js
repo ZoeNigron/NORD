@@ -14,7 +14,6 @@ import "./DistanceLecon.css";
 const DistanceLecon1 = ({
   exercice,
   lorsDistanceCalculee,
-  lorsErreurPosition,
 }) => {
   const [positionDepart, setPositionDepart] = useState(null);
   const [positionArrivee, setPositionArrivee] = useState(null);
@@ -34,33 +33,25 @@ const DistanceLecon1 = ({
     }
   };
 
-  const gererErreurPosition = (erreur) => {
-    setErreurPosition(
-      "Impossible de récupérer votre position. Veuillez vérifier vos paramètres de localisation."
-    );
-
-    if (lorsErreurPosition) {
-      lorsErreurPosition(erreur);
-    }
-  };
-
   const gererDistanceCalculee = (distance) => {
     // on appelle cette fonction après le calcul de la distance
     lorsDistanceCalculee(distance);
   };
 
   useEffect(() => {
-    let timer;
     if (phase === 1) {
-      timer = setTimeout(() => {
+      const timer = setTimeout(() => {
         setErreurPosition(
           "Impossible de récupérer votre position. Veuillez vérifier vos paramètres de localisation."
         );
       }, 5000); // si la position n'est pas récupérée au bout de 5 secondes, on affiche le message d'erreur
 
       return () => clearTimeout(timer);
+    } else {
+      setErreurPosition(null);
     }
   }, [phase]);
+
 
   if (!exercice) {
     return <h3>Aucun exercice sélectionné.</h3>;
@@ -99,7 +90,6 @@ const DistanceLecon1 = ({
             {phase === 1 && (
               <PositionUtilisateur
                 positionTrouvee={gererPositionCapturee} // on capture la position
-                miseAJourErreur={gererErreurPosition} // on gère les erreurs de localisation
               />
             )}
 
@@ -107,7 +97,6 @@ const DistanceLecon1 = ({
             {phase === 3 && (
               <PositionUtilisateur
                 positionTrouvee={gererPositionCapturee}
-                miseAJourErreur={gererErreurPosition}
               />
             )}
 

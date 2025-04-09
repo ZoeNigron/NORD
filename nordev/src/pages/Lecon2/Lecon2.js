@@ -17,6 +17,7 @@ const Lecon2 = () => {
   const [resultat, setResultat] = useState(null);
   const [entrainementTermine, setEntrainementTermine] = useState(false);
   const [tentativesReussies, setTentativesReussies] = useState(0);
+  const [compteurRedemarrage, setCompteurRedemarrage] = useState(0);
 
   useEffect(() => {
     const fetchLecons = async () => {
@@ -39,15 +40,15 @@ const Lecon2 = () => {
     if (distance !== null && estimation !== "") {
       const estimationNumerique = parseFloat(estimation);
       const difference = Math.abs(distance - estimationNumerique);
-  
+
       const estReussi = difference <= 5; // à 5 mètres près
-  
+
       if (estReussi) {
         setTentativesReussies((pre) => pre + 1); // on incrémente les tentatives réussies
       } else {
         setTentativesReussies(0); // on réinitialise le compteur en cas d'échec
       }
-  
+
       setResultat(
         <AnalyseEstimation
           distance={distance}
@@ -63,11 +64,13 @@ const Lecon2 = () => {
       );
     }
   };
-  
-  const gererRefaireExercice = () => { // pour recommencer l'exercice
+
+  const gererRefaireExercice = () => {
+    // pour recommencer l'exercice
     setEstimation("");
     setResultat(null);
     setDistance(null);
+    setCompteurRedemarrage((pre) => pre + 1); // compteur pour recommencer l'exercice sans garder la position sélectionnée précédemment par l'utilisateur
   };
 
   return (
@@ -92,10 +95,8 @@ const Lecon2 = () => {
             )}
 
             <DistanceLecon2
+              key={compteurRedemarrage} // key de React pour effacer le point précédemment sélectionné par l'utilisateur s'il s'est trompé et qu'il souhaite refaire l'exercice
               distanceCalculee={gererDistanceCalculee}
-              lorsErreurPosition={(erreur) =>
-                console.log("Erreur de position :", erreur)
-              }
             />
 
             {/* on affiche le formulaire d'estimation après le calcul de la distance */}

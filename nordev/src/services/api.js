@@ -1,7 +1,7 @@
 import axios from "axios"; // avec axios, la réponse est automatiquement convertie en JSON et accessible via reponse.data
 
-//const API_BASE_URL = "http://localhost:5039/api"; // le lien pour relier l'API avec le localhost
-const API_BASE_URL = "http://192.168.1.101:5039/api"; // le lien pour relier l'API et visualiser mon application depuis mon téléphone, à condition d'être sous le même réseau wifi que mon PC
+const API_BASE_URL = "http://localhost:5039/api"; // le lien pour relier l'API avec le localhost
+//const API_BASE_URL = "http://192.168.1.101:5039/api"; // le lien pour relier l'API et visualiser mon application depuis mon téléphone, à condition d'être sous le même réseau wifi que mon PC
 //const API_BASE_URL = "http://172.20.10.2:5039/api";
 
 // Fonction pour connecter un utilisateur (utilisée dans le composant "ConnexionCompte")

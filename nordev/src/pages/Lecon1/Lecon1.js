@@ -85,9 +85,6 @@ const Lecon1 = () => {
             <DistanceLecon1
               exercice={exerciceActif}
               lorsDistanceCalculee={gererDistanceCalculee}
-              lorsErreurPosition={(erreur) =>
-                console.log("Erreur de position :", erreur)
-              }
             />
 
             {distanceParcourue !== null && (

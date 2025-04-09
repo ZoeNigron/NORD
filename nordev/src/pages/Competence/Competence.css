@@ -31,21 +31,16 @@
 }
 
 .titre-competence {
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   font-weight: bold;
   color: #800000;
   margin-bottom: 10px;
 }
 
 .description-competence {
-  font-size: 1rem;
+  font-size: 1.1rem;
   color: #333;
   margin-bottom: 15px;
-}
-
-.icone-competence {
-  font-size: 2rem;
-  margin-bottom: 20px;
 }
 
 .bouton-competences {
@@ -59,7 +54,7 @@
   width: auto;
   text-align: center;
   display: block;
-  font-size: 16px;
+  font-size: 19px;
 }
 
 .bouton-competences:hover {

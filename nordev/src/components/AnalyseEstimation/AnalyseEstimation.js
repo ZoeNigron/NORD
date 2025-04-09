@@ -82,17 +82,18 @@ function AnalyseEstimation({
 
   return (
     <div className="analyse-estimation">
+    {leconId === 2 && (
       <p>
         <strong>Distance réelle :</strong> {distanceArrondie} mètres
       </p>
-
-      <div className={`${messageClasse}`}>
-        {messageIcone} {message}
-      </div>
-
+    )}
       {leconId === 1 && difference > 5 && (
         <ChoixErreur distance={distanceArrondie} selection={gererSelection} />
       )}
+
+<div className={`${messageClasse}`}>
+      {messageIcone} {message}
+    </div>
 
       {choixErrone !== null && (
         <div className="choix-resultat">
