@@ -1,5 +1,5 @@
 // Ce composant utilise la géolocalisation de l'utilisateur pour récupérer sa position actuelle
-// En entrée, il prend deux props : "positionTrouvee" (fonction) qui permet de passer la position de l'utilisateur au composant parent et "miseAJourErreur" (fonction) qui permet d'indiquer une erreur de géolocalisation
+// En entrée, il prend deux props : "positionTrouvee" (fonction) qui permet de passer la position de l'utilisateur au composant parent
 // En sortie, si la position est récupérée avec succès, on l'affiche sous forme de marqueur sur la carte. Sinon, on affiche un message d'erreur
 
 import { useEffect, useState } from "react";

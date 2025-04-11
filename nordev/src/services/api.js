@@ -24,10 +24,7 @@ export const connecterUtilisateur = async (identifiants) => {
 // Fonction pour créer un nouvel utilisateur (utilisée dans le composant "CreationCompte")
 export const creerUtilisateur = async (data) => {
   try {
-    const reponse = await axios.post(
-      `${API_BASE_URL}/utilisateur/creer`,
-      data
-    );
+    const reponse = await axios.post(`${API_BASE_URL}/utilisateur/creer`, data);
     return reponse.data;
   } catch (error) {
     console.error("Erreur lors de la création de l'utilisateur:", error);
@@ -39,7 +36,9 @@ export const creerUtilisateur = async (data) => {
 export const obtenirInfosUtilisateur = async (utilisateurId) => {
   try {
     console.log(`Récupération des infos pour l'id : ${utilisateurId}`);
-    const reponse = await axios.get(`${API_BASE_URL}/utilisateur/${utilisateurId}`);
+    const reponse = await axios.get(
+      `${API_BASE_URL}/utilisateur/${utilisateurId}`
+    );
     console.log("Réponse de l'API :", reponse.data);
     return reponse.data;
   } catch (error) {
@@ -52,7 +51,10 @@ export const obtenirInfosUtilisateur = async (utilisateurId) => {
 };
 
 // Fonction pour mettre à jour les informations d'un utilisateur spécifique (utilisée dans le composant "ProfilUtilisateur")
-export const mettreAJourInfosUtilisateur = async (utilisateurId, utilisateurMisAJour) => {
+export const mettreAJourInfosUtilisateur = async (
+  utilisateurId,
+  utilisateurMisAJour
+) => {
   try {
     const reponse = await axios.put(
       `${API_BASE_URL}/utilisateur/${utilisateurId}`,
@@ -142,20 +144,24 @@ export const obtenirQuiz = async (quizId) => {
 export const mettreAJourLeconsValidees = async (utilisateurId, leconId) => {
   try {
     // on récupère l'utilisateur
-    const recupUtilisateur = await axios.get(`${API_BASE_URL}/utilisateur/${utilisateurId}`);
+    const recupUtilisateur = await axios.get(
+      `${API_BASE_URL}/utilisateur/${utilisateurId}`
+    );
     const utilisateur = recupUtilisateur.data;
 
     // on merge sans doublons les nouvelles leçons validées avec celles déjà validées
-    const nouvellesLecons = Array.from(new Set([
-      ...(utilisateur.leconsvalidees || []),
-      leconId
-    ]));
+    const nouvellesLecons = Array.from(
+      new Set([...(utilisateur.leconsvalidees || []), leconId])
+    );
 
     // on met à jour dans l'API
-    const reponse = await axios.put(`${API_BASE_URL}/utilisateur/${utilisateurId}`, {
-      ...utilisateur, // pour inclure les autres données de l'utilisateur
-      leconsvalidees: nouvellesLecons,
-    });
+    const reponse = await axios.put(
+      `${API_BASE_URL}/utilisateur/${utilisateurId}`,
+      {
+        ...utilisateur, // pour inclure les autres données de l'utilisateur
+        leconsvalidees: nouvellesLecons,
+      }
+    );
 
     return reponse.data;
   } catch (error) {
@@ -164,4 +170,3 @@ export const mettreAJourLeconsValidees = async (utilisateurId, leconId) => {
     throw error;
   }
 };
-
