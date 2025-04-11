@@ -1,4 +1,4 @@
-# 🌍 NORD - Front-end
+# NORD - Front-end
 
 Ce dépôt contient le front-end de mon application **NORD**, développée avec **React.js**.
 
@@ -8,7 +8,7 @@ Cette application permet aux utilisateurs d’apprendre à s’orienter grâce �
 - des astuces quotidiennes,
 - et un mode audio pour prêter attention à son environnement.
 
-🔧 **Technologies principales** :
+**Technologies principales** :
 - React.js
 - JavaScript
 - Leaflet + OpenStreetMap
@@ -16,6 +16,6 @@ Cette application permet aux utilisateurs d’apprendre à s’orienter grâce �
 - API Web Speech
 - Local Storage
 
-📄 La notice d’installation se trouve dans le **rapport final** du projet.
+La notice d’installation se trouve dans le **rapport final** du projet.
 
 Zoé Nigron
