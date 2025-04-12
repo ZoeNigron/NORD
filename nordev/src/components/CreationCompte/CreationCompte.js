@@ -25,40 +25,42 @@ function CreationCompte() {
       setErreur("Les mots de passe ne correspondent pas !");
       return;
     }
-
-    const utilisateur = { nom, prenom, email, motDePasse };
-
-    try {
-      const response = await creerUtilisateur(utilisateur); // on utilise l'API pour créer un nouvel utilisateur
-      console.log("Réponse du serveur :", response);
-
-      if (response.status === 201) {
-        setMessage("Compte créé avec succès ! Vous allez être redirigé...");
-        setTimeout(() => {
-          window.location.href = "http://localhost:3000/";
-        }, 2000);
-      }
-    } catch (err) {
-      console.error("Erreur complète :", err);
-
-      if (err.response) {
-        console.error("Statut :", err.response.status);
-        console.error("Données :", err.response.data);
-
-        if (err.response.status === 400) {
-          setErreur(err.response.data.message || "Cet email est déjà utilisé.");
+      const utilisateur = { nom, prenom, email, motDePasse };
+      
+      try {
+        const response = await creerUtilisateur(utilisateur); // on utilise l'API pour créer un nouvel utilisateur
+        console.log("Réponse du serveur :", response);
+    
+        // on vérifie si la réponse contient un id (ce qui signifie que l'utilisateur a été créé)
+        if (response && response.id) {
+          setMessage("Compte créé avec succès ! Vous allez être redirigé...");
+          setTimeout(() => {
+            window.location.href = "http://localhost:3000/"; // on redirige l'utilisateur vers la page de connexion
+          }, 3000);
         } else {
           setErreur("Une erreur est survenue lors de la création du compte.");
         }
-      } else if (err.request) {
-        setErreur("Problème de connexion avec le serveur.");
-        console.error("Requête envoyée mais pas de réponse :", err.request);
-      } else {
-        setErreur("Une erreur inconnue est survenue.");
-        console.error("Erreur inconnue :", err.message);
+      } catch (err) {
+        console.error("Erreur complète :", err);
+    
+        if (err.response) {
+          console.error("Statut :", err.response.status);
+          console.error("Données :", err.response.data);
+    
+          if (err.response.status === 400) {
+            setErreur(err.response.data.message || "Cet email est déjà utilisé.");
+          } else {
+            setErreur("Une erreur est survenue lors de la création du compte.");
+          }
+        } else if (err.request) {
+          setErreur("Problème de connexion avec le serveur.");
+          console.error("Requête envoyée mais pas de réponse :", err.request);
+        } else {
+          setErreur("Une erreur inconnue est survenue.");
+          console.error("Erreur inconnue :", err.message);
+        }
       }
-    }
-  };
+    };
 
   return (
     <div className="creer-compte">
