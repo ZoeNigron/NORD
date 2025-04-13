@@ -1,5 +1,5 @@
 // Ce composant permet de gérer les étapes pour récupérer le premier point GPS de l'utilisateur quand il appuie sur "Démarrer" puis pour récupérer le deuxième point GPS lorsqu'il appuie sur "Terminer". Puis il fait appel au composant CalculDistance pour calculer la distance entre les deux points
-// En entrée, il prend trois props : "exercice" qui est un objet, "lorsDistanceCalculee" qui est une fonction exécutée lorsque la distance est calculée, et "lorsErreurPosition" qui est une fonction appelée si on n'arrive pas à géolocaliser l'utilisateur
+// En entrée, il prend deux props : "exercice" qui est un objet et "lorsDistanceCalculee" qui est une fonction exécutée lorsque la distance est calculée
 // En sortie, on a l'affichage de la carte avec la position de l'utilisateur et la distance parcourue (et l'affichage d'un message d'erreur en cas de problème avec la localisation)
 
 import React, { useState, useEffect } from "react";

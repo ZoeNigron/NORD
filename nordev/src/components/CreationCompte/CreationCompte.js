@@ -33,10 +33,7 @@ function CreationCompte() {
     
         // on vérifie si la réponse contient un id (ce qui signifie que l'utilisateur a été créé)
         if (response && response.id) {
-          setMessage("Compte créé avec succès ! Vous allez être redirigé...");
-          setTimeout(() => {
-            window.location.href = "http://localhost:3000/"; // on redirige l'utilisateur vers la page de connexion
-          }, 3000);
+          setMessage("Compte créé avec succès !");
         } else {
           setErreur("Une erreur est survenue lors de la création du compte.");
         }

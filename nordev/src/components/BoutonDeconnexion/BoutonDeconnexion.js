@@ -6,7 +6,7 @@ import "./BoutonDeconnexion.css";
 function BoutonDeconnexion() {
   const navigate = useNavigate(); // on utilise le hook useNavigate
 
-  const gererDeconnexion = () => { // on enlève le token et l'état "estAuthentifié" du localStorage
+  const gererDeconnexion = () => { // on enlève le token et l'état "estAuthentifie" du localStorage
     localStorage.removeItem("token");
     localStorage.removeItem("estAuthentifie");
     //localStorage.removeItem("id");

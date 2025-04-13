@@ -1,4 +1,4 @@
-// Cette page affiche les compétences disponbiles sous forme de scroll vertical et laisse la possibilité à l'utilisateur de cliquer sur l'une d'entre elles
+// Cette page affiche les compétences disponibles sous forme de scroll vertical et laisse la possibilité à l'utilisateur de cliquer sur l'une d'entre elles
 
 import React, { useEffect, useState } from "react";
 import BarreNavig from "../../components/BarreNavig/BarreNavig";

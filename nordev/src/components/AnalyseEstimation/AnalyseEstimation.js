@@ -1,5 +1,5 @@
-// Ce composant analyse si l'utilisateur a réussi la leçon ou non. Pour la leçon 1 et quand l'utilisateur n'a pas réussi, ce composant appelle le composant "Choix Erreur" pour laisser l'utilisateur estimer de combien de mètres il pense s'être trompé. Ce composant permet aussi de compter le nombre de fois d'affilée que l'utilisateur a réussi la leçon, de valider la leçon est enfin de la refaire
-// En entrée, il prend cinq props : distance (int), estimation (int) qui est la valeur a comparer avec la valeur réelle de distance, refaireExercice (fonction), leconId (int) et tentativesReussies (int) qui permet de valider la leçon après 5 réussites
+// Ce composant analyse si l'utilisateur a réussi la leçon ou non. Pour la leçon 1 et quand l'utilisateur n'a pas réussi, ce composant appelle le composant "ChoixErreur" pour laisser l'utilisateur estimer de combien de mètres il pense s'être trompé. Ce composant permet aussi de compter le nombre de fois d'affilée que l'utilisateur a réussi la leçon, de valider la leçon est enfin de la refaire
+// En entrée, il prend cinq props : distance (int), estimation (int) qui est la valeur à comparer avec la valeur réelle de distance, refaireExercice (fonction), leconId (int) et tentativesReussies (int) qui permet de valider la leçon après 5 réussites
 // En sortie, il affiche la distance réelle, l'indication de réussite ou non, le choix d'estimation d'erreur pour la leçon 1 avec sa correction, le nombre de tentatives réussies d'affilée, et enfin le bouton pour refaire la leçon ou bien revenir au menu des leçons quand la leçon est validée
 
 import React, { useState, useEffect } from "react";
@@ -30,7 +30,7 @@ function AnalyseEstimation({
   const [estCorrect, setEstCorrect] = useState(null);
 
   useEffect(() => {
-    if (tentativesReussies >= 1) { // si le nombre de réussites d'affilée dépasse 5
+    if (tentativesReussies >= 5) { // si le nombre de réussites d'affilée dépasse 5
       const validerLecon = async () => {
         try {
           const utilisateurId = localStorage.getItem("idUtilisateur"); // on récupère l'id de l'utilisateur qui est stocké dans le localStorage
@@ -116,7 +116,7 @@ function AnalyseEstimation({
         <p>Vous avez réussi {tentativesReussies} fois d'affilée.</p>
       </div>
 
-      {tentativesReussies >= 1 ? (
+      {tentativesReussies >= 5 ? (
         <button
           onClick={() => navigate("/menu-lecons")}
           className="bouton-menu-lecon"

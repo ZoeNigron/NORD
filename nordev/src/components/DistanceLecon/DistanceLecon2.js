@@ -1,5 +1,5 @@
 // Ce composant permet de calculer la distance entre la position actuelle de l'utilisateur et un point sélectionné sur une carte
-// En entrée, il prend deux props : "distance calculée" (fonction) qui est appelée après le calcul de la distance, et "lorsErreurPosition" (fonction) qui est appelée en cas d'erreur de localisation
+// En entrée, il prend une prop : "distance calculée" (fonction) qui est appelée après le calcul de la distance
 // En sortie, on a l'affichage de la carte avec la position de l'utilisateur et le point sélectionné (et l'affichage d'un message d'erreur en cas de problème avec la localisation)
 
 import { useState, useEffect } from "react";
